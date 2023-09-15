@@ -1,0 +1,40 @@
+{
+  "questions": [
+    {
+      "id": "1.2.2",
+      "question_template": "What would be the effect on the selection if the weight of the {nth} item is changed to {weight}?",
+      "answer_template": "...",
+      "answer_template_section": "weight[nth] = {weight}",
+      "variables": [
+        {
+          "name": "nth",
+          "type": "int",
+          "range": [0, 10]
+        },
+        {
+          "name": "weight",
+          "type": "int",
+          "range": [1, 10]
+        }
+      ]
+    },
+    {
+      "id": "1.2.2",
+      "question_template": "What would be the effect on the selection if the weight of the {nth} item is changed to {weight}?",
+      "answer_template": "...",
+      "answer_template_section": "weight[nth] = {weight}",
+      "variables": [
+        {
+          "name": "nth",
+          "type": "int",
+          "range": [0, 10]
+        },
+        {
+          "name": "weight",
+          "type": "int",
+          "range": [1, 10]
+        }
+      ]
+    }
+  ]
+}
