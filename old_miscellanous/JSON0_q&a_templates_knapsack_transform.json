@@ -3,7 +3,7 @@
     {
       "id": "1.2.1",
       "question_template": "What would happen if the maximum allowed weight is changed to {W}?",
-      "answer_template": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [20, 30, 50, 10]\nweights = [5, 8, 3, 2]\nW = {W}\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)",
+      "answer_template": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [20, 30, 50, 10]\nweights = [5, 8, 3, 2]\nW = {W}\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)",
       "answer_template_section": "W = {W}",
       "variables": [
         {
@@ -16,7 +16,7 @@
     {
       "id": "1.2.2",
       "question_template": "What would be the effect on the selection if the weight of the item with the index {n} was changed to {weight}?",
-      "answer_template": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [20, 30, 50, 10]\nweights[{n}] = {weight}\nweights = [5, 8, 3, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)",
+      "answer_template": "from gurobipy import Model, GRB;\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values);\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\");\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\");\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE);\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\");\n\n    # Solve the model\n    m.optimize();\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5];\n\n    return selected_items;\n\n\n# Data\nvalues = [20, 30, 50, 10];\nweights = [5, 8, 3, 2];\nweights[{n}] = {weight};\nW = 10;\nselected_items = knapsack_gurobi(values, weights, W);\nprint(selected_items)",
       "answer_template_section": "weights[{n}] = {weight}",
       "variables": [
         {
@@ -33,7 +33,7 @@
     },
     {
       "id": "1.2.3",
-      "question_template": "If the value of the item with the index {n} item is updated to {value}, how would the optimal selection be influenced?",
+      "question_template": "If the value of the item with the index {n} is updated to {value}, how would the optimal selection be influenced?",
       "answer_template": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [20, 30, 50, 10]\nvalues[n] = {value}\nweights = [5, 8, 3, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)",
       "answer_template_section": "values[n] = {value}",
       "variables": [
@@ -51,14 +51,14 @@
     },
     {
       "id": "1.2.4",
-      "question_template": "How would you modify the objective function of the given knapsack problem to incorporate an L1 regularization, aiming to reduce the number of selected items, by adding a penalty term of {lambda} for each selected item?",
+      "question_template": "How would you modify the objective function of the given knapsack problem to incorporate an L1 regularization, aiming to reduce the number of selected items, by adding a penalty term of {lambda_value} for each selected item?",
       "answer_template": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - {lambda_value} * sum(x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [20, 30, 50, 10]\nweights = [5, 8, 3, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)",
       "answer_template_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - {lambda_value} * sum(x[i] for i in range(n)), GRB.MAXIMIZE)",
       "variables": [
         {
           "name": "lambda_value",
           "type": "float",
-          "range": [0.1, 10.0]
+          "range": [1.0, 10.0]
         }
       ]
     },
@@ -102,7 +102,7 @@
       "id": "1.2.7",
       "question_template": "How does the model change if we introduce a lower bound constraint such that at least {min_items} items must be selected?",
       "answer_template": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Minimum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) >= {min_items}, \"min_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [20, 30, 50, 10]\nweights = [5, 8, 3, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)",
-      "answer_template_section": "m.addConstr(sum(x[i] for i in range(n)) >= {min_items}",
+      "answer_template_section": "m.addConstr(sum(x[i] for i in range(n)) >= {min_items})",
       "variables": [
         {
           "name": "min_items",
@@ -144,14 +144,22 @@
       "answer_template_section": "m.addConstr(x[{i}] + x[{j}] <= 1)",
       "variables": [
         {
-          "name": "i",
-          "type": "int",
-          "range": [0, 3]
-        },
-        {
-          "name": "j",
-          "type": "int",
-          "range": [0, 3]
+          "name": "i_j_pair",
+          "type": "object",
+          "values": [
+            {"i": 0, "j": 1},
+            {"i": 0, "j": 2},
+            {"i": 0, "j": 3},
+            {"i": 1, "j": 0},
+            {"i": 1, "j": 2},
+            {"i": 1, "j": 3},
+            {"i": 2, "j": 0},
+            {"i": 2, "j": 1},
+            {"i": 2, "j": 3},
+            {"i": 3, "j": 0},
+            {"i": 3, "j": 1},
+            {"i": 3, "j": 2}
+          ]
         }
       ]
     }
