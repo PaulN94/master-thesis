@@ -32,8 +32,8 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [20, 30, 50, 10]
-weights = [5, 8, 3, 2]
+values = [33, 22, 30, 10]
+weights = [5, 6, 8, 2]
 W = {W}
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
@@ -79,8 +79,8 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [20, 30, 50, 10]
-weights = [5, 8, 3, 2]
+values = [33, 22, 30, 10]
+weights = [5, 6, 8, 2]
 weights[{n}] = {weight}
 W = 10
 selected_items = knapsack_gurobi(values, weights, W)
@@ -132,9 +132,9 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [20, 30, 50, 10]
+values = [33, 22, 30, 10]
 values[{n}] = {value}
-weights = [5, 8, 3, 2]
+weights = [5, 6, 8, 2]
 W = 10
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
@@ -185,8 +185,8 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [20, 30, 50, 10]
-weights = [5, 8, 3, 2]
+values = [33, 22, 30, 10]
+weights = [5, 6, 8, 2]
 W = 10
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
@@ -232,8 +232,8 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [20, 30, 50, 10]
-weights = [5, 8, 3, 2]
+values = [33, 22, 30, 10]
+weights = [5, 6, 8, 2]
 W = 10
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
@@ -289,8 +289,8 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [20, 30, 50, 10]
-weights = [5, 8, 3, 2]
+values = [33, 22, 30, 10]
+weights = [5, 6, 8, 2]
 W = 10
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
@@ -339,8 +339,8 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [20, 30, 50, 10]
-weights = [5, 8, 3, 2]
+values = [33, 22, 30, 10]
+weights = [5, 6, 8, 2]
 W = 10
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
@@ -389,8 +389,8 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [20, 30, 50, 10]
-weights = [5, 8, 3, 2]
+values = [33, 22, 30, 10]
+weights = [5, 6, 8, 2]
 W = 10
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
@@ -439,8 +439,8 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [20, 30, 50, 10]
-weights = [5, 8, 3, 2]
+values = [33, 22, 30, 10]
+weights = [5, 6, 8, 2]
 W = 10
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
@@ -489,8 +489,8 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [20, 30, 50, 10]
-weights = [5, 8, 3, 2]
+values = [33, 22, 30, 10]
+weights = [5, 6, 8, 2]
 W = 10
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
