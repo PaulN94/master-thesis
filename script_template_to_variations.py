@@ -1,13 +1,13 @@
 import random
 import json
 
-from dict0_q_a_templates_knapsack_transformation import dict0
+from dict_1_2_templates_knapsack_transform import dict_1_2
 
 # Create an empty dictionary to store the generated questions and answers
 generated_questions = dict(variations=[])
 
 # Loop through each template
-for template in dict0['templates']:
+for template in dict_1_2['templates']:
     template_id = template['id']
     question_template = template['question_template']
     answer_template = template['answer_template']
@@ -57,5 +57,5 @@ for template in dict0['templates']:
         })
 
 # Save the generated_questions dictionary to a file in JSON format
-with open('JSON1_q_and_a_variations_knapsack_transformation.json', 'w') as f:
+with open('JSON1_variations_knapsack_transform.json', 'w') as f:
     json.dump(generated_questions, f, indent=4)

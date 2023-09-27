@@ -17,7 +17,7 @@ def run_code_and_get_output(code):
         return f'Error: {e}'
 
 # Read input JSON file
-with open('JSON4_q_and_a_llm_response_knapsack_transformation.json', 'r') as f:
+with open('JSON4_llm_response_knapsack_transform.json', 'r') as f:
     data = json.load(f)
 
 # Run Python code for each variation
@@ -27,5 +27,5 @@ for variation in data['variations']:
     variation['llm_optimum'] = solver_output
 
 # Write new JSON file with solver outputs
-with open('JSON5_q_and_a_solved_transformed_models_knapsack_transformation.json', 'w') as f:
+with open('JSON5_solved_transformed_models_knapsack_transform.json', 'w') as f:
     json.dump(data, f, indent=4)

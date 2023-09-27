@@ -1,7 +1,7 @@
 import json
 
 # Read the JSON5 file
-input_file = 'JSON5_q_and_a_solved_transformed_models_knapsack_transformation.json'
+input_file = 'JSON5_solved_transformed_models_knapsack_transform.json'
 with open(input_file, 'r') as f:
     data = json.load(f)
 
@@ -14,6 +14,6 @@ for entry in data['variations']:
     entry['correct'] = (solver_output == llm_optimum)
 
 # Save the updated data to a new JSON6 file
-output_file = 'JSON6_q_and_a_evaluated_knapsack_transformation.json'
+output_file = 'JSON6_evaluated_knapsack_transform.json'
 with open(output_file, 'w') as f:
     json.dump(data, f, indent=4)

@@ -16,7 +16,7 @@ def reformulate_question(question):
     return response['choices'][0]['message']['content']
 
 # Load the input JSON file
-with open("JSON2_q_and_a_variations_knapsack_transformation.json", 'r') as infile:
+with open("JSON2_solved_variations_knapsack_transform.json", 'r') as infile:
     data = json.load(infile)
 
 # Initialize the output data structure
@@ -26,6 +26,8 @@ output_data = {"variations": []}
 for variation in data["variations"]:
     # Generate 3 reformulated questions
     for i in range(1, 4):
+        # Print the console log message
+        print(f"Reformulating question {variation['id']}.{i}")
         new_variation = variation.copy()
         new_id = f"{variation['id']}.{i}"
         new_variation["id"] = new_id
@@ -34,5 +36,5 @@ for variation in data["variations"]:
         output_data["variations"].append(new_variation)
 
 # Save to a new JSON file
-with open("JSON3_q_and_a_reformulation_knapsack_transformation.json", 'w') as outfile:
+with open("JSON3_reformulation_knapsack_transform.json", 'w') as outfile:
     json.dump(output_data, outfile, indent=4)

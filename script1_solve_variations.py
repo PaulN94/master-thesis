@@ -17,7 +17,7 @@ def run_code_and_get_output(code):
         return f'Error: {e}'
 
 # Read JSON file
-with open('JSON1_q_and_a_variations_knapsack_transformation.json', 'r') as f:
+with open('JSON1_variations_knapsack_transform.json', 'r') as f:
     data = json.load(f)
 
 # Run Python code for each variation
@@ -27,5 +27,5 @@ for variation in data['variations']:
     variation['solver_output'] = solver_output
 
 # Write new JSON file with solver outputs
-with open('JSON2_q_and_a_variations_knapsack_transformation.json', 'w') as f:
+with open('JSON2_solved_variations_knapsack_transform.json', 'w') as f:
     json.dump(data, f, indent=4)
