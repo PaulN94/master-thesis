@@ -2,8 +2,6 @@ import os
 import openai
 import json
 
-# Warning: Do not expose your API key like this in production code.
-# Use environment variables or secret management services.
 api_key = "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"
 openai.api_key = api_key
 
