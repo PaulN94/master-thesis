@@ -1,0 +1,443 @@
+{
+    "variations_per_template": "3",
+    "reformulations_per_variation": "3",
+    "experiments_per_model": "10",
+    "llms": {
+        "LLM1: GPT-3.5-turbo": {
+            "select": true,
+            "optimization_models": {
+                "Model1: Knapsack": {
+                    "select": true,
+                    "tasks": {
+                        "Task1: Build": {
+                            "select": true,
+                            "distribution": {
+                                "Dist0: Out-of-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                },
+                                "Dist1: In-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Task2: Transform": {
+                            "select": true,
+                            "distribution": {
+                                "Dist0: Out-of-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                },
+                                "Dist1: In-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "Model2: MMNL": {
+                    "select": true,
+                    "tasks": {
+                        "Task1: Build": {
+                            "select": true,
+                            "distribution": {
+                                "Dist0: Out-of-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                },
+                                "Dist1: In-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Task2: Transform": {
+                            "select": true,
+                            "distribution": {
+                                "Dist0: Out-of-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                },
+                                "Dist1: In-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "Model3: CAP": {
+                    "select": true,
+                    "tasks": {
+                        "Task1: Build": {
+                            "select": true,
+                            "distribution": {
+                                "Dist0: Out-of-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                },
+                                "Dist1: In-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Task2: Transform": {
+                            "select": true,
+                            "distribution": {
+                                "Dist0: Out-of-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                },
+                                "Dist1: In-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "LLM2: GPT-4": {
+            "select": true,
+            "optimization_models": {
+                "Model1: Knapsack": {
+                    "select": true,
+                    "tasks": {
+                        "Task1: Build": {
+                            "select": true,
+                            "distribution": {
+                                "Dist0: Out-of-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                },
+                                "Dist1: In-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Task2: Transform": {
+                            "select": true,
+                            "distribution": {
+                                "Dist0: Out-of-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                },
+                                "Dist1: In-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "Model2: MMNL": {
+                    "select": true,
+                    "tasks": {
+                        "Task1: Build": {
+                            "select": true,
+                            "distribution": {
+                                "Dist0: Out-of-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                },
+                                "Dist1: In-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Task2: Transform": {
+                            "select": true,
+                            "distribution": {
+                                "Dist0: Out-of-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                },
+                                "Dist1: In-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "Model3: CAP": {
+                    "select": true,
+                    "tasks": {
+                        "Task1: Build": {
+                            "select": true,
+                            "distribution": {
+                                "Dist0: Out-of-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                },
+                                "Dist1: In-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Task2: Transform": {
+                            "select": true,
+                            "distribution": {
+                                "Dist0: Out-of-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                },
+                                "Dist1: In-distribution_ICL": {
+                                    "select": true,
+                                    "ICL": {
+                                        "ICL0: Zero-shot": {
+                                            "select": true
+                                        },
+                                        "ICL1: One-shot": {
+                                            "select": true
+                                        },
+                                        "ICL10: Ten-shot": {
+                                            "select": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
