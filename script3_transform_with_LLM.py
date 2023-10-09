@@ -1,8 +1,13 @@
 import os
 import openai
 import json
+from dotenv import load_dotenv
 
-api_key = "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"
+# Load environment variables from .env file
+load_dotenv()
+
+# Retrieve API key from environment variables
+api_key = os.getenv("OPENAI_API_KEY")
 openai.api_key = api_key
 
 # System message

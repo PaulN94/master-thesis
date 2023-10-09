@@ -27,6 +27,7 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
+# The indices start at 0.
 values = [33, 22, 30, 10]
 weights = [5, 6, 8, 2]
 W = 10

@@ -1,17 +1,23 @@
 import os
 import json
 import openai
+from dotenv import load_dotenv
 
-# Set OpenAI API key
-openai.api_key = "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"
+# Load environment variables from .env file
+load_dotenv()
+
+# Retrieve API key from environment variables
+api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = api_key
 
 def reformulate_question(question):
     response = openai.ChatCompletion.create(
         model="gpt-4",
         messages=[
-            {"role": "system", "content": "Please reformulate the question without changing the meaning."},
+            {"role": "system", "content": "Please reformulate the description without changing the meaning. Don't reformulate the word index"},
             {"role": "user", "content": question},
-        ]
+        ],
+        temperature= 0.7
     )
     return response['choices'][0]['message']['content']
 

@@ -14,6 +14,10 @@ for template in dict_1_2['templates']:
     answer_template_section = template.get('answer_template_section', "")
     variables = template['variables']
 
+    # Variable values storage for use in arrayLength and uniqueID
+    variable_values = {}
+    unique_id_values = {}
+
     # Generate 3 variations for each template
     for i in range(1, 4):
         new_id = f"{template_id}.{i}"
@@ -25,36 +29,51 @@ for template in dict_1_2['templates']:
         for variable in variables:
             var_name = variable['name']
             var_type = variable['type']
-            var_values = variable.get('values', variable.get('range', None))
-
-            if var_values is None:
-                continue
+            unique_id = variable.get('uniqueID')
 
             if var_type == "int":
-                var_value = random.randint(var_values[0], var_values[1])
-            elif var_type == "float":
-                var_value = random.uniform(var_values[0], var_values[1])
-            elif var_type == "choice":
-                var_value = random.choice(var_values)
-            elif var_type == "object":
-                var_value = random.choice(var_values)
-                for key, value in var_value.items():
-                    new_question = new_question.replace("{{{}}}".format(key), str(value))
-                    new_answer = new_answer.replace("{{{}}}".format(key), str(value))
-                    new_answer_section = new_answer_section.replace("{{{}}}".format(key), str(value))
-                continue  # Skip the normal replacement for 'object' as it has multiple keys
+                var_range = variable['range']
+                if isinstance(var_range[1], dict):
+                    var_range[1] = variable_values[var_range[1]['var']] - var_range[1].get('subtract', 0)
+                var_value = random.randint(var_range[0], var_range[1])
 
-            new_question = new_question.replace("{{{}}}".format(var_name), str(var_value))
-            new_answer = new_answer.replace("{{{}}}".format(var_name), str(var_value))
-            new_answer_section = new_answer_section.replace("{{{}}}".format(var_name), str(var_value))
+                # Ensure uniqueness within the same uniqueID
+                if unique_id:
+                    while unique_id in unique_id_values and var_value in unique_id_values[unique_id]:
+                        var_value = random.randint(var_range[0], var_range[1])
+                    if unique_id not in unique_id_values:
+                        unique_id_values[unique_id] = []
+                    unique_id_values[unique_id].append(var_value)
+
+            elif var_type == "float":
+                var_range = variable['range']
+                var_value = random.uniform(var_range[0], var_range[1])
+                var_value = round(var_value, 2)
+            elif var_type == "array":
+                array_length = variable['arrayLength']
+                if 'var' in array_length:
+                    array_length = variable_values[array_length['var']]
+                var_range = variable['range']
+                var_value = [random.randint(var_range['min'], var_range['max']) for _ in range(array_length)]
+
+            variable_values[var_name] = var_value  # store the value for future reference
+
+            new_question = new_question.replace(f"{{{var_name}}}", str(var_value))
+            new_answer = new_answer.replace(f"{{{var_name}}}", str(var_value))
+            new_answer_section = new_answer_section.replace(f"{{{var_name}}}", str(var_value))
+
+        # Reset unique_id_values for next iteration
+        unique_id_values = {}
 
         # Add the new question and answer to the generated_questions dictionary
-        generated_questions['variations'].append({
+        new_variation = {
             "id": new_id,
             "question_variation": new_question,
             "answer_variation": new_answer,
-            "answer_section": new_answer_section,
-        })
+        }
+        if new_answer_section:
+            new_variation["answer_section"] = new_answer_section
+        generated_questions['variations'].append(new_variation)
 
 # Save the generated_questions dictionary to a file in JSON format
 with open('JSON1_variations_knapsack_transform.json', 'w') as f:

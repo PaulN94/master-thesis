@@ -41,7 +41,7 @@ print(selected_items)""",
                 {
                     "name": "n",
                     "type": "int",
-                    "range": [1, 4]
+                    "range": [2, 4]
                 },
                 {
                     "name": "values",
@@ -69,12 +69,14 @@ print(selected_items)""",
                 {
                     "name": "item_1",
                     "type": "int",
-                    "range": [0, {"var": "n", "subtract": 1}]
+                    "range": [0, {"var": "n", "subtract": 1}],
+                    "uniqueID": "1"
                 },
                 {
                     "name": "item_2",
                     "type": "int",
-                    "range": [0, {"var": "n", "subtract": 1}]
+                    "range": [0, {"var": "n", "subtract": 1}],
+                    "uniqueID": "1"
                 },
                 {
                     "name": "add_value",
@@ -126,7 +128,7 @@ print(selected_items)""",
                 {
                     "name": "n",
                     "type": "int",
-                    "range": [1, 4]
+                    "range": [2, 4]
                 },
                 {
                     "name": "values",
@@ -154,12 +156,14 @@ print(selected_items)""",
                 {
                     "name": "item_1",
                     "type": "int",
-                    "range": [0, {"var": "n", "subtract": 1}]
+                    "range": [0, {"var": "n", "subtract": 1}],
+                    "uniqueID": "1"
                 },
                 {
                     "name": "item_2",
                     "type": "int",
-                    "range": [0, {"var": "n", "subtract": 1}]
+                    "range": [0, {"var": "n", "subtract": 1}],
+                    "uniqueID": "1"
                 }
             ]
         },
@@ -372,7 +376,7 @@ print(selected_items)""",
                 {
                     "name": "n",
                     "type": "int",
-                    "range": [1, 4]
+                    "range": [2, 4]
                 },
                 {
                     "name": "values",
@@ -400,12 +404,14 @@ print(selected_items)""",
                 {
                     "name": "item_1",
                     "type": "int",
-                    "range": [0, {"var": "n", "subtract": 1}]
+                    "range": [0, {"var": "n", "subtract": 1}],
+                    "uniqueID": "1"
                 },
                 {
                     "name": "item_2",
                     "type": "int",
-                    "range": [0, {"var": "n", "subtract": 1}]
+                    "range": [0, {"var": "n", "subtract": 1}],
+                    "uniqueID": "1"
                 },
                 {
                     "name": "value_reduction",
@@ -482,7 +488,7 @@ print(selected_items)""",
                 {
                     "name": "capacity",
                     "type": "int",
-                    "range": [5, 15]
+                    "range": [25, 30]
                 },
                 {
                     "name": "min_items",
@@ -790,7 +796,7 @@ print(selected_items)""",
                 {
                     "name": "n",
                     "type": "int",
-                    "range": [1, 4]
+                    "range": [4, 4]
                 },
                 {
                     "name": "values",
@@ -818,22 +824,27 @@ print(selected_items)""",
                 {
                     "name": "item_1",
                     "type": "int",
-                    "range": [0, {"var": "n", "subtract": 1}]
+                    "range": [0, {"var": "n", "subtract": 1}],
+                    "uniqueID": "1"
                 },
                 {
                     "name": "item_2",
                     "type": "int",
-                    "range": [0, {"var": "n", "subtract": 1}]
+                    "range": [0, {"var": "n", "subtract": 1}],
+                    "uniqueID": "2"
                 },
                 {
                     "name": "item_3",
                     "type": "int",
-                    "range": [0, {"var": "n", "subtract": 1}]
+                    "range": [0, {"var": "n", "subtract": 1}],
+                    "uniqueID": "1"
+
                 },
                 {
                     "name": "item_4",
                     "type": "int",
-                    "range": [0, {"var": "n", "subtract": 1}]
+                    "range": [0, {"var": "n", "subtract": 1}],
+                    "uniqueID": "2"
                 },
             ]
         }

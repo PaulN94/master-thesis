@@ -2,7 +2,7 @@ import json
 
 def run_code_and_get_output(code):
     try:
-        # Define the execution environment, if necessary
+        # Initialize the global environment
         exec_globals = {}
 
         # Execute the code
