@@ -6,10 +6,10 @@ api_key = "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"
 openai.api_key = api_key
 
 # System message
-system_message = "Modify the following Python optimization model according to the users question. Return only the modified executable code and nothing else"
+system_message = "Modify the following Python optimization model according to the users question and return only the modified executable code and nothing else"
 
 # Load the original JSON file
-input_json_filename = "JSON3_reformulation_knapsack_transformation.json"
+input_json_filename = "JSON3_reformulation_knapsack_transform.json"
 with open(input_json_filename, "r") as f:
     data = json.load(f)
 
@@ -24,7 +24,7 @@ for i, variation in enumerate(data['variations']):
 
     # Create the conversation
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4",
         messages=[
             {"role": "system", "content": system_message},
             {"role": "user", "content": question},

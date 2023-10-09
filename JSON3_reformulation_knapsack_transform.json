@@ -1,0 +1,724 @@
+{
+    "variations": [
+        {
+            "id": "1.2.1.1.1",
+            "question_variation": "What would happen if the maximum allowed weight is changed to 2?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 2\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "W = 2",
+            "solver_output": "[3]",
+            "question_reformulation": "What will be the outcome if the maximum permissible weight is altered to 2?"
+        },
+        {
+            "id": "1.2.1.1.2",
+            "question_variation": "What would happen if the maximum allowed weight is changed to 2?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 2\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "W = 2",
+            "solver_output": "[3]",
+            "question_reformulation": "What would be the consequences of altering the maximum permitted weight to 2?"
+        },
+        {
+            "id": "1.2.1.1.3",
+            "question_variation": "What would happen if the maximum allowed weight is changed to 2?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 2\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "W = 2",
+            "solver_output": "[3]",
+            "question_reformulation": "What would be the outcome if the maximum weight limit is adjusted to 2?"
+        },
+        {
+            "id": "1.2.1.2.1",
+            "question_variation": "What would happen if the maximum allowed weight is changed to 8?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 8\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "W = 8",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "What would be the outcome if the allowed weight limit is altered to 8?"
+        },
+        {
+            "id": "1.2.1.2.2",
+            "question_variation": "What would happen if the maximum allowed weight is changed to 8?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 8\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "W = 8",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "What would be the outcome if the maximum weight limit is adjusted to 8?"
+        },
+        {
+            "id": "1.2.1.2.3",
+            "question_variation": "What would happen if the maximum allowed weight is changed to 8?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 8\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "W = 8",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "What would be the consequence if the maximum permissible weight becomes 8?"
+        },
+        {
+            "id": "1.2.1.3.1",
+            "question_variation": "What would happen if the maximum allowed weight is changed to 4?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 4\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "W = 4",
+            "solver_output": "[3]",
+            "question_reformulation": "What would be the repercussions if the maximum permitted weight is adjusted to 4?"
+        },
+        {
+            "id": "1.2.1.3.2",
+            "question_variation": "What would happen if the maximum allowed weight is changed to 4?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 4\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "W = 4",
+            "solver_output": "[3]",
+            "question_reformulation": "What would be the outcome if the maximum permitted weight is altered to 4?"
+        },
+        {
+            "id": "1.2.1.3.3",
+            "question_variation": "What would happen if the maximum allowed weight is changed to 4?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 4\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "W = 4",
+            "solver_output": "[3]",
+            "question_reformulation": "What would be the consequence if the maximum permitted weight is adjusted to 4?"
+        },
+        {
+            "id": "1.2.2.1.1",
+            "question_variation": "What would be the effect on the selection if the weight of the item with the index 3 was changed to 3?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nweights[3] = 3\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "weights[3] = 3",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would the selection be affected if the weight of the item at index 3 was altered to 3?"
+        },
+        {
+            "id": "1.2.2.1.2",
+            "question_variation": "What would be the effect on the selection if the weight of the item with the index 3 was changed to 3?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nweights[3] = 3\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "weights[3] = 3",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would the selection be impacted if the item's weight at index 3 were adjusted to 3?"
+        },
+        {
+            "id": "1.2.2.1.3",
+            "question_variation": "What would be the effect on the selection if the weight of the item with the index 3 was changed to 3?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nweights[3] = 3\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "weights[3] = 3",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would the selection be affected if the item with the index 3 had its weight altered to 3?"
+        },
+        {
+            "id": "1.2.2.2.1",
+            "question_variation": "What would be the effect on the selection if the weight of the item with the index 0 was changed to 7?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nweights[0] = 7\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "weights[0] = 7",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would the selection be affected if the weight of the item at index 0 is altered to 7?"
+        },
+        {
+            "id": "1.2.2.2.2",
+            "question_variation": "What would be the effect on the selection if the weight of the item with the index 0 was changed to 7?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nweights[0] = 7\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "weights[0] = 7",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would changing the weight of the item at index 0 to 7 impact the selection?"
+        },
+        {
+            "id": "1.2.2.2.3",
+            "question_variation": "What would be the effect on the selection if the weight of the item with the index 0 was changed to 7?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nweights[0] = 7\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "weights[0] = 7",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would changing the weight of the item at index 0 to 7 impact the selection?"
+        },
+        {
+            "id": "1.2.2.3.1",
+            "question_variation": "What would be the effect on the selection if the weight of the item with the index 1 was changed to 5?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nweights[1] = 5\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "weights[1] = 5",
+            "solver_output": "[0, 1]",
+            "question_reformulation": "How would the selection be impacted if the weight of the item at index 1 was altered to 5?"
+        },
+        {
+            "id": "1.2.2.3.2",
+            "question_variation": "What would be the effect on the selection if the weight of the item with the index 1 was changed to 5?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nweights[1] = 5\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "weights[1] = 5",
+            "solver_output": "[0, 1]",
+            "question_reformulation": "How would the selection be impacted if the weight of the item at index 1 were altered to 5?"
+        },
+        {
+            "id": "1.2.2.3.3",
+            "question_variation": "What would be the effect on the selection if the weight of the item with the index 1 was changed to 5?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nweights[1] = 5\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "weights[1] = 5",
+            "solver_output": "[0, 1]",
+            "question_reformulation": "How would the selection be impacted if the weight of the item at index 1 is altered to 5?"
+        },
+        {
+            "id": "1.2.3.1.1",
+            "question_variation": "If the value of the item with the index 0 is updated to 40, how would the optimal selection be influenced?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nvalues[0] = 40\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "values[0] = 40",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would the optimal selection change if the value of the item at index 0 was updated to 40?"
+        },
+        {
+            "id": "1.2.3.1.2",
+            "question_variation": "If the value of the item with the index 0 is updated to 40, how would the optimal selection be influenced?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nvalues[0] = 40\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "values[0] = 40",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would the optimal selection be affected if the item at index 0 is updated to a value of 40?"
+        },
+        {
+            "id": "1.2.3.1.3",
+            "question_variation": "If the value of the item with the index 0 is updated to 40, how would the optimal selection be influenced?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nvalues[0] = 40\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "values[0] = 40",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would the optimal selection be affected if the value of the item at index 0 is changed to 40?"
+        },
+        {
+            "id": "1.2.3.2.1",
+            "question_variation": "If the value of the item with the index 0 is updated to 38, how would the optimal selection be influenced?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nvalues[0] = 38\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "values[0] = 38",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would the optimal selection be affected if the item with index 0 is changed to 38?"
+        },
+        {
+            "id": "1.2.3.2.2",
+            "question_variation": "If the value of the item with the index 0 is updated to 38, how would the optimal selection be influenced?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nvalues[0] = 38\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "values[0] = 38",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would the optimal selection be affected if the item at index 0 is changed to 38?"
+        },
+        {
+            "id": "1.2.3.2.3",
+            "question_variation": "If the value of the item with the index 0 is updated to 38, how would the optimal selection be influenced?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nvalues[0] = 38\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "values[0] = 38",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would the optimal selection be affected if the item at index 0 is updated to 38?"
+        },
+        {
+            "id": "1.2.3.3.1",
+            "question_variation": "If the value of the item with the index 2 is updated to 23, how would the optimal selection be influenced?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nvalues[2] = 23\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "values[2] = 23",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would changing the value of the item at index 2 to 23 affect the optimal selection?"
+        },
+        {
+            "id": "1.2.3.3.2",
+            "question_variation": "If the value of the item with the index 2 is updated to 23, how would the optimal selection be influenced?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nvalues[2] = 23\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "values[2] = 23",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would the optimal selection be affected if the item with the index 2 is updated to 23?"
+        },
+        {
+            "id": "1.2.3.3.3",
+            "question_variation": "If the value of the item with the index 2 is updated to 23, how would the optimal selection be influenced?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nvalues[2] = 23\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "values[2] = 23",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would the optimal selection be affected if the item at index 2 is changed to 23?"
+        },
+        {
+            "id": "1.2.4.1.1",
+            "question_variation": "How would you modify the objective function of the given knapsack problem to incorporate an L1 regularization, aiming to reduce the number of selected items, by adding a penalty term of 2.149218134946459 for each selected item?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 2.149218134946459 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 2.149218134946459 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you adjust the objective function of the provided knapsack issue to include an L1 regularization with the goal of minimizing the count of picked items, by implementing a penalty term of 2.149218134946459 for each item chosen?"
+        },
+        {
+            "id": "1.2.4.1.2",
+            "question_variation": "How would you modify the objective function of the given knapsack problem to incorporate an L1 regularization, aiming to reduce the number of selected items, by adding a penalty term of 2.149218134946459 for each selected item?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 2.149218134946459 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 2.149218134946459 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How can you adapt the objective function of the provided knapsack problem to include an L1 regularization with the goal of minimizing the selected items, by appending a punishment factor of 2.149218134946459 for each item picked?"
+        },
+        {
+            "id": "1.2.4.1.3",
+            "question_variation": "How would you modify the objective function of the given knapsack problem to incorporate an L1 regularization, aiming to reduce the number of selected items, by adding a penalty term of 2.149218134946459 for each selected item?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 2.149218134946459 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 2.149218134946459 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How can you include an L1 regularization in the objective function of the provided knapsack problem, with the aim of minimizing the quantity of chosen items, by integrating a 2.149218134946459 penalty term for each item selected?"
+        },
+        {
+            "id": "1.2.4.2.1",
+            "question_variation": "How would you modify the objective function of the given knapsack problem to incorporate an L1 regularization, aiming to reduce the number of selected items, by adding a penalty term of 5.528809450297644 for each selected item?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 5.528809450297644 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 5.528809450297644 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How can you add an L1 regularization to the objective function of the existing knapsack problem to decrease the quantity of chosen items, considering a penalty factor of 5.528809450297644 for each item selected?"
+        },
+        {
+            "id": "1.2.4.2.2",
+            "question_variation": "How would you modify the objective function of the given knapsack problem to incorporate an L1 regularization, aiming to reduce the number of selected items, by adding a penalty term of 5.528809450297644 for each selected item?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 5.528809450297644 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 5.528809450297644 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How can you adapt the objective function for the given knapsack problem to include an L1 regularization, with the goal of minimizing the amount of selected items, by incorporating a penalty term of 5.528809450297644 for every chosen item?"
+        },
+        {
+            "id": "1.2.4.2.3",
+            "question_variation": "How would you modify the objective function of the given knapsack problem to incorporate an L1 regularization, aiming to reduce the number of selected items, by adding a penalty term of 5.528809450297644 for each selected item?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 5.528809450297644 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 5.528809450297644 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How can you adjust the objective function of the presented knapsack problem to include an L1 regularization in order to lessen the quantity of selected items by imposing a 5.528809450297644 penalty for each item chosen?"
+        },
+        {
+            "id": "1.2.4.3.1",
+            "question_variation": "How would you modify the objective function of the given knapsack problem to incorporate an L1 regularization, aiming to reduce the number of selected items, by adding a penalty term of 4.517239968500306 for each selected item?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 4.517239968500306 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 4.517239968500306 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you adjust the objective function of the stated knapsack problem to include an L1 regularization, with the goal of decreasing the quantity of items chosen, by appending a penalty term of 4.517239968500306 for each item picked?"
+        },
+        {
+            "id": "1.2.4.3.2",
+            "question_variation": "How would you modify the objective function of the given knapsack problem to incorporate an L1 regularization, aiming to reduce the number of selected items, by adding a penalty term of 4.517239968500306 for each selected item?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 4.517239968500306 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 4.517239968500306 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How can we adjust the objective function of the given knapsack problem by including an L1 regularization with the goal to diminish the quantity of chosen elements, by integrating a penalty term of 4.517239968500306 for each picked item?"
+        },
+        {
+            "id": "1.2.4.3.3",
+            "question_variation": "How would you modify the objective function of the given knapsack problem to incorporate an L1 regularization, aiming to reduce the number of selected items, by adding a penalty term of 4.517239968500306 for each selected item?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 4.517239968500306 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 4.517239968500306 * sum(x[i] for i in range(n)), GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you adjust the objective function of the provided knapsack problem to include an L1 regularization, with the goal of decreasing the count of chosen items, by including a penalty term of 4.517239968500306 for each item picked?"
+        },
+        {
+            "id": "1.2.5.1.1",
+            "question_variation": "Imagine there's a synergy between the items with the idices 2 and 1 such that if both are selected, an additional value of 2.8265129647753704 is added to the objective. How can you model this effect in the objective function?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) + 2.8265129647753704 * x[2] * x[1], GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) + 2.8265129647753704 * x[2] * x[1], GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How can you incorporate the synergistic effect of adding an additional value of 2.8265129647753704 to the objective if items with indices 2 and 1 are selected into your model of the objective function?"
+        },
+        {
+            "id": "1.2.5.1.2",
+            "question_variation": "Imagine there's a synergy between the items with the idices 2 and 1 such that if both are selected, an additional value of 2.8265129647753704 is added to the objective. How can you model this effect in the objective function?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) + 2.8265129647753704 * x[2] * x[1], GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) + 2.8265129647753704 * x[2] * x[1], GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How can you incorporate the synergistic effect between items with idices 1 and 2, which adds an extra 2.8265129647753704 value to the objective, into the objective function model?"
+        },
+        {
+            "id": "1.2.5.1.3",
+            "question_variation": "Imagine there's a synergy between the items with the idices 2 and 1 such that if both are selected, an additional value of 2.8265129647753704 is added to the objective. How can you model this effect in the objective function?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) + 2.8265129647753704 * x[2] * x[1], GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) + 2.8265129647753704 * x[2] * x[1], GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How can you incorporate the effect of an additional value of 2.8265129647753704 that's added to the objective when both items with idices 1 and 2 are selected, into the objective function?"
+        },
+        {
+            "id": "1.2.5.2.1",
+            "question_variation": "Imagine there's a synergy between the items with the idices 0 and 0 such that if both are selected, an additional value of 4.720434839909253 is added to the objective. How can you model this effect in the objective function?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) + 4.720434839909253 * x[0] * x[0], GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) + 4.720434839909253 * x[0] * x[0], GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you represent the effect in the objective function if there's a synergy between items with idices 0 and 0, where choosing both leads to an extra value of 4.720434839909253?"
+        },
+        {
+            "id": "1.2.5.2.2",
+            "question_variation": "Imagine there's a synergy between the items with the idices 0 and 0 such that if both are selected, an additional value of 4.720434839909253 is added to the objective. How can you model this effect in the objective function?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) + 4.720434839909253 * x[0] * x[0], GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) + 4.720434839909253 * x[0] * x[0], GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How could you represent the combined effect of the items with the indices 0 and 0 adding an additional value of 4.720434839909253 to the overall goal within the objective function?"
+        },
+        {
+            "id": "1.2.5.2.3",
+            "question_variation": "Imagine there's a synergy between the items with the idices 0 and 0 such that if both are selected, an additional value of 4.720434839909253 is added to the objective. How can you model this effect in the objective function?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) + 4.720434839909253 * x[0] * x[0], GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) + 4.720434839909253 * x[0] * x[0], GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you incorporate into the objective function the fact that selecting both elements with indices 0 and 0 generates an added value of 4.720434839909253 due to their synergy?"
+        },
+        {
+            "id": "1.2.5.3.1",
+            "question_variation": "Imagine there's a synergy between the items with the idices 1 and 0 such that if both are selected, an additional value of 4.655184940369001 is added to the objective. How can you model this effect in the objective function?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) + 4.655184940369001 * x[1] * x[0], GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) + 4.655184940369001 * x[1] * x[0], GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How can the effect of an additional value of 4.655184940369001 added to the objective when both items with the idices 1 and 0 are selected, due to some synergy, be modelled in the objective function?"
+        },
+        {
+            "id": "1.2.5.3.2",
+            "question_variation": "Imagine there's a synergy between the items with the idices 1 and 0 such that if both are selected, an additional value of 4.655184940369001 is added to the objective. How can you model this effect in the objective function?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) + 4.655184940369001 * x[1] * x[0], GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) + 4.655184940369001 * x[1] * x[0], GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How can the effect of a synergy between items with indices 1 and 0, which adds an extra 4.655184940369001 to the objective when both are chosen, be incorporated into the objective function?"
+        },
+        {
+            "id": "1.2.5.3.3",
+            "question_variation": "Imagine there's a synergy between the items with the idices 1 and 0 such that if both are selected, an additional value of 4.655184940369001 is added to the objective. How can you model this effect in the objective function?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) + 4.655184940369001 * x[1] * x[0], GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) + 4.655184940369001 * x[1] * x[0], GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How can the effect of a synergy between the items with indices 1 and 0, which adds an additional value of 4.655184940369001 to the objective when both are selected, be modeled in the objective function?"
+        },
+        {
+            "id": "1.2.6.1.1",
+            "question_variation": "Imagine a scenario where a penalty of 9.095211227000101 units is applied for each additional item after the item with the index 1. How would you modify the objective function to account for this?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 9.095211227000101 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 9.095211227000101 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you adjust the objective function to accommodate a penalty of 9.095211227000101 units for each item beyond the first one?"
+        },
+        {
+            "id": "1.2.6.1.2",
+            "question_variation": "Imagine a scenario where a penalty of 9.095211227000101 units is applied for each additional item after the item with the index 1. How would you modify the objective function to account for this?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 9.095211227000101 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 9.095211227000101 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you adjust the objective function to accommodate a penalty of 9.095211227000101 units for each extra item after the first one in a hypothetical scenario?"
+        },
+        {
+            "id": "1.2.6.1.3",
+            "question_variation": "Imagine a scenario where a penalty of 9.095211227000101 units is applied for each additional item after the item with the index 1. How would you modify the objective function to account for this?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 9.095211227000101 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 9.095211227000101 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you adjust the objective function to incorporate a penalty of 9.095211227000101 units for each item past the one with index 1?"
+        },
+        {
+            "id": "1.2.6.2.1",
+            "question_variation": "Imagine a scenario where a penalty of 6.13713930091814 units is applied for each additional item after the item with the index 1. How would you modify the objective function to account for this?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 6.13713930091814 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 6.13713930091814 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you adjust the objective function to incorporate a penalty of 6.13713930091814 units for each item after the first one?"
+        },
+        {
+            "id": "1.2.6.2.2",
+            "question_variation": "Imagine a scenario where a penalty of 6.13713930091814 units is applied for each additional item after the item with the index 1. How would you modify the objective function to account for this?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 6.13713930091814 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 6.13713930091814 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you adjust the objective function considering a circumstance where each item after the first one incurs a penalty of 6.13713930091814 units?"
+        },
+        {
+            "id": "1.2.6.2.3",
+            "question_variation": "Imagine a scenario where a penalty of 6.13713930091814 units is applied for each additional item after the item with the index 1. How would you modify the objective function to account for this?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 6.13713930091814 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 6.13713930091814 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you adjust the objective function to incorporate a penalty of 6.13713930091814 units for each item beyond the first one?"
+        },
+        {
+            "id": "1.2.6.3.1",
+            "question_variation": "Imagine a scenario where a penalty of 12.288339698844082 units is applied for each additional item after the item with the index 1. How would you modify the objective function to account for this?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 12.288339698844082 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 12.288339698844082 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)",
+            "solver_output": "[0]",
+            "question_reformulation": "How would you adjust the objective function to include a penalty of 12.288339698844082 units for each item beyond the first in this hypothetical situation?"
+        },
+        {
+            "id": "1.2.6.3.2",
+            "question_variation": "Imagine a scenario where a penalty of 12.288339698844082 units is applied for each additional item after the item with the index 1. How would you modify the objective function to account for this?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 12.288339698844082 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 12.288339698844082 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)",
+            "solver_output": "[0]",
+            "question_reformulation": "How would you adjust the objective function to accommodate a penalty of 12.288339698844082 units applied to each item following the first item?"
+        },
+        {
+            "id": "1.2.6.3.3",
+            "question_variation": "Imagine a scenario where a penalty of 12.288339698844082 units is applied for each additional item after the item with the index 1. How would you modify the objective function to account for this?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)) - 12.288339698844082 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - 12.288339698844082 * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)",
+            "solver_output": "[0]",
+            "question_reformulation": "How would you adjust the objective function to account for a penalty of 12.288339698844082 units for each item after the first one?"
+        },
+        {
+            "id": "1.2.7.1.1",
+            "question_variation": "How does the model change if we introduce a lower bound constraint such that at least 2 items must be selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Minimum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) >= 2, \"min_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) >= 2)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "What alterations does the model undergo if we implement a lower limit constraint that requires a minimum of 2 items to be chosen?"
+        },
+        {
+            "id": "1.2.7.1.2",
+            "question_variation": "How does the model change if we introduce a lower bound constraint such that at least 2 items must be selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Minimum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) >= 2, \"min_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) >= 2)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "What alterations occur in the model when a lower limit constraint is imposed, requiring a minimum selection of 2 items?"
+        },
+        {
+            "id": "1.2.7.1.3",
+            "question_variation": "How does the model change if we introduce a lower bound constraint such that at least 2 items must be selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Minimum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) >= 2, \"min_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) >= 2)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "What alterations occur in the model if we implement a lower limit constraint which requires a minimum selection of 2 items?"
+        },
+        {
+            "id": "1.2.7.2.1",
+            "question_variation": "How does the model change if we introduce a lower bound constraint such that at least 1 items must be selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Minimum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) >= 1, \"min_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) >= 1)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "What alterations occur in the model when we implement a lower limit constraint that mandates the selection of at least 1 item?"
+        },
+        {
+            "id": "1.2.7.2.2",
+            "question_variation": "How does the model change if we introduce a lower bound constraint such that at least 1 items must be selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Minimum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) >= 1, \"min_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) >= 1)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "What happens to the model when a minimum limit constraint requiring at least one item to be selected is implemented?"
+        },
+        {
+            "id": "1.2.7.2.3",
+            "question_variation": "How does the model change if we introduce a lower bound constraint such that at least 1 items must be selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Minimum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) >= 1, \"min_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) >= 1)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "What alterations will the model undergo if we implement a lower limit constraint that requires a minimum selection of 1 item?"
+        },
+        {
+            "id": "1.2.7.3.1",
+            "question_variation": "How does the model change if we introduce a lower bound constraint such that at least 2 items must be selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Minimum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) >= 2, \"min_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) >= 2)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "What modifications does the model undergo when we impose a lower boundary constraint that requires a minimum selection of 2 items?"
+        },
+        {
+            "id": "1.2.7.3.2",
+            "question_variation": "How does the model change if we introduce a lower bound constraint such that at least 2 items must be selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Minimum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) >= 2, \"min_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) >= 2)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "What modifications occur in the model when introducing a lower limit constraint requiring the selection of a minimum of 2 items?"
+        },
+        {
+            "id": "1.2.7.3.3",
+            "question_variation": "How does the model change if we introduce a lower bound constraint such that at least 2 items must be selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Minimum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) >= 2, \"min_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) >= 2)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "What alterations occur to the model when a lower bound constraint is implemented, stating that a minimum of 2 items should be selected?"
+        },
+        {
+            "id": "1.2.8.1.1",
+            "question_variation": "Given that the item with the index 0 is mandatory in the knapsack, how would the remaining items be optimally selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Mandatory item constraint\n    m.addConstr(x[0] == 1, \"mandatory_item_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[0] == 1",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "If the item at index 0 is required in the knapsack, how would you optimally choose the remaining items?"
+        },
+        {
+            "id": "1.2.8.1.2",
+            "question_variation": "Given that the item with the index 0 is mandatory in the knapsack, how would the remaining items be optimally selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Mandatory item constraint\n    m.addConstr(x[0] == 1, \"mandatory_item_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[0] == 1",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you optimally select the rest of the items, considering that the item with index 0 in the knapsack is required?"
+        },
+        {
+            "id": "1.2.8.1.3",
+            "question_variation": "Given that the item with the index 0 is mandatory in the knapsack, how would the remaining items be optimally selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Mandatory item constraint\n    m.addConstr(x[0] == 1, \"mandatory_item_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[0] == 1",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "Assuming the item at index 0 is compulsory to include in the knapsack, what is the optimal selection for the other items?"
+        },
+        {
+            "id": "1.2.8.2.1",
+            "question_variation": "Given that the item with the index 2 is mandatory in the knapsack, how would the remaining items be optimally selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Mandatory item constraint\n    m.addConstr(x[2] == 1, \"mandatory_item_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[2] == 1",
+            "solver_output": "[2, 3]",
+            "question_reformulation": "Assuming that the item at index 2 is required to be in the knapsack, what is the best way to choose the rest of the items?"
+        },
+        {
+            "id": "1.2.8.2.2",
+            "question_variation": "Given that the item with the index 2 is mandatory in the knapsack, how would the remaining items be optimally selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Mandatory item constraint\n    m.addConstr(x[2] == 1, \"mandatory_item_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[2] == 1",
+            "solver_output": "[2, 3]",
+            "question_reformulation": "How would you optimally choose the rest of the items if the item with index 2 is a required inclusion in the knapsack?"
+        },
+        {
+            "id": "1.2.8.2.3",
+            "question_variation": "Given that the item with the index 2 is mandatory in the knapsack, how would the remaining items be optimally selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Mandatory item constraint\n    m.addConstr(x[2] == 1, \"mandatory_item_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[2] == 1",
+            "solver_output": "[2, 3]",
+            "question_reformulation": "If the item at index 2 is required to be in the knapsack, what is the optimal selection of the remaining items?"
+        },
+        {
+            "id": "1.2.8.3.1",
+            "question_variation": "Given that the item with the index 2 is mandatory in the knapsack, how would the remaining items be optimally selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Mandatory item constraint\n    m.addConstr(x[2] == 1, \"mandatory_item_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[2] == 1",
+            "solver_output": "[2, 3]",
+            "question_reformulation": "If the item at index 2 is required to be in the knapsack, what is the optimal selection of the rest of the items?"
+        },
+        {
+            "id": "1.2.8.3.2",
+            "question_variation": "Given that the item with the index 2 is mandatory in the knapsack, how would the remaining items be optimally selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Mandatory item constraint\n    m.addConstr(x[2] == 1, \"mandatory_item_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[2] == 1",
+            "solver_output": "[2, 3]",
+            "question_reformulation": "How would you optimally choose the remaining items in the knapsack considering the item with the index 2 is obligatory?"
+        },
+        {
+            "id": "1.2.8.3.3",
+            "question_variation": "Given that the item with the index 2 is mandatory in the knapsack, how would the remaining items be optimally selected?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Mandatory item constraint\n    m.addConstr(x[2] == 1, \"mandatory_item_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[2] == 1",
+            "solver_output": "[2, 3]",
+            "question_reformulation": "What would be the optimal selection of the remaining items in the knapsack assuming the item with index 2 is compulsory?"
+        },
+        {
+            "id": "1.2.9.1.1",
+            "question_variation": "If you were to restrict the number of items in the knapsack to a maximum of 3, how would that influence the solution?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Maximum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) <= 3, \"max_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) <= 3)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would the solution be affected if the maximum number of items in the knapsack is limited to three?"
+        },
+        {
+            "id": "1.2.9.1.2",
+            "question_variation": "If you were to restrict the number of items in the knapsack to a maximum of 3, how would that influence the solution?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Maximum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) <= 3, \"max_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) <= 3)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would limiting the number of items in the knapsack to three affect the solution?"
+        },
+        {
+            "id": "1.2.9.1.3",
+            "question_variation": "If you were to restrict the number of items in the knapsack to a maximum of 3, how would that influence the solution?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Maximum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) <= 3, \"max_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) <= 3)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would limiting the number of items in the knapsack to no more than 3 affect the solution?"
+        },
+        {
+            "id": "1.2.9.2.1",
+            "question_variation": "If you were to restrict the number of items in the knapsack to a maximum of 1, how would that influence the solution?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Maximum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) <= 1, \"max_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) <= 1)",
+            "solver_output": "[0]",
+            "question_reformulation": "How would limiting the quantity of items in the knapsack to just one impact the solution?"
+        },
+        {
+            "id": "1.2.9.2.2",
+            "question_variation": "If you were to restrict the number of items in the knapsack to a maximum of 1, how would that influence the solution?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Maximum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) <= 1, \"max_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) <= 1)",
+            "solver_output": "[0]",
+            "question_reformulation": "How would limiting the quantity of items in the knapsack to just one impact the solution?"
+        },
+        {
+            "id": "1.2.9.2.3",
+            "question_variation": "If you were to restrict the number of items in the knapsack to a maximum of 1, how would that influence the solution?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Maximum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) <= 1, \"max_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) <= 1)",
+            "solver_output": "[0]",
+            "question_reformulation": "How would limiting the number of items in the knapsack to just one affect the solution?"
+        },
+        {
+            "id": "1.2.9.3.1",
+            "question_variation": "If you were to restrict the number of items in the knapsack to a maximum of 1, how would that influence the solution?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Maximum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) <= 1, \"max_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) <= 1)",
+            "solver_output": "[0]",
+            "question_reformulation": "How would limiting the number of items in the knapsack to a maximum of 1 affect the solution?"
+        },
+        {
+            "id": "1.2.9.3.2",
+            "question_variation": "If you were to restrict the number of items in the knapsack to a maximum of 1, how would that influence the solution?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Maximum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) <= 1, \"max_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) <= 1)",
+            "solver_output": "[0]",
+            "question_reformulation": "How would limiting the quantity of items in the knapsack to only one affect the solution?"
+        },
+        {
+            "id": "1.2.9.3.3",
+            "question_variation": "If you were to restrict the number of items in the knapsack to a maximum of 1, how would that influence the solution?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Maximum items constraint\n    m.addConstr(sum(x[i] for i in range(n)) <= 1, \"max_items_constraint\")\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(sum(x[i] for i in range(n)) <= 1)",
+            "solver_output": "[0]",
+            "question_reformulation": "How would limiting the number of items in the knapsack to a single item impact the solution?"
+        },
+        {
+            "id": "1.2.10.1.1",
+            "question_variation": "If there's a requirement that either item with index 1 or item with index 3 must be included in the knapsack but not both, how would you adjust the model to ensure this condition is met?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Either or constraint\n    m.addConstr(x[1] + x[3] <= 1)\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[1] + x[3] <= 1)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you modify the model to satisfy the condition that the knapsack must include either the item at index 1 or the item at index 3, but not both?"
+        },
+        {
+            "id": "1.2.10.1.2",
+            "question_variation": "If there's a requirement that either item with index 1 or item with index 3 must be included in the knapsack but not both, how would you adjust the model to ensure this condition is met?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Either or constraint\n    m.addConstr(x[1] + x[3] <= 1)\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[1] + x[3] <= 1)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you modify the model to comply with the condition that either the item at index 1 or the item at index 3 must be selected for the knapsack but not both?"
+        },
+        {
+            "id": "1.2.10.1.3",
+            "question_variation": "If there's a requirement that either item with index 1 or item with index 3 must be included in the knapsack but not both, how would you adjust the model to ensure this condition is met?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Either or constraint\n    m.addConstr(x[1] + x[3] <= 1)\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[1] + x[3] <= 1)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you modify the model to comply with the condition that only one of the items at index 1 or 3 should be added to the knapsack, but not both?"
+        },
+        {
+            "id": "1.2.10.2.1",
+            "question_variation": "If there's a requirement that either item with index 3 or item with index 0 must be included in the knapsack but not both, how would you adjust the model to ensure this condition is met?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Either or constraint\n    m.addConstr(x[3] + x[0] <= 1)\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[3] + x[0] <= 1)",
+            "solver_output": "[2, 3]",
+            "question_reformulation": "How would you modify the model to meet the condition that only one item, either with index 3 or index 0, must be included in the knapsack but not both?"
+        },
+        {
+            "id": "1.2.10.2.2",
+            "question_variation": "If there's a requirement that either item with index 3 or item with index 0 must be included in the knapsack but not both, how would you adjust the model to ensure this condition is met?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Either or constraint\n    m.addConstr(x[3] + x[0] <= 1)\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[3] + x[0] <= 1)",
+            "solver_output": "[2, 3]",
+            "question_reformulation": "How would you modify the model to guarantee that either the item at index 3 or the item at index 0 is included in the knapsack, but not both, as per the requirement?"
+        },
+        {
+            "id": "1.2.10.2.3",
+            "question_variation": "If there's a requirement that either item with index 3 or item with index 0 must be included in the knapsack but not both, how would you adjust the model to ensure this condition is met?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Either or constraint\n    m.addConstr(x[3] + x[0] <= 1)\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[3] + x[0] <= 1)",
+            "solver_output": "[2, 3]",
+            "question_reformulation": "How would you modify the model to meet the condition that the knapsack should include either the item at index 3 or the one at index 0, but not both?"
+        },
+        {
+            "id": "1.2.10.3.1",
+            "question_variation": "If there's a requirement that either item with index 1 or item with index 0 must be included in the knapsack but not both, how would you adjust the model to ensure this condition is met?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Either or constraint\n    m.addConstr(x[1] + x[0] <= 1)\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[1] + x[0] <= 1)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you modify the model to satisfy the condition that the knapsack must include either the item at index 0 or the item at index 1, but not both?"
+        },
+        {
+            "id": "1.2.10.3.2",
+            "question_variation": "If there's a requirement that either item with index 1 or item with index 0 must be included in the knapsack but not both, how would you adjust the model to ensure this condition is met?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Either or constraint\n    m.addConstr(x[1] + x[0] <= 1)\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[1] + x[0] <= 1)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you modify the model to satisfy the condition that either the item at index 1 or the item at index 0 must be in the knapsack, but not both?"
+        },
+        {
+            "id": "1.2.10.3.3",
+            "question_variation": "If there's a requirement that either item with index 1 or item with index 0 must be included in the knapsack but not both, how would you adjust the model to ensure this condition is met?",
+            "answer_variation": "from gurobipy import Model, GRB\n\n\ndef knapsack_gurobi(values, weights, W):\n    # Number of items\n    n = len(values)\n\n    # Create a new Gurobi model\n    m = Model(\"knapsack_transform\")\n\n    # Decision variables\n    x = m.addVars(n, vtype=GRB.BINARY, name=\"x\")\n\n    # Objective function\n    m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)\n\n    # Weight constraint\n    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, \"weight_constraint\")\n\n    # Either or constraint\n    m.addConstr(x[1] + x[0] <= 1)\n\n    # Solve the model\n    m.optimize()\n\n    # Extract the solution\n    selected_items = [i for i in range(n) if x[i].X > 0.5]\n\n    return selected_items\n\n\n# Data\nvalues = [33, 22, 30, 10]\nweights = [5, 6, 8, 2]\nW = 10\nselected_items = knapsack_gurobi(values, weights, W)\nprint(selected_items)\n            ",
+            "answer_section": "m.addConstr(x[1] + x[0] <= 1)",
+            "solver_output": "[0, 3]",
+            "question_reformulation": "How would you modify the model to fulfil the condition that either the item positioned at index 0 or the one positioned at index 1 must be included in the knapsack, but not both?"
+        }
+    ]
+}

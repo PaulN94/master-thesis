@@ -7,7 +7,7 @@ openai.api_key = "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"
 
 def reformulate_question(question):
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4",
         messages=[
             {"role": "system", "content": "Please reformulate the question without changing the meaning."},
             {"role": "user", "content": question},
