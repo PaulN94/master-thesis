@@ -66,12 +66,6 @@ class IntegratedApp(tk.Tk):
 
     # New submit_config method as provided with slight modification
     def submit_config(self):
-        msg = f"Experiments per Model (LLM): {self.llm_epm_entry.get()}"
-        messagebox.showinfo("Input Values", msg)
-
-        config = {
-            "experiments_per_model_llm": self.llm_epm_entry.get()
-        }
 
         # Extracting tree data
         llms_data = {}
@@ -105,14 +99,22 @@ class IntegratedApp(tk.Tk):
                                 "select": self.tree.set(icl, 'check') == '✔'
                             }
 
-        # Add the llms_data to the config dictionary
-        config["llms"] = llms_data
+        # Constructing the final data to save
+        config = {
+            "settings": {
+                "experiments_per_model": self.llm_epm_entry.get()
+            },
+            "selection": {
+                "llms": llms_data
+            }
+        }
 
         # Save data to a JSON file
         with open("llm_evaluation_config.json", "w") as outfile:
             json.dump(config, outfile, indent=4)
 
         messagebox.showinfo("Info", "Configuration saved successfully!")
+
 
     def select_all(self):
         for item in self.tree.get_children(''):

@@ -41,21 +41,10 @@ class IntegratedApp(tk.Tk):
         self.tree.pack(fill=tk.BOTH, expand=True)
 
         # Populate the tree with data
-        for llm in self.data["llms"]:
-            llm_id = self.tree.insert(
-                '', 'end', text=self.data["llms"][llm], values=(''))
-            for model in self.data["optimization models"]:
-                model_id = self.tree.insert(
-                    llm_id, 'end', text=self.data["optimization models"][model], values=(''))
-                for task in self.data["tasks"]:
-                    task_id = self.tree.insert(
-                        model_id, 'end', text=self.data["tasks"][task], values=(''))
-                    for dist in self.data["distribution"]:
-                        dist_id = self.tree.insert(
-                            task_id, 'end', text=self.data["distribution"][dist], values=(''))
-                        for icl in self.data["ICL"]:
-                            self.tree.insert(
-                                dist_id, 'end', text=self.data["ICL"][icl], values=(''))
+        for model in self.data["optimization models"]:
+            model_id = self.tree.insert('', 'end', text=self.data["optimization models"][model], values=(''))
+            for task in self.data["tasks"]:
+                self.tree.insert(model_id, 'end', text=self.data["tasks"][task], values=(''))
 
         self.tree.bind('<ButtonRelease-1>', self.check_child)
 
@@ -72,61 +61,41 @@ class IntegratedApp(tk.Tk):
         self.submit_button.pack(pady=(20, 0)) 
 
     def submit_config(self):
-        
-        vpt = self.vpt_entry.get()
-        rpv = self.rpv_entry.get()
-        epm = self.epm_entry.get()
-
-        msg = f"Variations per Template: {vpt}\nReformulations per Variation: {rpv}\nExperiments per Model (QG): {epm}\n"
-        messagebox.showinfo("Input Values", msg)
-
         # 1. Collecting data from input fields
-        config = {
+        settings_data = {
             "variations_per_template": self.vpt_entry.get(),
             "reformulations_per_variation": self.rpv_entry.get(),
             "experiments_per_model": self.epm_entry.get()
         }
 
         # 2. Convert treeview data to hierarchical format
-        llms_data = {}
-        for llm in self.tree.get_children(''):
-            llm_name = self.tree.item(llm, "text")
-            llms_data[llm_name] = {
-                "select": self.tree.set(llm, 'check') == '✔',
-                "optimization_models": {}
+        models_data = {}
+        for model in self.tree.get_children(''):
+            model_name = self.tree.item(model, "text")
+            models_data[model_name] = {
+                "select": self.tree.set(model, 'check') == '✔',
+                "tasks": {}
             }
-            for model in self.tree.get_children(llm):
-                model_name = self.tree.item(model, "text")
-                llms_data[llm_name]["optimization_models"][model_name] = {
-                    "select": self.tree.set(model, 'check') == '✔',
-                    "tasks": {}
+            for task in self.tree.get_children(model):
+                task_name = self.tree.item(task, "text")
+                models_data[model_name]["tasks"][task_name] = {
+                    "select": self.tree.set(task, 'check') == '✔'
                 }
-                for task in self.tree.get_children(model):
-                    task_name = self.tree.item(task, "text")
-                    llms_data[llm_name]["optimization_models"][model_name]["tasks"][task_name] = {
-                        "select": self.tree.set(task, 'check') == '✔',
-                        "distribution": {}
-                    }
-                    for dist in self.tree.get_children(task):
-                        dist_name = self.tree.item(dist, "text")
-                        llms_data[llm_name]["optimization_models"][model_name]["tasks"][task_name]["distribution"][dist_name] = {
-                            "select": self.tree.set(dist, 'check') == '✔',
-                            "ICL": {}
-                        }
-                        for icl in self.tree.get_children(dist):
-                            icl_name = self.tree.item(icl, "text")
-                            llms_data[llm_name]["optimization_models"][model_name]["tasks"][task_name]["distribution"][dist_name]["ICL"][icl_name] = {
-                                "select": self.tree.set(icl, 'check') == '✔'
-                            }
 
-        # Add the llms_data to the config dictionary
-        config["llms"] = llms_data
+        # Nest the configuration settings under a "settings" key, and the model_data under a "selection" and then "optimization_models" key
+        config = {
+            "settings": settings_data,
+            "selection": {
+                "optimization_models": models_data  # This nests the models data under "optimization_models"
+            }
+        }
 
         # 3. Save data to a JSON file
         with open("question_generation_config.json", "w") as outfile:
             json.dump(config, outfile, indent=4)
 
         messagebox.showinfo("Info", "Configuration saved successfully!")
+
 
     def select_all(self):
         for item in self.tree.get_children(''):
@@ -156,7 +125,6 @@ class IntegratedApp(tk.Tk):
             self.update_children(item, check)
             self.check_parent(item, check)
 
-
     def check_parent(self, item, check):
         parent = self.tree.parent(item)
         if parent:
@@ -173,10 +141,6 @@ class IntegratedApp(tk.Tk):
 
 
 data = {
-    "llms": {
-        "1": "LLM1: GPT-3.5-turbo",
-        "2": "LLM2: GPT-4"
-    },
     "optimization models": {
         "1": "Model1: Knapsack",
         "2": "Model2: MMNL",
@@ -185,15 +149,6 @@ data = {
     "tasks": {
         "1": "Task1: Build",
         "2": "Task2: Transform"
-    },
-    "distribution": {
-        "0": "Dist0: Out-of-distribution_ICL",
-        "1": "Dist1: In-distribution_ICL"
-    },
-    "ICL": {
-        "0": "ICL0: Zero-shot",
-        "1": "ICL1: One-shot",
-        "10": "ICL10: Ten-shot"
     }
 }
 
