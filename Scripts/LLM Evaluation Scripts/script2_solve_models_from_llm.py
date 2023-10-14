@@ -1,5 +1,6 @@
 import json
-import re  # for regular expression extraction
+import re
+import os  # for path manipulations
 
 def get_model_task_numbers(settings_path):
     with open(settings_path, 'r') as f:
@@ -29,13 +30,19 @@ def run_code_and_get_output(code):
     except Exception as e:
         return f'Error: {e}'
 
+# Get the directory of the currently executing script
+script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the full path to experiment_settings.json
+settings_path = os.path.join(script_directory, 'experiment_settings.json')
+
 # Import settings file
-model_number, task_number = get_model_task_numbers('experiment_settings.json')
+model_number, task_number = get_model_task_numbers(settings_path)
 if not model_number or not task_number:
     raise ValueError("Could not extract model or task number from settings file.")
 
-input_filename = f"JSON4_llm_response_{model_number}_{task_number}.json"
-output_filename = f"JSON5_solved_models_from_llm_{model_number}_{task_number}.json"
+input_filename = os.path.join(script_directory, f"JSON4_llm_response_{model_number}_{task_number}.json")
+output_filename = os.path.join(script_directory, f"JSON5_solved_models_from_llm_{model_number}_{task_number}.json")
 
 # Read input JSON file
 with open(input_filename, 'r') as f:
@@ -43,7 +50,7 @@ with open(input_filename, 'r') as f:
 
 # Run Python code for each variation
 for variation in data['variations']:
-    llm_code = variation['llm_model_response']
+    llm_code = variation['llm_model']
     solver_output = run_code_and_get_output(llm_code)
     variation['llm_optimum'] = solver_output
 

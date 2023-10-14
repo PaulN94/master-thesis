@@ -1,15 +1,29 @@
+import sys
+import os
 import random
 import json
 import importlib
 
+# Get the directory of the currently executing script
+script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Traverse up to Workspace Root
+experiment_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(script_directory))))
+
+# Add the experiment directory to sys.path for importing
+sys.path.append(experiment_directory)
+
+# Construct the full path to experiment_settings.json
+settings_path = os.path.join(script_directory, "experiment_settings.json")
+
 # Load the settings from the experiment_settings.json file
-with open("experiment_settings.json", "r") as settings_file:
+with open(settings_path, "r") as settings_file:
     settings = json.load(settings_file)
 
-# Construct the import string
+# Construct the import string for the Templates folder in workspace root
 model_number = settings["optimization_models"].split("Model")[1].split(":")[0].strip()
 task_number = settings["tasks"].split("Task")[1].split(":")[0].strip()
-module_name = f"dict_{model_number}_{task_number}_templates"
+module_name = f"Templates.dict_{model_number}_{task_number}_templates"
 
 # Using importlib to dynamically import the module and dictionary
 module = importlib.import_module(module_name)
@@ -31,7 +45,7 @@ for template in dict_template['templates']:
     unique_id_values = {}
 
     # Generate variations for each template based on the settings file
-    for i in range(1, settings["variations_per_template"] + 1):
+    for i in range(1, int(settings["variations_per_template"]) + 1):
         new_id = f"{template_id}.{i}"
         new_question = question_template
         new_answer = answer_template
@@ -93,6 +107,6 @@ for template in dict_template['templates']:
         generated_questions['variations'].append(new_variation)
 
 # Save the generated_questions dictionary to a file in JSON format
-output_file_name = f'JSON1_variations_{model_number}_{task_number}.json'
+output_file_name = os.path.join(script_directory, f'JSON1_variations_{model_number}_{task_number}.json')
 with open(output_file_name, 'w') as f:
     json.dump(generated_questions, f, indent=4)

@@ -17,16 +17,26 @@ def get_example(entry):
     answer = entry["answer_section"] if "answer_section" in entry else entry["answer_variation"]
     return f"{question}\n{answer}"
 
+# Get the directory of the currently executing script
+script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Find the root directory by going up the directory tree until you reach the 'Experiment' folder
+root_directory = script_directory
+while os.path.basename(root_directory) != 'Experiment' and root_directory != os.path.dirname(root_directory):
+    root_directory = os.path.dirname(root_directory)
+
+# Construct the path to the 'Optimization Models' folder
+optimization_models_path = os.path.join(root_directory, "Optimization Models")
+
+# Construct the full path to experiment_settings.json
+settings_path = os.path.join(script_directory, "experiment_settings.json")
+
 # Load settings from experiment_settings.json
-with open("experiment_settings.json", "r") as settings_file:
+with open(settings_path, "r") as settings_file:
     settings = json.load(settings_file)
 
-# Extract distribution and ICL descriptions from the settings file
-distribution_desc = settings["distribution"]
-icl_desc = settings["ICL"]
-
 # Extract number from ICL description
-icl_number = int(icl_desc.split(":")[0][-1])
+icl_number = int(settings["ICL"].split(":")[0][-1])
 
 # Continue with the existing logic to get the task, model, and experiment descriptions
 task_desc = settings["tasks"]
@@ -38,24 +48,28 @@ model_number = model_desc.split(":")[0][-1]  # Extracting the model number
 experiment_desc = settings["experiments"]
 
 # Get the llms value from the settings and convert to lowercase
-llms_model = settings["llms"].lower()
+llms_model = settings["llms"].split(":")[1].strip().lower()
 
-# Constructing the path to the input file
-base_path = os.path.join("Question Generation", model_desc.strip().split()[1], task_desc.strip().split()[1], experiment_desc.strip())
+
+# Constructing the path to the input file using the modified code
+model_folder_name = model_desc.strip().split(":")[0] + ": " + model_desc.strip().split(":")[1].strip()
+task_folder_name = task_desc.strip().split(":")[0] + ": " + task_desc.strip().split(":")[1].strip()
+
+base_path = os.path.join(root_directory, "Question Generation", model_folder_name, task_folder_name, experiment_desc.strip())
 input_json_filename = os.path.join(base_path, f"JSON3_reformulation_{model_number}_{task_number}.json")
 
 # System message and log setup based on task_number
 if task_number == "1":
     system_message = "Build a Python optimization model according to the users description and return only the executable code and nothing else"
     log_message = "Model {} built"
-    output_filename = f"JSON4_llm_response_{model_number}_{task_number}.json"
+    output_filename = os.path.join(script_directory, f"JSON4_llm_response_{model_number}_{task_number}.json")
 elif task_number == "2":
     # Import the model based on model_number
-    with open(os.path.join("Optimization Models", f"model{model_number}_knapsack.py"), "r") as model_file:
+    with open(os.path.join(optimization_models_path, f"model{model_number}_knapsack.py"), "r") as model_file:
         model_content = model_file.read()
     system_message = "Modify the following Python optimization model according to the users question and return only the modified executable code and nothing else"
     log_message = "Model {} transformed"
-    output_filename = f"JSON4_llm_response_{model_number}_{task_number}.json"
+    output_filename = os.path.join(script_directory, f"JSON4_llm_response_{model_number}_{task_number}.json")
 
 # Load the original JSON file
 with open(input_json_filename, "r") as f:
@@ -66,18 +80,22 @@ for i, variation in enumerate(data['variations']):
     question = variation['question_reformulation']
     entry_id = variation['id']  # Extracting the id from the entry
     question_set_number = int(entry_id.split(".")[2])
-
+    
     user_messages = [
         {"role": "system", "content": system_message},
         {"role": "user", "content": question}
     ]
+
+    if task_number == "2":
+        user_messages.append({"role": "user", "content": model_content})
+
 
     example_ids = {}  # This will store the IDs of the examples sent with the question
 
     # Add examples to the message if needed
     if icl_number > 0:
         # Determine the pool of examples to draw from based on distribution_desc
-        if distribution_desc == "Dist0: Out-of-distribution_ICL":
+        if settings["distribution"] == "Dist0: Out-of-distribution_ICL":
             example_pool = [e for e in data['variations'] if int(e['id'].split(".")[2]) != question_set_number]
         else:  # "Dist1: In-distribution_ICL"
             example_pool = [e for e in data['variations'] if int(e['id'].split(".")[2]) == question_set_number]

@@ -1,3 +1,4 @@
+import os
 import json
 
 def run_code_and_get_output(code):
@@ -16,16 +17,23 @@ def run_code_and_get_output(code):
     except Exception as e:
         return f'Error: {e}'
 
+# Get the directory of the currently executing script
+script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the full path to experiment_settings.json
+settings_path = os.path.join(script_directory, "experiment_settings.json")
+
 # Load the settings from the experiment_settings.json file
-with open("experiment_settings.json", "r") as settings_file:
+with open(settings_path, "r") as settings_file:
     settings = json.load(settings_file)
 
 # Construct the model and task numbers
 model_number = settings["optimization_models"].split("Model")[1].split(":")[0].strip()
 task_number = settings["tasks"].split("Task")[1].split(":")[0].strip()
 
-input_file_name = f'JSON1_variations_{model_number}_{task_number}.json'
-output_file_name = f'JSON2_solved_variations_{model_number}_{task_number}.json'
+# Construct the full path to input and output JSON files
+input_file_name = os.path.join(script_directory, f'JSON1_variations_{model_number}_{task_number}.json')
+output_file_name = os.path.join(script_directory, f'JSON2_solved_variations_{model_number}_{task_number}.json')
 
 # Read JSON file
 with open(input_file_name, 'r') as f:

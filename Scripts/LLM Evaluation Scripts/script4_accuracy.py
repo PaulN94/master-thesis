@@ -1,7 +1,14 @@
 import json
+import os  # for path manipulations
+
+# Get the directory of the currently executing script
+script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the full path to the experiment_settings.json file
+settings_path = os.path.join(script_directory, 'experiment_settings.json')
 
 # Load the experiment settings
-with open('experiment_settings.json', 'r') as settings_file:
+with open(settings_path, 'r') as settings_file:
     settings = json.load(settings_file)
 
 # Extract model and task numbers from settings
@@ -9,11 +16,11 @@ model_number = settings["optimization_models"].split("Model")[1].split(":")[0].s
 task_number = settings["tasks"].split("Task")[1].split(":")[0].strip()
 
 # Form the input and output file names
-input_filename = f"JSON6_evaluated_{model_number}_{task_number}.json"
-output_filename = f"JSON7_accuracy_{model_number}_{task_number}.json"
+input_filepath = os.path.join(script_directory, f"JSON6_evaluated_{model_number}_{task_number}.json")
+output_filepath = os.path.join(script_directory, f"JSON7_accuracy_{model_number}_{task_number}.json")
 
 # Load the JSON data from the input file
-with open(input_filename, 'r') as file:
+with open(input_filepath, 'r') as file:
     json_data = json.load(file)
 
 # Your data processing remains unchanged
@@ -58,9 +65,9 @@ accuracy_dict = {
 }
 
 # Write to the output file
-with open(output_filename, 'w') as file:
+with open(output_filepath, 'w') as file:
     json.dump(accuracy_dict, file, indent=4)
 
 print(f"The percentage of correct questions is: {percentage_correct:.2f}%")
 print(f"The overall accuracy is: {accuracy:.2f}%")
-print(f"Details have been written to {output_filename}.")
+print(f"Details have been written to {output_filepath}.")
