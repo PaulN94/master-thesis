@@ -117,22 +117,26 @@ class IntegratedApp(tk.Tk):
 
 
     def select_all(self):
+        # Mark all items in treeview as selected
         for item in self.tree.get_children(''):
             self.tree.set(item, 'check', '✔')
             self.update_children(item, '✔')
 
     def unselect_all(self):
+        # Unmark all items in treeview
         for item in self.tree.get_children(''):
             self.tree.set(item, 'check', '')
             self.update_children(item, '')
 
     def update_children(self, item, value):
+        # Recursively set the value for an item and its children
         children = self.tree.get_children(item)
         for child in children:
             self.tree.set(child, 'check', value)
             self.update_children(child, value)
 
     def check_child(self, event):
+        # Event handler for checking or unchecking an item based on user click
         col = self.tree.identify_column(event.x)
         row_id = self.tree.identify_row(event.y)
         item = self.tree.selection()
@@ -145,6 +149,7 @@ class IntegratedApp(tk.Tk):
             self.check_parent(item, check)
 
     def check_parent(self, item, check):
+        # Recursively check or uncheck parent items based on the state of their children
         parent = self.tree.parent(item)
         if parent:
             if check == '':

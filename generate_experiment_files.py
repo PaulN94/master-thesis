@@ -1,18 +1,22 @@
+# Import necessary libraries
 import json
 import os
 import traceback
 import shutil
 
+# Reads a JSON configuration file and returns its contents
 def read_config(file_name):
     with open(file_name, 'r') as f:
         return json.load(f)
 
+# Checks if the data dictionary has reached its deepest nesting level
 def is_deepest_level(data):
     for key, value in data.items():
         if isinstance(value, dict) and ("select" in value or any(isinstance(v, dict) for v in value.values())):
             return False
     return True
 
+# Writes the settings of an experiment to a JSON file
 def write_experiment_settings_to_file(folder_path, settings, path_info, experiment_name):
     experiment_data = {}
     experiment_data.update(settings)
@@ -22,6 +26,7 @@ def write_experiment_settings_to_file(folder_path, settings, path_info, experime
     with open(os.path.join(folder_path, "experiment_settings.json"), 'w') as f:
         json.dump(experiment_data, f, indent=4)
 
+# Copies scripts to a specified folder based on the type of experiment
 def copy_scripts_to_folder(folder_type, experiment_folder):
     source_folder = ""
     if folder_type == "LLM Evaluations":
@@ -34,6 +39,7 @@ def copy_scripts_to_folder(folder_type, experiment_folder):
         dest_file_path = os.path.join(experiment_folder, file_name)
         shutil.copy2(source_file_path, dest_file_path)
 
+# Creates folders based on the data dictionary provided
 def create_folders(data, base_path, settings, folder_type, path_info={}):
     for key, value in data.items():
         if isinstance(value, dict):
@@ -65,12 +71,15 @@ def create_folders(data, base_path, settings, folder_type, path_info={}):
                     nested_dicts = {k: v for k, v in subvalue.items() if isinstance(v, dict)}
                     create_folders(nested_dicts, base_path, settings, folder_type, path_info)
 
+# Main execution block
 if __name__ == "__main__":
+    # Configurations for different types of experiments
     configs = [
         ("llm_evaluation_config.json", "LLM Evaluations"),
         ("question_generation_config.json", "Question Generation")
     ]
     
+    # Loop through each configuration and process them
     for config_file, top_folder in configs:
         if os.path.exists(config_file):
             print(f"\nProcessing {config_file}\n")
