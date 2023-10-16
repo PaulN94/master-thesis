@@ -51,7 +51,7 @@ input_json_filename = os.path.join(base_path, f"JSON3_reformulation_{model_numbe
 
 # Construct system message and output filename based on task number
 if task_number == "1":
-    system_message = "Please build a Python optimization model according to the users description and return only the modified executable code and nothing else. The code utilizes the Gurobi solver, to solve the optimization model."
+    system_message = "Please build a Python optimization model according to the users description and return only the modified executable model in code and nothing else. The code utilizes the Gurobi solver, to solve the optimization model."
     if icl_number > 0:
         system_message += "\n\nHere are some example questions and their correct codes:\n— EXAMPLES —\n\n{selected_examples}\n\n—"
     log_message = "Model {} built"
@@ -59,9 +59,9 @@ if task_number == "1":
 elif task_number == "2":
     with open(os.path.join(optimization_models_path, f"model{model_number}_knapsack.py"), "r") as model_file:
         model_content = model_file.read()
-    system_message = "Please transform the Python optimization model according to the users question and return only the modified executable code and nothing else. Your answer should start with: \"from gurobipy import Model, GRB\"\n\n— OPTIMIZATION MODEL TO TRANSFORM —\n\n{model_content}\n\n—"
+    system_message = "Please transform the Python optimization model according to the users question and return only the modified unabridged executable model and nothing else.\n\n— OPTIMIZATION MODEL TO TRANSFORM —\n\n{model_content}\n\n—"
     if icl_number > 0:
-        system_message += "\n\nHere are some example questions and their correct codes:\n— EXAMPLES —\n\n{selected_examples}\n\n—"
+        system_message += "\n\nHere are some example questions and the sections in the model that are modified to answer the example question. Altough the examples are only sections, remember to output the full modified model to answer the user question:\n— EXAMPLES —\n\n{selected_examples}\n\n—"
     log_message = "Model {} transformed"
     output_filename = os.path.join(script_directory, f"JSON4_llm_response_{model_number}_{task_number}.json")
 
