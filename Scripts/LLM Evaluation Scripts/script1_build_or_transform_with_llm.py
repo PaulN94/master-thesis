@@ -3,6 +3,9 @@ import openai
 import json
 from dotenv import load_dotenv
 import random
+import time
+
+MAX_RETRIES = 3  # Define the maximum number of retries for API calls (for one entry)
 
 # Load environment variables from .env file
 load_dotenv()
@@ -51,7 +54,7 @@ input_json_filename = os.path.join(base_path, f"JSON3_reformulation_{model_numbe
 
 # Construct system message and output filename based on task number
 if task_number == "1":
-    system_message = "Please build a Python optimization model according to the users description and return only the modified executable model in code and nothing else. The code utilizes the Gurobi solver, to solve the optimization model."
+    system_message = "Based on the user's description, please construct a complete, executable Python optimization model that utilizes the Gurobi solver. Ensure that the returned code is a full and standalone model without the need for additional modifications or supplements. Avoid returning partial sections, excerpts, or explanations; only provide the entire, executable Python model using Gurobi."
     if icl_number > 0:
         system_message += "\n\nHere are some example questions and their correct codes:\n— EXAMPLES —\n\n{selected_examples}\n\n—"
     log_message = "Model {} built"
@@ -59,7 +62,7 @@ if task_number == "1":
 elif task_number == "2":
     with open(os.path.join(optimization_models_path, f"model{model_number}_knapsack.py"), "r") as model_file:
         model_content = model_file.read()
-    system_message = "Please transform the Python optimization model according to the users question and return only the modified unabridged executable model and nothing else.\n\n— OPTIMIZATION MODEL TO TRANSFORM —\n\n{model_content}\n\n—"
+    system_message = "Please transform the provided Python optimization model based on the user's question. Your response should contain the complete, transformed, and executable Python model. Do not return partial sections, excerpts, or explanations; only provide the full modified model in its entirety.\n\n— OPTIMIZATION MODEL TO TRANSFORM —\n\n{model_content}\n\n—"
     if icl_number > 0:
         system_message += "\n\nHere are some example questions and the sections in the model that are modified to answer the example question. Altough the examples are only sections, remember to output the full modified model to answer the user question:\n— EXAMPLES —\n\n{selected_examples}\n\n—"
     log_message = "Model {} transformed"
@@ -102,11 +105,24 @@ for i, variation in enumerate(data['variations']):
         print(f"  Content:\n    {msg['content']}\n")
     print("------------------------\n")
 
-    # Call the OpenAI API
-    response = openai.ChatCompletion.create(
-        model=llms_model,
-        messages=user_messages
-    )
+    # Call the OpenAI API with error handling and retry
+    retries = 0
+    success = False
+    while not success and retries < MAX_RETRIES:
+        try:
+            response = openai.ChatCompletion.create(
+                model=llms_model,
+                messages=user_messages
+            )
+            success = True  # if no exception, mark as success
+        except (openai.error.Timeout, openai.error.APIError) as e:  # list all exceptions you want to catch
+            print(f"Error {e} occurred, retrying in 1 min...")
+            retries += 1
+            time.sleep(60)  # wait for 1 min
+
+    if not success:
+        print(f"Failed to process entry {entry_id} after {MAX_RETRIES} attempts.")
+        continue  # skip the rest of the loop iteration
 
     # Process the API response and update the data
     llm_model_response = response['choices'][0]['message']['content']
@@ -116,7 +132,6 @@ for i, variation in enumerate(data['variations']):
 
     # Print log message
     print(log_message.format(entry_id))
-
 
 # Save the updated data to the output JSON file
 with open(output_filename, "w") as f:
