@@ -18,7 +18,7 @@ openai.api_key = api_key
 def get_example(entry):
     """Construct an example from an entry."""
     question = "Question:\n" + entry["question_variation"]
-    answer = "Code:\n" + (entry["answer_section"] if "answer_section" in entry else entry["answer_variation"])
+    answer = "Code:\n" + entry["answer_variation"]
     return f"{question}\n\n{answer}\n"
 
 # Get the current script's directory path
@@ -74,7 +74,7 @@ with open(input_json_filename, "r") as f:
 
 # Process each variation in the data, construct user messages and make API calls
 for i, variation in enumerate(data['variations']):
-    question = variation['question_reformulation']
+    question = variation['question_variation']  # Changed from question_reformulation
     entry_id = variation['id']
     question_set_number = int(entry_id.split(".")[2])
     selected_examples_content = ""  # Initialize this to empty
