@@ -14,7 +14,7 @@ def reformulate_question(question):
     response = openai.ChatCompletion.create(
         model="gpt-4",
         messages=[
-            {"role": "system", "content": "Please reformulate the description without changing the meaning. Don't reformulate the word index"},
+            {"role": "system", "content": "Please reformulate the question without changing the meaning. Don't reformulate the word index"},
             {"role": "user", "content": question},
         ],
         temperature= 0.7

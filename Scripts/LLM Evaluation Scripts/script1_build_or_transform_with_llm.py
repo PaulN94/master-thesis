@@ -112,7 +112,8 @@ for i, variation in enumerate(data['variations']):
         try:
             response = openai.ChatCompletion.create(
                 model=llms_model,
-                messages=user_messages
+                messages=user_messages,
+                temperature= 0
             )
             success = True  # if no exception, mark as success
         except (openai.error.Timeout, openai.error.APIError) as e:  # list all exceptions you want to catch
