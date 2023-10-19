@@ -39,7 +39,20 @@ def copy_scripts_to_folder(folder_type, experiment_folder):
         dest_file_path = os.path.join(experiment_folder, file_name)
         shutil.copy2(source_file_path, dest_file_path)
 
-# Creates folders based on the data dictionary provided
+# Copies the accuracy script to the given folder
+def copy_accuracy_script_to_folder(destination_folder):
+    # Path to the script5_accuracy_metric.py
+    accuracy_script_path = os.path.join(os.getcwd(), "Scripts", "Accuracy Calculation Scripts", "script5_accuracy_metric.py")
+    
+    # Destination path one level above the given experiment folder
+    parent_folder = os.path.dirname(destination_folder)
+    dest_file_path = os.path.join(parent_folder, "script5_accuracy_metric.py")
+    
+    # Copying the script
+    shutil.copy2(accuracy_script_path, dest_file_path)
+
+
+# Modifying the create_folders function to copy the accuracy script for each experiment folder
 def create_folders(data, base_path, settings, folder_type, path_info={}):
     for key, value in data.items():
         if isinstance(value, dict):
@@ -64,6 +77,10 @@ def create_folders(data, base_path, settings, folder_type, path_info={}):
                             write_experiment_settings_to_file(experiment_folder, settings, updated_path_info, experiment_name)
                             
                             copy_scripts_to_folder(folder_type, experiment_folder)
+                            
+                            # Copy the accuracy script to the experiment folder only if it's an LLM Evaluation
+                            if folder_type == "LLM Evaluations":
+                                copy_accuracy_script_to_folder(experiment_folder)
                     else:
                         nested_dicts = {k: v for k, v in subvalue.items() if isinstance(v, dict)}
                         create_folders(nested_dicts, new_folder_path, settings, folder_type, updated_path_info)

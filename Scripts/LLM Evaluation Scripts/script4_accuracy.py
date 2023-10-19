@@ -42,32 +42,28 @@ percentage_correct = (overall_correct_questions / overall_total_questions) * 100
 final_score = 0
 all_correct_questionsets = []
 not_all_correct_questionsets = []
-questionset_accuracy = {}
+questionset_correctness = {}  # Updated variable name
 total_questionsets = len(questionsets)
 
 for qset_num, qset in questionsets.items():
     qset_percentage = (qset["correct"] / qset["total"]) * 100
-    questionset_accuracy[qset_num] = f"{qset_percentage:.2f}%"
+    questionset_correctness[qset_num] = f"{qset_percentage:.2f}%"
     if qset["total"] == qset["correct"]:
         final_score += 1
         all_correct_questionsets.append(qset_num)
     else:
         not_all_correct_questionsets.append(qset_num)
 
-accuracy = (final_score / total_questionsets) * 100
+accuracy_value = (final_score / total_questionsets) * 100  # Renamed the variable for clarity
 
 accuracy_dict = {
     "percentage_correct": f"{percentage_correct:.2f}%",
-    "overall_accuracy": f"{accuracy:.2f}%",
+    "accuracy": f"{accuracy_value:.2f}%",  # Updated key name
     "all_correct_questionsets": all_correct_questionsets,
     "not_all_correct_questionsets": not_all_correct_questionsets,
-    "questionset_accuracy": questionset_accuracy
+    "questionset_correctness": questionset_correctness
 }
 
 # Write to the output file
 with open(output_filepath, 'w') as file:
     json.dump(accuracy_dict, file, indent=4)
-
-print(f"The percentage of correct questions is: {percentage_correct:.2f}%")
-print(f"The overall accuracy is: {accuracy:.2f}%")
-print(f"Details have been written to {output_filepath}.")
