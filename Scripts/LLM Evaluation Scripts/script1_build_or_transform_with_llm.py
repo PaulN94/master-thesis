@@ -5,7 +5,8 @@ from dotenv import load_dotenv
 import random
 import time
 
-MAX_RETRIES = 5  # Define the maximum number of retries for API calls (for one entry)
+# Define the maximum number of retries for API calls (for one entry)
+MAX_RETRIES = 5
 
 # Load environment variables from .env file
 load_dotenv()
@@ -45,12 +46,23 @@ model_desc = settings["optimization_models"]
 model_number = model_desc.split(":")[0][-1]
 experiment_desc = settings["experiments"]
 llms_model = settings["llms"].split(":")[1].strip().lower()
+llms_number = settings["llms"].split(":")[0][-1]
+
+# Check if the LLM is Codellama to change the API key and base URL
+if llms_number == "3":
+    openai.api_key = os.getenv("DEEPINFRA_API_KEY")
+    openai.api_base = "https://api.deepinfra.com/v1/openai"
+    llms_model = "codellama/CodeLlama-34b-Instruct-hf"
 
 # Construct folder names and input JSON filename based on the extracted details
-model_folder_name = model_desc.strip().split(":")[0] + ": " + model_desc.strip().split(":")[1].strip()
-task_folder_name = task_desc.strip().split(":")[0] + ": " + task_desc.strip().split(":")[1].strip()
-base_path = os.path.join(root_directory, "Question Generation", model_folder_name, task_folder_name, experiment_desc.strip())
-input_json_filename = os.path.join(base_path, f"JSON3_reformulation_{model_number}_{task_number}.json")
+model_folder_name = model_desc.strip().split(
+    ":")[0] + ": " + model_desc.strip().split(":")[1].strip()
+task_folder_name = task_desc.strip().split(
+    ":")[0] + ": " + task_desc.strip().split(":")[1].strip()
+base_path = os.path.join(root_directory, "Question Generation",
+                         model_folder_name, task_folder_name, experiment_desc.strip())
+input_json_filename = os.path.join(
+    base_path, f"JSON3_reformulation_{model_number}_{task_number}.json")
 
 # Construct system message and output filename based on task number
 if task_number == "1":
@@ -58,7 +70,8 @@ if task_number == "1":
     if icl_number > 0:
         system_message += "\n\nHere are some example questions and their correct codes:\n— EXAMPLES —\n\n{selected_examples}\n\n—"
     log_message = "Model {} built"
-    output_filename = os.path.join(script_directory, f"JSON4_llm_response_{model_number}_{task_number}.json")
+    output_filename = os.path.join(
+        script_directory, f"JSON4_llm_response_{model_number}_{task_number}.json")
 elif task_number == "2":
     with open(os.path.join(optimization_models_path, f"model{model_number}_knapsack.py"), "r") as model_file:
         model_content = model_file.read()
@@ -66,7 +79,8 @@ elif task_number == "2":
     if icl_number > 0:
         system_message += "\n— EXAMPLES —\n\n{selected_examples}\n\n—"
     log_message = "Model {} transformed"
-    output_filename = os.path.join(script_directory, f"JSON4_llm_response_{model_number}_{task_number}.json")
+    output_filename = os.path.join(
+        script_directory, f"JSON4_llm_response_{model_number}_{task_number}.json")
 
 # Load the input data from the JSON file
 with open(input_json_filename, "r") as f:
@@ -74,7 +88,8 @@ with open(input_json_filename, "r") as f:
 
 # Process each variation in the data, construct user messages and make API calls
 for i, variation in enumerate(data['variations']):
-    question = variation['question_variation']  # Changed from question_reformulation
+    # Changed from question_reformulation
+    question = variation['question_variation']
     entry_id = variation['id']
     question_set_number = int(entry_id.split(".")[2])
     selected_examples_content = ""  # Initialize this to empty
@@ -82,18 +97,23 @@ for i, variation in enumerate(data['variations']):
     example_ids = {}
     if icl_number > 0:
         if settings["distribution"] == "Dist0: Out-of-distribution_ICL":
-            example_pool = [e for e in data['variations'] if int(e['id'].split(".")[2]) != question_set_number]
+            example_pool = [e for e in data['variations'] if int(
+                e['id'].split(".")[2]) != question_set_number]
         else:
             current_variation_number = int(entry_id.split(".")[3])
-            example_pool = [e for e in data['variations'] if int(e['id'].split(".")[2]) == question_set_number and int(e['id'].split(".")[3]) != current_variation_number]
-        
-        selected_examples = random.sample(example_pool, min(icl_number, len(example_pool)))
-        selected_examples_content = "\n\n".join([get_example(e) for e in selected_examples])
+            example_pool = [e for e in data['variations'] if int(e['id'].split(
+                ".")[2]) == question_set_number and int(e['id'].split(".")[3]) != current_variation_number]
+
+        selected_examples = random.sample(
+            example_pool, min(icl_number, len(example_pool)))
+        selected_examples_content = "\n\n".join(
+            [get_example(e) for e in selected_examples])
         for idx, example in enumerate(selected_examples, 1):
             example_ids[str(idx)] = example['id']
 
     user_messages = [
-        {"role": "system", "content": system_message.format(model_content=model_content, selected_examples=selected_examples_content)},
+        {"role": "system", "content": system_message.format(
+            model_content=model_content, selected_examples=selected_examples_content)},
         {"role": "user", "content": question}
     ]
 
@@ -113,16 +133,18 @@ for i, variation in enumerate(data['variations']):
             response = openai.ChatCompletion.create(
                 model=llms_model,
                 messages=user_messages,
-                temperature= 0
+                temperature=0
             )
             success = True  # if no exception, mark as success
-        except (openai.error.Timeout, openai.error.APIError) as e:  # list all exceptions you want to catch
+        # list all exceptions you want to catch
+        except (openai.error.Timeout, openai.error.APIError) as e:
             print(f"Error {e} occurred, retrying in 1 min...")
             retries += 1
             time.sleep(60)  # wait for 1 min
 
     if not success:
-        print(f"Failed to process entry {entry_id} after {MAX_RETRIES} attempts.")
+        print(
+            f"Failed to process entry {entry_id} after {MAX_RETRIES} attempts.")
         continue  # skip the rest of the loop iteration
 
     # Process the API response and update the data

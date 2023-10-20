@@ -166,8 +166,9 @@ class IntegratedApp(tk.Tk):
 
 data = {
     "llms": {
-        "1": "LLM1: GPT-3.5-turbo",
-        "2": "LLM2: GPT-4"
+        "1": "LLM1: gpt-3.5-turbo-0613",
+        "2": "LLM2: gpt-4-0613",
+        "3": "LLM3: CodeLlama-34b-Instruct-hf"
     },
     "optimization models": {
         "1": "Model1: Knapsack",
