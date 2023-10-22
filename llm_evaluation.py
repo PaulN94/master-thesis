@@ -186,7 +186,7 @@ data = {
     "ICL": {
         "0": "ICL0: Zero-shot",
         "1": "ICL1: One-shot",
-        "10": "ICL10: Ten-shot"
+        "5": "ICL5: Five-shot"
     }
 }
 
