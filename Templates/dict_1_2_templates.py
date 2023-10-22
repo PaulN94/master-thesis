@@ -2,7 +2,7 @@ dict_1_2 = {
     "templates": [
         {
             "id": "1.2.1",
-            "question_template": "What would happen if the maximum allowed weight is changed to {W}?",
+            "question_template": "Reformulate the code to have a maximum allowed weight of {W}.",
             "answer_template": """from gurobipy import Model, GRB
 
 
@@ -49,7 +49,7 @@ print(selected_items)
         },
         {
             "id": "1.2.2",
-            "question_template": "What would be the effect on the optimal selection if the weight of the item with the index {n} was changed to {weight}?",
+            "question_template": "Reformulate the code to account for the weight of the item with index {n} being set to {weight}.",
             "answer_template": """from gurobipy import Model, GRB
 
             
@@ -102,7 +102,7 @@ print(selected_items)
         },
         {
             "id": "1.2.3",
-            "question_template": "If the value of the item with the index {n} is updated to {value}, how would the optimal selection be influenced?",
+            "question_template": "Reformulate the code so the item with index {n} has a value of {value}.",
             "answer_template": """from gurobipy import Model, GRB
 
 
@@ -155,7 +155,7 @@ print(selected_items)
         },
         {
             "id": "1.2.4",
-            "question_template": "How would you modify the objective function of the given knapsack problem to incorporate an L1 regularization, aiming to reduce the number of selected items, by adding a penalty term of {lambda_value} for each selected item?",
+            "question_template": "Reformulate the code to include an L1 regularization with a penalty term of {lambda_value} for each selected item.",
             "answer_template": """from gurobipy import Model, GRB
 
 
@@ -202,7 +202,7 @@ print(selected_items)
         },
         {
             "id": "1.2.5",
-            "question_template": "Imagine there's a synergy between the items with the idices {item_1} and {item_2} such that if both are selected, an additional value of {add_value} is added to the objective. How can you model this effect in the objective function?",
+            "question_template": "Reformulate the code to incorporate a synergy between items with indices {item_1} and {item_2}. When both are selected, a value of {add_value} is added.",
             "answer_template": """from gurobipy import Model, GRB
 
 
@@ -261,7 +261,7 @@ print(selected_items)
         },
         {
             "id": "1.2.6",
-            "question_template": "Imagine a scenario where a penalty of {penalty} units is applied for each additional item after the item with the index 1. How would you modify the objective function to account for this?",
+            "question_template": "Reformulate the code to apply a penalty of {penalty} units for each item selected after the one with index 1 in the array of selected items.",
             "answer_template": """from gurobipy import Model, GRB
 
 
@@ -308,7 +308,7 @@ print(selected_items)
         },
         {
             "id": "1.2.7",
-            "question_template": "How does the model change if we introduce a lower bound constraint such that at least {min_items} items must be selected?",
+            "question_template": "Reformulate the code to ensure that at least {min_items} items are selected.",
             "answer_template": """from gurobipy import Model, GRB
 
 
@@ -358,7 +358,7 @@ print(selected_items)
         },
         {
             "id": "1.2.8",
-            "question_template": "Given that the item with the index {item_1} is mandatory in the knapsack, how would the remaining items be optimally selected?",
+            "question_template": "Reformulate the code to make sure the item with the index {item_1} is mandatory in the knapsack.",
             "answer_template": """from gurobipy import Model, GRB
 
 
@@ -408,7 +408,7 @@ print(selected_items)
         },
         {
             "id": "1.2.9",
-            "question_template": "If you were to restrict the number of items in the knapsack to a maximum of {max_items}, how would that influence the solution?",
+            "question_template": "Reformulate the code to restrict the knapsack's contents to a maximum of {max_items} items.",
             "answer_template": """from gurobipy import Model, GRB
 
 
@@ -458,7 +458,7 @@ print(selected_items)
         },
         {
             "id": "1.2.10",
-            "question_template": "If there's a requirement that either item with index {item_1} or item with index {item_2} must be included in the knapsack but not both, how would you adjust the model to ensure this condition is met?",
+            "question_template": "Reformulate the code to guarantee that either the item with the index {item_1} or the item with index {item_2} is included, but not both.",
             "answer_template": """from gurobipy import Model, GRB
 
 
