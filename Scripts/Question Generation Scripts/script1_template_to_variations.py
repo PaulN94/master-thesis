@@ -137,6 +137,7 @@ for template in dict_template['templates']:
             "id": new_id,
             "question_variation": new_question,
             "answer_variation": new_answer,
+            "variation_hash": answer_hash
         }
         if new_answer_section:
             new_variation["answer_section"] = new_answer_section
