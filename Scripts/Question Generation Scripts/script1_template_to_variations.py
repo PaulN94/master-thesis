@@ -3,6 +3,11 @@ import os
 import random
 import json
 import importlib
+import hashlib
+
+# Function to compute SHA256 hash of a given string
+def compute_sha256(input_string):
+    return hashlib.sha256(input_string.encode()).hexdigest()
 
 # Get the directory of the currently executing script
 script_directory = os.path.dirname(os.path.abspath(__file__))
@@ -20,8 +25,24 @@ settings_path = os.path.join(script_directory, "experiment_settings.json")
 with open(settings_path, "r") as settings_file:
     settings = json.load(settings_file)
 
+# Extract the model number from the settings
+model_number = int(settings["optimization_models"].split("Model")[1].split(":")[0].strip())
+
+# Compute the full path to the relevant model file in the "Optimization Models" folder
+model_file_name = f"model{model_number}_knapsack.py"
+model_file_path = os.path.join(experiment_directory, "Experiment", "Optimization Models", model_file_name)
+
+# Import the module dynamically
+spec = importlib.util.spec_from_file_location(f"model{model_number}", model_file_path)
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+
+# Compute the SHA256 hash of the module's content
+with open(model_file_path, 'r') as f:
+    module_content = f.read()
+hash_base_model = compute_sha256(module_content)
+
 # Construct the import string for the Templates folder in workspace root
-model_number = settings["optimization_models"].split("Model")[1].split(":")[0].strip()
 task_number = settings["tasks"].split("Task")[1].split(":")[0].strip()
 module_name = f"Templates.dict_{model_number}_{task_number}_templates"
 
@@ -31,6 +52,9 @@ dict_template = getattr(module, f"dict_{model_number}_{task_number}")
 
 # Create an empty dictionary to store the generated questions and answers
 generated_questions = dict(variations=[])
+
+# Create a set to store the SHA256 hashes of all generated answer variations
+answer_hashes = set()
 
 # Loop through each template
 for template in dict_template['templates']:
@@ -51,47 +75,59 @@ for template in dict_template['templates']:
         new_answer = answer_template
         new_answer_section = answer_template_section
 
-        # Fill in the placeholders in the question and answer
-        for variable in variables:
-            var_name = variable['name']
-            var_type = variable['type']
-            unique_id = variable.get('uniqueID')
+        # Calculate hash for the answer_variation and compare with hash_base_model
+        answer_hash = compute_sha256(new_answer)
 
-            if var_type == "int":
-                var_range = variable['range']
-                if isinstance(var_range[1], dict):
-                    var_range[1] = variable_values[var_range[1]
-                                                   ['var']] - var_range[1].get('subtract', 0)
-                var_value = random.randint(var_range[0], var_range[1])
+        # Regenerate the answer_variation if the hash is the same as 1. the hash of the optimization model to be transformed; or 2. the hash of a previous answer_variation
+        while answer_hash == hash_base_model or answer_hash in answer_hashes:
+            # Reset variables for regeneration
+            variable_values = {}
+            unique_id_values = {}
 
-                # Ensure uniqueness within the same uniqueID
-                if unique_id:
-                    while unique_id in unique_id_values and var_value in unique_id_values[unique_id]:
-                        var_value = random.randint(var_range[0], var_range[1])
-                    if unique_id not in unique_id_values:
-                        unique_id_values[unique_id] = []
-                    unique_id_values[unique_id].append(var_value)
+            # Fill in the placeholders in the question and answer
+            for variable in variables:
+                var_name = variable['name']
+                var_type = variable['type']
+                unique_id = variable.get('uniqueID')
 
-            elif var_type == "float":
-                var_range = variable['range']
-                var_value = random.uniform(var_range[0], var_range[1])
-                var_value = round(var_value, 2)
-            elif var_type == "array":
-                array_length = variable['arrayLength']
-                if 'var' in array_length:
-                    array_length = variable_values[array_length['var']]
-                var_range = variable['range']
-                var_value = [random.randint(
-                    var_range['min'], var_range['max']) for _ in range(array_length)]
+                if var_type == "int":
+                    var_range = variable['range']
+                    if isinstance(var_range[1], dict):
+                        var_range[1] = variable_values[var_range[1]['var']] - var_range[1].get('subtract', 0)
+                    var_value = random.randint(var_range[0], var_range[1])
 
-            # store the value for future reference
-            variable_values[var_name] = var_value
+                    # Ensure uniqueness within the same uniqueID
+                    if unique_id:
+                        while unique_id in unique_id_values and var_value in unique_id_values[unique_id]:
+                            var_value = random.randint(var_range[0], var_range[1])
+                        if unique_id not in unique_id_values:
+                            unique_id_values[unique_id] = []
+                        unique_id_values[unique_id].append(var_value)
 
-            new_question = new_question.replace(
-                f"{{{var_name}}}", str(var_value))
-            new_answer = new_answer.replace(f"{{{var_name}}}", str(var_value))
-            new_answer_section = new_answer_section.replace(
-                f"{{{var_name}}}", str(var_value))
+                elif var_type == "float":
+                    var_range = variable['range']
+                    var_value = random.uniform(var_range[0], var_range[1])
+                    var_value = round(var_value, 2)
+
+                elif var_type == "array":
+                    array_length = variable['arrayLength']
+                    if 'var' in array_length:
+                        array_length = variable_values[array_length['var']]
+                    var_range = variable['range']
+                    var_value = [random.randint(var_range['min'], var_range['max']) for _ in range(array_length)]
+
+                # Store the value for future reference
+                variable_values[var_name] = var_value
+
+                new_question = new_question.replace(f"{{{var_name}}}", str(var_value))
+                new_answer = new_answer.replace(f"{{{var_name}}}", str(var_value))
+                new_answer_section = new_answer_section.replace(f"{{{var_name}}}", str(var_value))
+
+            # Calculate hash again for the regenerated answer_variation
+            answer_hash = compute_sha256(new_answer)
+
+        # Add the hash to answer_hashes set to track it
+        answer_hashes.add(answer_hash)
 
         # Reset unique_id_values for next iteration
         unique_id_values = {}
