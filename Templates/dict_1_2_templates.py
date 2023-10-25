@@ -32,8 +32,8 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [33, 22, 30, 10]
-weights = [5, 6, 8, 2]
+values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
+weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
 W = {W}
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
@@ -43,7 +43,7 @@ print(selected_items)
                 {
                     "name": "W",
                     "type": "int",
-                    "range": [2, 10]
+                    "range": [2, 30]
                 }
             ]
         },
@@ -79,10 +79,10 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [33, 22, 30, 10]
-weights = [5, 6, 8, 2]
+values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
+weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
 weights[{n}] = {weight}
-W = 10
+W = 20
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
@@ -91,7 +91,7 @@ print(selected_items)
                 {
                     "name": "n",
                     "type": "int",
-                    "range": [0, 3]
+                    "range": [0, 9]
                 },
                 {
                     "name": "weight",
@@ -132,10 +132,10 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [33, 22, 30, 10]
+values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
 values[{n}] = {value}
-weights = [5, 6, 8, 2]
-W = 10
+weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
+W = 20
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
@@ -144,7 +144,7 @@ print(selected_items)
                 {
                     "name": "n",
                     "type": "int",
-                    "range": [0, 3]
+                    "range": [0, 9]
                 },
                 {
                     "name": "value",
@@ -185,9 +185,9 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [33, 22, 30, 10]
-weights = [5, 6, 8, 2]
-W = 10
+values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
+weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
+W = 20
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
@@ -232,9 +232,9 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [33, 22, 30, 10]
-weights = [5, 6, 8, 2]
-W = 10
+values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
+weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
+W = 20
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
@@ -243,25 +243,25 @@ print(selected_items)
                 {
                     "name": "item_1",
                     "type": "int",
-                    "range": [0, 3],
+                    "range": [0, 9],
                     "uniqueID": "1"
                 },
                 {
                     "name": "item_2",
                     "type": "int",
-                    "range": [0, 3],
+                    "range": [0, 9],
                     "uniqueID": "1"
                 },
                 {
                     "name": "add_value",
                     "type": "float",
-                    "range": [0.1, 10.0]
+                    "range": [10.0, 20.0]
                 }
             ]
         },
         {
             "id": "1.2.6",
-            "question_template": "Reformulate the optimization model to apply a penalty of {penalty} units for each item selected after the one with index 1 in the array of selected items.",
+            "question_template": "Reformulate the optimization model to apply a penalty of {penalty} value units for each item selected after the one with index 1 in the array of selected items.",
             "answer_template": """from gurobipy import Model, GRB
 
 
@@ -291,9 +291,9 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [33, 22, 30, 10]
-weights = [5, 6, 8, 2]
-W = 10
+values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
+weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
+W = 20
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
@@ -341,9 +341,9 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [33, 22, 30, 10]
-weights = [5, 6, 8, 2]
-W = 10
+values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
+weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
+W = 20
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
@@ -352,7 +352,7 @@ print(selected_items)
                 {
                     "name": "min_items",
                     "type": "int",
-                    "range": [1, 1]
+                    "range": [1, 4]
                 }
             ]
         },
@@ -391,9 +391,9 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [33, 22, 30, 10]
-weights = [5, 6, 8, 2]
-W = 10
+values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
+weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
+W = 20
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
@@ -402,7 +402,7 @@ print(selected_items)
                 {
                     "name": "item_1",
                     "type": "int",
-                    "range": [0, 3]
+                    "range": [0, 9]
                 }
             ]
         },
@@ -441,9 +441,9 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [33, 22, 30, 10]
-weights = [5, 6, 8, 2]
-W = 10
+values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
+weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
+W = 20
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
@@ -452,7 +452,7 @@ print(selected_items)
                 {
                     "name": "max_items",
                     "type": "int",
-                    "range": [1, 3]
+                    "range": [1, 4]
                 }
             ]
         },
@@ -491,9 +491,9 @@ def knapsack_gurobi(values, weights, W):
 
 
 # Data
-values = [33, 22, 30, 10]
-weights = [5, 6, 8, 2]
-W = 10
+values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
+weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
+W = 20
 selected_items = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
@@ -502,13 +502,13 @@ print(selected_items)
                 {
                     "name": "item_1",
                     "type": "int",
-                    "range": [0, 3],
+                    "range": [0, 9],
                     "uniqueID": "1"
                 },
                 {
                     "name": "item_2",
                     "type": "int",
-                    "range": [0, 3],
+                    "range": [0, 9],
                     "uniqueID": "1"
                 },
             ]
