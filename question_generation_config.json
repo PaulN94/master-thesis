@@ -1,0 +1,44 @@
+{
+    "settings": {
+        "variations_per_template": "3",
+        "reformulations_per_variation": "3",
+        "experiments_per_model": "10"
+    },
+    "selection": {
+        "optimization_models": {
+            "Model1: Knapsack": {
+                "select": true,
+                "tasks": {
+                    "Task1: Build": {
+                        "select": true
+                    },
+                    "Task2: Transform": {
+                        "select": true
+                    }
+                }
+            },
+            "Model2: MMNL": {
+                "select": true,
+                "tasks": {
+                    "Task1: Build": {
+                        "select": true
+                    },
+                    "Task2: Transform": {
+                        "select": true
+                    }
+                }
+            },
+            "Model3: CAP": {
+                "select": true,
+                "tasks": {
+                    "Task1: Build": {
+                        "select": true
+                    },
+                    "Task2: Transform": {
+                        "select": true
+                    }
+                }
+            }
+        }
+    }
+}
