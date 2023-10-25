@@ -75,11 +75,16 @@ for template in dict_template['templates']:
         new_answer = answer_template
         new_answer_section = answer_template_section
 
+        # Define max_tries
+        max_tries = 5
+        current_try = 0        
+
         # Calculate hash for the answer_variation and compare with hash_base_model
         answer_hash = compute_sha256(new_answer)
 
         # Regenerate the answer_variation if the hash is the same as 1. the hash of the optimization model to be transformed; or 2. the hash of a previous answer_variation
         while answer_hash == hash_base_model or answer_hash in answer_hashes:
+            current_try += 1
             # Reset variables for regeneration
             variable_values = {}
             unique_id_values = {}
@@ -125,6 +130,10 @@ for template in dict_template['templates']:
 
             # Calculate hash again for the regenerated answer_variation
             answer_hash = compute_sha256(new_answer)
+        
+        if current_try == max_tries:
+            print(f"Error: Maximum tries reached for template {template_id} variation {i}. Couldn't generate a unique variation.")
+            continue  # Skips to the next variation/template        
 
         # Add the hash to answer_hashes set to track it
         answer_hashes.add(answer_hash)
