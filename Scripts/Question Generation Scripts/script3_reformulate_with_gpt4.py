@@ -3,6 +3,7 @@ import json
 import openai
 import hashlib
 from dotenv import load_dotenv
+import time
 
 # Load environment variables from .env file
 load_dotenv()
@@ -28,15 +29,30 @@ def reformulate_question(question, reformulated_hashes, task_num):
         system_prompt = "Please reformulate the description of this optimization model without changing the meaning. Don't reformulate the word index"
     
     while not unique_reformulation and retries < max_retries:
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": question},
-            ],
-            temperature= 0.7
-        )
-        reformulated_question = response['choices'][0]['message']['content']
+        success = False
+        api_retries = 0  # Initialize counter for API retries
+        MAX_API_RETRIES = 3  # Define the maximum number of retries for API calls (for one entry)
+        while not success and api_retries < MAX_API_RETRIES:
+            try:
+                response = openai.ChatCompletion.create(
+                    model="gpt-4",
+                    messages=[
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": question},
+                    ],
+                    temperature= 0.7
+                )
+                reformulated_question = response['choices'][0]['message']['content']
+                success = True  # if no exception, mark as success
+            except (openai.error.Timeout, openai.error.APIError) as e:
+                print(f"Error {e} occurred, retrying in 1 min...")
+                api_retries += 1
+                time.sleep(60)  # wait for 1 min
+
+        if not success:
+            print(f"Warning: Couldn't call OpenAI API for '{question}' after {MAX_API_RETRIES} attempts.")
+            return reformulated_question, reformulation_hash  # early exit in case of persistent API failure
+
         reformulation_hash = compute_sha256(reformulated_question)
         if reformulation_hash not in reformulated_hashes:
             reformulated_hashes.add(reformulation_hash)

@@ -151,7 +151,7 @@ print(selected_items)""",
                 {
                     "name": "capacity",
                     "type": "int",
-                    "range": [5, 15]
+                    "range": [20, 25]
                 },
                 {
                     "name": "item_1",
@@ -493,7 +493,7 @@ print(selected_items)""",
                 {
                     "name": "min_items",
                     "type": "int",
-                    "range": [1, {"var": "n", "subtract": 1}]
+                    "range": [1, 3]
                 }
             ]
         },
@@ -746,7 +746,7 @@ print(selected_items)""",
                 {
                     "name": "time_limit",
                     "type": "int",
-                    "range": [5, 15]
+                    "range": [10, 15]
                 }
             ]
         },

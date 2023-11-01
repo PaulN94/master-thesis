@@ -66,7 +66,7 @@ input_json_filename = os.path.join(
 
 # Construct system message and output filename based on task number
 if task_number == "1":
-    system_message = "Based on the user's description, please construct a complete, executable Python optimization model that utilizes the Gurobi solver and returns ""selected_items"". Ensure that the returned code is a full and standalone model without the need for additional modifications or supplements. Avoid returning partial sections, excerpts, or explanations; only provide the entire, executable Python model using Gurobi."
+    system_message = "Based on the user's description, please construct a complete, executable Python optimization model that utilizes the Gurobi solver. The output of the Python model should be the selected items' indices as a list. Ensure that the returned code is a full and standalone model without the need for additional modifications or supplements. Avoid returning partial sections, excerpts, or explanations; only provide the entire, executable Python model using Gurobi."
     if icl_number > 0:
         system_message += "\n\nHere are some example questions and their correct codes:\n— EXAMPLES —\n\n{selected_examples}\n\n—"
     log_message = "Model {} built"
@@ -112,10 +112,12 @@ for i, variation in enumerate(data['variations']):
             example_ids[str(idx)] = example['id']
 
     user_messages = [
-        {"role": "system", "content": system_message.format(
-            model_content=model_content, selected_examples=selected_examples_content)},
-        {"role": "user", "content": question}
-    ]
+    {"role": "system", "content": system_message.format(
+        model_content=model_content if task_number == "2" else "", 
+        selected_examples=selected_examples_content
+    )},
+    {"role": "user", "content": question}
+]
 
     # Print details before sending to the API
     print("\n--- Sending to API ---")

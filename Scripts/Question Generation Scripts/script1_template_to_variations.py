@@ -91,7 +91,7 @@ for template in dict_template['templates']:
                 unique_id = variable.get('uniqueID')
 
                 if var_type == "int":
-                    var_range = variable['range']
+                    var_range = variable['range'].copy()
                     if isinstance(var_range[1], dict):
                         var_range[1] = variable_values[var_range[1]['var']] - var_range[1].get('subtract', 0)
                     var_value = random.randint(var_range[0], var_range[1])
