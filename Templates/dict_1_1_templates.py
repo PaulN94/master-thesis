@@ -565,7 +565,7 @@ print(selected_items)""",
                 {
                     "name": "capacity",
                     "type": "int",
-                    "range": [5, 15]
+                    "range": [10, 15]
                 },
                 {
                     "name": "item_1",
@@ -658,7 +658,7 @@ print(selected_items)""",
                 {
                     "name": "volume_limit",
                     "type": "int",
-                    "range": [5, 15]
+                    "range": [10, 15]
                 }
             ]
         },
