@@ -352,7 +352,7 @@ print(selected_items)
                 {
                     "name": "min_items",
                     "type": "int",
-                    "range": [1, 4]
+                    "range": [0, 5]
                 }
             ]
         },
@@ -452,7 +452,7 @@ print(selected_items)
                 {
                     "name": "max_items",
                     "type": "int",
-                    "range": [1, 4]
+                    "range": [1, 5]
                 }
             ]
         },

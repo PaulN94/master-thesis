@@ -41,7 +41,7 @@ print(selected_items)""",
                 {
                     "name": "n",
                     "type": "int",
-                    "range": [2, 4]
+                    "range": [5, 10]
                 },
                 {
                     "name": "values",
@@ -128,7 +128,7 @@ print(selected_items)""",
                 {
                     "name": "n",
                     "type": "int",
-                    "range": [2, 4]
+                    "range": [5, 10]
                 },
                 {
                     "name": "values",
@@ -210,7 +210,7 @@ print(selected_items)""",
                 {
                     "name": "n",
                     "type": "int",
-                    "range": [1, 4]
+                    "range": [5, 10]
                 },
                 {
                     "name": "values",
@@ -294,7 +294,7 @@ print(selected_items)""",
                 {
                     "name": "n",
                     "type": "int",
-                    "range": [1, 4]
+                    "range": [5, 10]
                 },
                 {
                     "name": "values",
@@ -376,7 +376,7 @@ print(selected_items)""",
                 {
                     "name": "n",
                     "type": "int",
-                    "range": [2, 4]
+                    "range": [5, 10]
                 },
                 {
                     "name": "values",
@@ -465,7 +465,7 @@ print(selected_items)""",
                 {
                     "name": "n",
                     "type": "int",
-                    "range": [1, 4]
+                    "range": [5, 10]
                 },
                 {
                     "name": "values",
@@ -542,7 +542,7 @@ print(selected_items)""",
                 {
                     "name": "n",
                     "type": "int",
-                    "range": [1, 4]
+                    "range": [5, 10]
                 },
                 {
                     "name": "values",
@@ -621,7 +621,7 @@ print(selected_items)""",
                 {
                     "name": "n",
                     "type": "int",
-                    "range": [1, 4]
+                    "range": [5, 10]
                 },
                 {
                     "name": "values",
@@ -709,7 +709,7 @@ print(selected_items)""",
                 {
                     "name": "n",
                     "type": "int",
-                    "range": [1, 4]
+                    "range": [5, 10]
                 },
                 {
                     "name": "values",
@@ -796,7 +796,7 @@ print(selected_items)""",
                 {
                     "name": "n",
                     "type": "int",
-                    "range": [4, 4]
+                    "range": [5, 10]
                 },
                 {
                     "name": "values",

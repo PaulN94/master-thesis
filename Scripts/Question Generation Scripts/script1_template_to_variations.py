@@ -1,9 +1,9 @@
 import sys
 import os
-import random
 import json
 import importlib
 import hashlib
+import random
 
 # Function to compute SHA256 hash of a given string
 def compute_sha256(input_string):
@@ -25,22 +25,21 @@ settings_path = os.path.join(script_directory, "experiment_settings.json")
 with open(settings_path, "r") as settings_file:
     settings = json.load(settings_file)
 
-# Extract the model number from the settings
+# Extract the model number and name from the settings
 model_number = int(settings["optimization_models"].split("Model")[1].split(":")[0].strip())
+model_name = settings["optimization_models"].split(":")[1].strip().lower()
 
 # Compute the full path to the relevant model file in the "Optimization Models" folder
-model_file_name = f"model{model_number}_knapsack.py"
-model_file_path = os.path.join(experiment_directory, "Experiment", "Optimization Models", model_file_name)
+model_file_name = f"model{model_number}_{model_name}.py"
+model_file_path = os.path.join(experiment_directory, "Optimization Models", model_file_name)
 
-# Import the module dynamically
-spec = importlib.util.spec_from_file_location(f"model{model_number}", model_file_path)
-module = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(module)
-
-# Compute the SHA256 hash of the module's content
-with open(model_file_path, 'r') as f:
-    module_content = f.read()
-hash_base_model = compute_sha256(module_content)
+# Ensure the file exists before reading
+if os.path.exists(model_file_path):
+    # Read the file's content into a string
+    with open(model_file_path, 'r') as f:
+        module_content = f.read()
+    # Compute the SHA256 hash of the string
+    hash_base_model = compute_sha256(module_content)
 
 # Construct the import string for the Templates folder in workspace root
 task_number = settings["tasks"].split("Task")[1].split(":")[0].strip()
@@ -76,14 +75,10 @@ for template in dict_template['templates']:
         new_answer_section = answer_template_section
 
         # Define max_tries
-        max_tries = 5
+        max_tries = 100
         current_try = 0        
 
-        # Calculate hash for the answer_variation and compare with hash_base_model
-        answer_hash = compute_sha256(new_answer)
-
-        # Regenerate the answer_variation if the hash is the same as 1. the hash of the optimization model to be transformed; or 2. the hash of a previous answer_variation
-        while answer_hash == hash_base_model or answer_hash in answer_hashes:
+        while True:  # infinite loop, will break out once conditions are met
             current_try += 1
             # Reset variables for regeneration
             variable_values = {}
@@ -105,6 +100,8 @@ for template in dict_template['templates']:
                     if unique_id:
                         while unique_id in unique_id_values and var_value in unique_id_values[unique_id]:
                             var_value = random.randint(var_range[0], var_range[1])
+                            if var_name.startswith("item"):
+                                var_value = min(var_value, var_range[1])
                         if unique_id not in unique_id_values:
                             unique_id_values[unique_id] = []
                         unique_id_values[unique_id].append(var_value)
@@ -128,12 +125,16 @@ for template in dict_template['templates']:
                 new_answer = new_answer.replace(f"{{{var_name}}}", str(var_value))
                 new_answer_section = new_answer_section.replace(f"{{{var_name}}}", str(var_value))
 
-            # Calculate hash again for the regenerated answer_variation
+            # Calculate hash for the regenerated answer_variation
             answer_hash = compute_sha256(new_answer)
-        
-        if current_try == max_tries:
-            print(f"Error: Maximum tries reached for template {template_id} variation {i}. Couldn't generate a unique variation.")
-            continue  # Skips to the next variation/template        
+            
+            # Check if the hash meets the conditions. If so, break out of the loop.
+            if answer_hash != hash_base_model and answer_hash not in answer_hashes:
+                break
+            
+            if current_try == max_tries:
+                print(f"Error: Maximum tries reached for template {template_id} variation {i}. Couldn't generate a unique variation.")
+                break  # Breaks out of the infinite loop
 
         # Add the hash to answer_hashes set to track it
         answer_hashes.add(answer_hash)
@@ -153,6 +154,7 @@ for template in dict_template['templates']:
         generated_questions['variations'].append(new_variation)
 
 # Save the generated_questions dictionary to a file in JSON format
-output_file_name = os.path.join(script_directory, f'JSON1_variations_{model_number}_{task_number}.json')
-with open(output_file_name, 'w') as f:
-    json.dump(generated_questions, f, indent=4)
+output_file_name = f"JSON1_variations_{model_number}_{task_number}.json"
+output_file_path = os.path.join(script_directory, output_file_name)
+with open(output_file_path, 'w') as outfile:
+    json.dump(generated_questions, outfile, indent=2)

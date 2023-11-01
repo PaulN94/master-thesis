@@ -15,17 +15,23 @@ openai.api_key = api_key
 def compute_sha256(input_string):
     return hashlib.sha256(input_string.encode()).hexdigest()
 
-def reformulate_question(question, reformulated_hashes):
+def reformulate_question(question, reformulated_hashes, task_num):
     unique_reformulation = False
     reformulated_question = ""
     reformulation_hash = ""
     max_retries = 5
     retries = 0
+    
+    # Change system prompt based on task number
+    system_prompt = "Please reformulate the question without changing the meaning. Don't reformulate the word index"
+    if task_num == 1:
+        system_prompt = "Please reformulate the description of this optimization model without changing the meaning. Don't reformulate the word index"
+    
     while not unique_reformulation and retries < max_retries:
         response = openai.ChatCompletion.create(
             model="gpt-4",
             messages=[
-                {"role": "system", "content": "Please reformulate the question without changing the meaning. Don't reformulate the word index"},
+                {"role": "system", "content": system_prompt},
                 {"role": "user", "content": question},
             ],
             temperature= 0.7
@@ -39,7 +45,6 @@ def reformulate_question(question, reformulated_hashes):
             print("Generated question is regenerated due to equality with previous question.")
             retries += 1
 
-    # Check if a unique reformulation was achieved. If not, you may want to handle it somehow.
     if not unique_reformulation:
         print(f"Warning: Couldn't get a unique reformulation for '{question}' after {max_retries} attempts.")
 
@@ -83,7 +88,7 @@ for variation in data["variations"]:
         new_variation = variation.copy()
         new_id = f"{variation['id']}.{i}"
         new_variation["id"] = new_id
-        new_question, new_hash = reformulate_question(variation['question_variation'], reformulated_hashes)
+        new_question, new_hash = reformulate_question(variation['question_variation'], reformulated_hashes, int(task_number))
         new_variation["question_reformulation"] = new_question
         new_variation["reformulation_hash"] = new_hash
         output_data["variations"].append(new_variation)
