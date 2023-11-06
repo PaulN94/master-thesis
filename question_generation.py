@@ -27,7 +27,7 @@ class IntegratedApp(tk.Tk):
         self.rpv_entry = tk.Entry(self)
         self.rpv_entry.pack()
 
-        self.epm_label = tk.Label(self, text="Experiments per model:")
+        self.epm_label = tk.Label(self, text="Experiments per accuracy metric:")
         self.epm_label.pack()
         self.epm_entry = tk.Entry(self)
         self.epm_entry.pack()
@@ -143,7 +143,7 @@ class IntegratedApp(tk.Tk):
 data = {
     "optimization models": {
         "1": "Model1: Knapsack",
-        "2": "Model2: MMNL",
+        "2": "Model2: MNL",
         "3": "Model3: CAP"
     },
     "tasks": {

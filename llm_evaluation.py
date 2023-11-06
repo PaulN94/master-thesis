@@ -20,7 +20,7 @@ class IntegratedApp(tk.Tk):
             self, text="Configuration:", font=self.title_font)
         self.llm_label.pack()
 
-        self.llm_epm_label = tk.Label(self, text="Experiments per model:")
+        self.llm_epm_label = tk.Label(self, text="Experiments per accuracy metric:")
         self.llm_epm_label.pack()
         self.llm_epm_entry = tk.Entry(self)
         self.llm_epm_entry.pack()

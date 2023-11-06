@@ -17,7 +17,7 @@
                     }
                 }
             },
-            "Model2: MMNL": {
+            "Model2: MNL": {
                 "select": true,
                 "tasks": {
                     "Task1: Build": {

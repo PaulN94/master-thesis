@@ -4,3 +4,6 @@
 /Question Generation/
 /.Preliminary Testing/
 /old_miscellanous/
+
+/llm_evaluation.py
+/question_generation.py
