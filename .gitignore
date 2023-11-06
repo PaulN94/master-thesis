@@ -5,5 +5,5 @@
 /.Preliminary Testing/
 /old_miscellanous/
 
-/llm_evaluation.py
-/question_generation.py
+llm_evaluation_config.json
+question_generation_config.json
