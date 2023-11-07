@@ -1,7 +1,7 @@
 import json
 import os
 
-# Preprocessing of the code, if the LLM is Codellama (LLM3).
+# Preprocessing of the code.
 def preprocess_code(code):
     # If "python" is present and the code is enclosed in triple backticks, extract the code
     if '```python' in code:
@@ -68,15 +68,12 @@ for variation in data['variations']:
     # Get the LLM code from the variation
     llm_code = variation['llm_model']
     
-    # If the LLM number is 3, preprocess the code
-    if llms_number == "3":
-        preprocessed_code = preprocess_code(llm_code)
-        # Store the preprocessed code in the variation
-        variation['llm_model_preprocessed'] = preprocessed_code
-        llm_code = preprocessed_code
-    
+    # Preprocess the code
+    preprocessed_code = preprocess_code(llm_code)
+    # Store the preprocessed code in the variation
+    variation['llm_model_preprocessed'] = preprocessed_code
     # Execute the code and get the solver's output
-    solver_output = run_code_and_get_output(llm_code)
+    solver_output = run_code_and_get_output(preprocessed_code)
     # Store the output in the variation
     variation['llm_optimum'] = solver_output
 
