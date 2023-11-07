@@ -25,17 +25,24 @@ def knapsack_gurobi(values, weights, W):
     # Solve the model
     m.optimize()
 
-    # Extract the solution
-    selected_items = [i for i in range(n) if x[i].X > 0.5]
+    # Check if a feasible solution was found
+    if m.status == GRB.OPTIMAL:
+        # Extract the solution
+        selected_items = [i for i in range(n) if x[i].X > 0.5]
+        objective_value = m.ObjVal
+    else:
+        print("No feasible solution found")
+        selected_items = []
+        objective_value = None
 
-    return selected_items
+    return selected_items, objective_value
 
 
 # Data
 values = {values}
 weights = {weights}
 W = {capacity}
-selected_items = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)""",
             "variables": [
                 {
@@ -112,17 +119,24 @@ def knapsack_gurobi(values, weights, W):
     # Solve the model
     m.optimize()
 
-    # Extract the solution
-    selected_items = [i for i in range(n) if x[i].X > 0.5]
+    # Check if a feasible solution was found
+    if m.status == GRB.OPTIMAL:
+        # Extract the solution
+        selected_items = [i for i in range(n) if x[i].X > 0.5]
+        objective_value = m.ObjVal
+    else:
+        print("No feasible solution found")
+        selected_items = []
+        objective_value = None
 
-    return selected_items
+    return selected_items, objective_value
 
 
 # Data
 values = {values}
 weights = {weights}
 W = {capacity}
-selected_items = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)""",
             "variables": [
                 {
@@ -194,17 +208,24 @@ def knapsack_gurobi(values, weights, W):
 
     m.optimize()
 
-    # Extract the solution
-    selected_items = [i for i in range(n) if x[i].X > 0.5]
+    # Check if a feasible solution was found
+    if m.status == GRB.OPTIMAL:
+        # Extract the solution
+        selected_items = [i for i in range(n) if x[i].X > 0.5]
+        objective_value = m.ObjVal
+    else:
+        print("No feasible solution found")
+        selected_items = []
+        objective_value = None
 
-    return selected_items
+    return selected_items, objective_value
 
 
 # Data
 values = {values}
 weights = {weights}
 W = {capacity}
-selected_items = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)""",
             "variables": [
                 {
@@ -278,17 +299,24 @@ def knapsack_gurobi(values, weights, W):
     # Solve the model
     m.optimize()
 
-    # Extract the solution
-    selected_items = [i for i in range(n) if x[i].X > 0.5]
+    # Check if a feasible solution was found
+    if m.status == GRB.OPTIMAL:
+        # Extract the solution
+        selected_items = [i for i in range(n) if x[i].X > 0.5]
+        objective_value = m.ObjVal
+    else:
+        print("No feasible solution found")
+        selected_items = []
+        objective_value = None
 
-    return selected_items
+    return selected_items, objective_value
 
 
 # Data
 values = {values}
 weights = {weights}
 W = {capacity}
-selected_items = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)""",
             "variables": [
                 {
@@ -360,17 +388,24 @@ def knapsack_gurobi(values, weights, W):
     # Solve the model
     m.optimize()
 
-    # Extract the solution
-    selected_items = [i for i in range(n) if x[i].X > 0.5]
+    # Check if a feasible solution was found
+    if m.status == GRB.OPTIMAL:
+        # Extract the solution
+        selected_items = [i for i in range(n) if x[i].X > 0.5]
+        objective_value = m.ObjVal
+    else:
+        print("No feasible solution found")
+        selected_items = []
+        objective_value = None
 
-    return selected_items
+    return selected_items, objective_value
 
 
 # Data
 values = {values}
 weights = {weights}
 W = {capacity}
-selected_items = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)""",
             "variables": [
                 {
@@ -449,17 +484,24 @@ def knapsack_gurobi(values, weights, W):
     # Solve the model
     m.optimize()
 
-    # Extract the solution
-    selected_items = [i for i in range(n) if x[i].X > 0.5]
+    # Check if a feasible solution was found
+    if m.status == GRB.OPTIMAL:
+        # Extract the solution
+        selected_items = [i for i in range(n) if x[i].X > 0.5]
+        objective_value = m.ObjVal
+    else:
+        print("No feasible solution found")
+        selected_items = []
+        objective_value = None
 
-    return selected_items
+    return selected_items, objective_value
 
 
 # Data
 values = {values}
 weights = {weights}
 W = {capacity}
-selected_items = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)""",
             "variables": [
                 {
@@ -526,17 +568,24 @@ def knapsack_gurobi(values, weights, W):
     # Solve the model
     m.optimize()
 
-    # Extract the solution
-    selected_items = [i for i in range(n) if x[i].X > 0.5]
+    # Check if a feasible solution was found
+    if m.status == GRB.OPTIMAL:
+        # Extract the solution
+        selected_items = [i for i in range(n) if x[i].X > 0.5]
+        objective_value = m.ObjVal
+    else:
+        print("No feasible solution found")
+        selected_items = []
+        objective_value = None
 
-    return selected_items
+    return selected_items, objective_value
 
 
 # Data
 values = {values}
 weights = {weights}
 W = {capacity}
-selected_items = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)""",
             "variables": [
                 {
@@ -603,10 +652,17 @@ def knapsack_gurobi(values, weights, W, volumes, volume_limit):
     # Solve the model
     m.optimize()
 
-    # Extract the solution
-    selected_items = [i for i in range(n) if x[i].X > 0.5]
+    # Check if a feasible solution was found
+    if m.status == GRB.OPTIMAL:
+        # Extract the solution
+        selected_items = [i for i in range(n) if x[i].X > 0.5]
+        objective_value = m.ObjVal
+    else:
+        print("No feasible solution found")
+        selected_items = []
+        objective_value = None
 
-    return selected_items
+    return selected_items, objective_value
 
 
 # Data
@@ -615,7 +671,7 @@ weights = {weights}
 volumes = {volumes}  
 volume_limit = {volume_limit}
 W = {capacity}
-selected_items = knapsack_gurobi(values, weights, W, volumes, volume_limit)
+selected_items, objective_value = knapsack_gurobi(values, weights, W, volumes, volume_limit)
 print(selected_items)""",
             "variables": [
                 {
@@ -691,10 +747,17 @@ def knapsack_gurobi(values, weights, W, time_costs, time_limit):
     # Solve the model
     m.optimize()
 
-    # Extract the solution
-    selected_items = [i for i in range(n) if x[i].X > 0.5]
+    # Check if a feasible solution was found
+    if m.status == GRB.OPTIMAL:
+        # Extract the solution
+        selected_items = [i for i in range(n) if x[i].X > 0.5]
+        objective_value = m.ObjVal
+    else:
+        print("No feasible solution found")
+        selected_items = []
+        objective_value = None
 
-    return selected_items
+    return selected_items, objective_value
 
 
 # Data
@@ -703,7 +766,7 @@ weights = {weights}
 time_costs = {time_costs}
 time_limit = {time_limit}
 W = {capacity}
-selected_items = knapsack_gurobi(values, weights, W, time_costs, time_limit)
+selected_items, objective_value = knapsack_gurobi(values, weights, W, time_costs, time_limit)
 print(selected_items)""",
             "variables": [
                 {
@@ -780,17 +843,24 @@ def knapsack_gurobi(values, weights, W):
     # Solve the model
     m.optimize()
 
-    # Extract the solution
-    selected_items = [i for i in range(n) if x[i].X > 0.5]
+    # Check if a feasible solution was found
+    if m.status == GRB.OPTIMAL:
+        # Extract the solution
+        selected_items = [i for i in range(n) if x[i].X > 0.5]
+        objective_value = m.ObjVal
+    else:
+        print("No feasible solution found")
+        selected_items = []
+        objective_value = None
 
-    return selected_items
+    return selected_items, objective_value
 
 
 # Data
 values = {values}
 weights = {weights}
 W = {capacity}
-selected_items = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)""",
             "variables": [
                 {

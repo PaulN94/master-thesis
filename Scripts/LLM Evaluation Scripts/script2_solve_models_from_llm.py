@@ -38,11 +38,13 @@ def run_code_and_get_output(code):
         # Execute the provided code
         exec(code, exec_globals)
         # Try to get the 'selected_items' from the executed code's namespace
-        solver_output = exec_globals.get('selected_items', 'No result')
-        return str(solver_output)
+        selected_items = exec_globals.get('selected_items', 'No result')
+        # Try to get the 'objective_value' from the executed code's namespace and convert it to a string
+        objective_value = str(exec_globals.get('objective_value', 'No result'))
+        return str(selected_items), objective_value  # Return both selected_items and objective_value as strings
     except Exception as e:
-        # If there's an error during execution, return the error message
-        return f'Error: {e}'
+        # If there's an error during execution, return the error message and a string 'None' for objective_value
+        return f'Error: {e}', 'None'
 
 # Path to the directory where the script is located
 script_directory = os.path.dirname(os.path.abspath(__file__))
@@ -72,10 +74,12 @@ for variation in data['variations']:
     preprocessed_code = preprocess_code(llm_code)
     # Store the preprocessed code in the variation
     variation['llm_model_preprocessed'] = preprocessed_code
-    # Execute the code and get the solver's output
-    solver_output = run_code_and_get_output(preprocessed_code)
+    # Execute the code and get the solver's output and objective value
+    solver_output, llm_objective_value = run_code_and_get_output(preprocessed_code)
     # Store the output in the variation
     variation['llm_optimum'] = solver_output
+    # Store the objective value in the variation
+    variation['llm_objective_value'] = llm_objective_value
 
 # Save the processed data to the output file
 with open(output_filename, 'w') as f:

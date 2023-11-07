@@ -1,6 +1,5 @@
 from gurobipy import Model, GRB
 
-
 def knapsack_gurobi(values, weights, W):
     # Number of items
     n = len(values)
@@ -20,16 +19,21 @@ def knapsack_gurobi(values, weights, W):
     # Solve the model
     m.optimize()
 
-    # Extract the solution
-    selected_items = [i for i in range(n) if x[i].X > 0.5]
+    # Check if a feasible solution was found
+    if m.status == GRB.OPTIMAL:
+        # Extract the solution
+        selected_items = [i for i in range(n) if x[i].X > 0.5]
+        objective_value = m.ObjVal
+    else:
+        print("No feasible solution found")
+        selected_items = []
+        objective_value = None
 
-    return selected_items
-
+    return selected_items, objective_value
 
 # Data
-# The indices start at 0.
 values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
 weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
 W = 20
-selected_items = knapsack_gurobi(values, weights, W)
-print(selected_items)
+
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
