@@ -26,13 +26,15 @@ output_filepath = os.path.join(script_directory, f'JSON6_evaluated_{model_number
 with open(input_filepath, 'r') as f:
     data = json.load(f)
 
-# Loop through each entry and compare 'solver_output' and 'llm_optimum'
+# Loop through each entry and compare 'solver_output', 'llm_output', 'objective_value', and 'llm_objective_value'
 for entry in data['variations']:
     solver_output = entry['solver_output']
-    llm_optimum = entry['llm_optimum']
+    llm_output = entry['llm_output']
+    objective_value = entry.get('objective_value')  # Use .get() to avoid KeyError if the key doesn't exist
+    llm_objective_value = entry.get('llm_objective_value')
 
     # Add the 'correct' field based on the comparison
-    entry['correct'] = (solver_output == llm_optimum)
+    entry['correct'] = (solver_output == llm_output) and (objective_value == llm_objective_value)
 
 # Save the updated data to the output JSON6 file
 with open(output_filepath, 'w') as f:
