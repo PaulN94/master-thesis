@@ -1,6 +1,5 @@
 from gurobipy import Model, GRB
 
-
 def knapsack_gurobi(values, weights, W):
     # Number of items
     n = len(values)
@@ -15,8 +14,7 @@ def knapsack_gurobi(values, weights, W):
     m.setObjective(sum(values[i] * x[i] for i in range(n)), GRB.MAXIMIZE)
 
     # Weight constraint
-    m.addConstr(sum(weights[i] * x[i]
-                for i in range(n)) <= W, "weight_constraint")
+    m.addConstr(sum(weights[i] * x[i] for i in range(n)) <= W, "weight_constraint")
 
     # Solve the model
     m.optimize()
@@ -35,11 +33,9 @@ def knapsack_gurobi(values, weights, W):
 
     return selected_items, objective_value, model_fingerprint
 
-
 # Data
 values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
 weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
-W = 20
+W = 5
 
-selected_items, objective_value, fingerprint = knapsack_gurobi(
-    values, weights, W)
+selected_items, objective_value, fingerprint = knapsack_gurobi(values, weights, W)
