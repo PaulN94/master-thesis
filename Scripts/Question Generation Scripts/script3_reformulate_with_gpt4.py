@@ -35,7 +35,7 @@ def reformulate_question(question, reformulated_hashes, task_num):
         while not success and api_retries < MAX_API_RETRIES:
             try:
                 response = openai.ChatCompletion.create(
-                    model="gpt-4",
+                    model="gpt-4-1106-preview",
                     messages=[
                         {"role": "system", "content": system_prompt},
                         {"role": "user", "content": question},
