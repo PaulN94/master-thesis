@@ -66,7 +66,7 @@ input_json_filename = os.path.join(
 
 # Construct system message and output filename based on task number
 if task_number == "1":
-    system_message = "Based on the user's description, please construct a complete, executable Python optimization model that utilizes the Gurobi solver. The output of the Python model should be the selected items' indices as a list. Your response should ONLY contain the complete and executable Python model. Do NOT include any explanations, introductions, partial sections, or excerpts. The answer should strictly consist of the full model in its entirety, ready for direct execution."
+    system_message = "Based on the user's description, please construct a complete, executable Python optimization model that utilizes the Gurobi solver. The output of the Python model should be: the selected items' indices as a list (called selected_items), the objective value (called objective_value), and the model fingerprint (called fingerprint). Your response should ONLY contain the complete and executable Python model. Do NOT include any explanations, introductions, partial sections, or excerpts. The answer should strictly consist of the full model in its entirety, ready for direct execution."
     if icl_number > 0:
         system_message += "\n\nHere are some example questions and their correct codes:\n— EXAMPLES —\n\n{selected_examples}\n\n—"
     log_message = "Model {} built"

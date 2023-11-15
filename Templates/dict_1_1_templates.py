@@ -687,7 +687,7 @@ weights = {weights}
 volumes = {volumes}  
 volume_limit = {volume_limit}
 W = {capacity}
-selected_items, objective_value = knapsack_gurobi(values, weights, W, volumes, volume_limit)
+selected_items, objective_value, model_fingerprint = knapsack_gurobi(values, weights, W, volumes, volume_limit)
 print(selected_items)""",
             "variables": [
                 {
@@ -784,7 +784,7 @@ weights = {weights}
 time_costs = {time_costs}
 time_limit = {time_limit}
 W = {capacity}
-selected_items, objective_value = knapsack_gurobi(values, weights, W, time_costs, time_limit)
+selected_items, objective_value, model_fingerprint = knapsack_gurobi(values, weights, W, time_costs, time_limit)
 print(selected_items)""",
             "variables": [
                 {

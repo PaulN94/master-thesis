@@ -182,7 +182,7 @@ print(selected_items)
         },
         {
             "id": "1.2.4",
-            "question_template": "Reformulate the optimization model to include an L1 regularization with a penalty term of {lambda_value} for each selected item.",
+            "question_template": "Reformulate the optimization model to include a penalty term of {lambda_value} for each selected item.",
             "answer_template": """from gurobipy import Model, GRB
 
 
@@ -231,8 +231,8 @@ print(selected_items)
             "variables": [
                 {
                     "name": "lambda_value",
-                    "type": "float",
-                    "range": [1.0, 10.0]
+                    "type": "int",
+                    "range": [1, 10]
                 }
             ]
         },
@@ -299,8 +299,8 @@ print(selected_items)
                 },
                 {
                     "name": "add_value",
-                    "type": "float",
-                    "range": [10.0, 20.0]
+                    "type": "int",
+                    "range": [10, 20]
                 }
             ]
         },
@@ -355,7 +355,7 @@ print(selected_items)
             "variables": [
                 {
                     "name": "penalty",
-                    "type": "float",
+                    "type": "int",
                     "range": [5, 15]
                 }
             ]
