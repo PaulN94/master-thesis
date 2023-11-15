@@ -40,7 +40,8 @@ def reformulate_question(question, reformulated_hashes, task_num):
                         {"role": "system", "content": system_prompt},
                         {"role": "user", "content": question},
                     ],
-                    temperature= 0.7
+                    temperature= 0.7,
+                    seed = 1234
                 )
                 reformulated_question = response['choices'][0]['message']['content']
                 success = True  # if no exception, mark as success
