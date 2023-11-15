@@ -46,8 +46,8 @@ for variation in data['variations']:
     answer_code = variation['answer_variation']
     solver_output, objective_value, fingerprint = run_code_and_get_output(answer_code)
     variation['solver_output'] = solver_output
-    variation['objective_value'] = objective_value # Add objective value to the variation
-    variation['true_model_fingerprint'] = fingerprint # Add fingerprint to the variation
+    variation['objective_value'] = objective_value
+    variation['gurobi_true_model_fingerprint'] = fingerprint 
 
 # Write new JSON file with solver outputs
 with open(output_file_name, 'w') as f:

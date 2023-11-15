@@ -54,7 +54,7 @@ for variation in data['variations']:
     solver_output, llm_objective_value, fingerprint = run_code_and_get_output(preprocessed_code)
     variation['llm_optimum'] = solver_output
     variation['llm_objective_value'] = llm_objective_value
-    variation['llm_model_fingerprint'] = fingerprint
+    variation['gurobi_llm_model_fingerprint'] = fingerprint
 
 # Save the processed data
 with open(output_filename, 'w') as f:

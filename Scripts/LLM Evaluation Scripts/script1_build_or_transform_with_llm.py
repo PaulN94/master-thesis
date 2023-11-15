@@ -5,19 +5,19 @@ from dotenv import load_dotenv
 import random
 import time
 
-# Define the maximum number of retries for API calls (for one entry)
-MAX_RETRIES = 5
-
 # Load environment variables from .env file
 load_dotenv()
 
-# Retrieve API key from environment variables
-api_key = os.getenv("OPENAI_API_KEY")
-openai.api_key = api_key
+# Retrieve API keys from environment variables
+openai_api_key = os.getenv("OPENAI_API_KEY")
+deepinfra_api_key = os.getenv("DEEPINFRA_API_KEY")
+
+# Define the maximum number of retries for API calls (for one entry)
+MAX_RETRIES = 5
 
 # Define a function to construct an example from an entry
 def get_example(entry):
-    """Construct an example from an entry."""
+    # Construct an example from an entry
     question = "Question:\n" + entry["question_variation"]
     answer = "Code:\n" + entry["answer_variation"]
     return f"{question}\n\n{answer}\n"
@@ -50,9 +50,12 @@ llms_number = settings["llms"].split(":")[0][-1]
 
 # Check if the LLM is Codellama to change the API key and base URL
 if llms_number == "3":
-    openai.api_key = os.getenv("DEEPINFRA_API_KEY")
-    openai.api_base = "https://api.deepinfra.com/v1/openai"
+    # Update the client with Codellama's API base URL and DEEPINFRA_API_KEY
+    client = openai.OpenAI(api_key=deepinfra_api_key, api_base="https://api.deepinfra.com/v1/openai")
     llms_model = "codellama/CodeLlama-34b-Instruct-hf"
+else:
+    # Use the standard OPENAI_API_KEY for other models
+    client = openai.OpenAI(api_key=openai_api_key)
 
 # Construct folder names and input JSON filename based on the extracted details
 model_folder_name = model_desc.strip().split(
@@ -125,6 +128,7 @@ for i, variation in enumerate(data['variations']):
     for msg in user_messages:
         print(f"  Role: {msg['role']}")
         print(f"  Content:\n    {msg['content']}\n")
+    print("Entry ID:", entry_id)
     print("------------------------\n")
 
     # Call the OpenAI API with error handling and retry
@@ -132,27 +136,29 @@ for i, variation in enumerate(data['variations']):
     success = False
     while not success and retries < MAX_RETRIES:
         try:
-            response = openai.ChatCompletion.create(
-                model=llms_model,
-                messages=user_messages,
-                temperature=0,
-                seed = 1234
-            )
+            response = client.chat.completions.create(model=llms_model,
+                                                      messages=user_messages,
+                                                      temperature=0,
+                                                      seed=1234)
             success = True  # if no exception, mark as success
-        # list all exceptions you want to catch
-        except (openai.error.Timeout, openai.error.APIError) as e:
-            print(f"Error {e} occurred, retrying in 1 min...")
+        except openai.APIError as e:
+            print(f"OpenAI API returned an API Error: {e}, retrying in 1 min...")
             retries += 1
-            time.sleep(60)  # wait for 1 min
+            time.sleep(60)
 
     if not success:
-        print(
-            f"Failed to process entry {entry_id} after {MAX_RETRIES} attempts.")
+        print(f"Failed to process entry {entry_id} after {MAX_RETRIES} attempts.")
         continue  # skip the rest of the loop iteration
 
     # Process the API response and update the data
-    llm_model_response = response['choices'][0]['message']['content']
+    llm_model_response = response.choices[0].message.content
+    # Capture the system fingerprint
+    system_fingerprint = response.system_fingerprint
+
     data['variations'][i]['llm_model'] = llm_model_response
+    # Store the system fingerprint
+    data['variations'][i]['openai_system_fingerprint_build_transform'] = system_fingerprint
+
     if example_ids:
         data['variations'][i]['icl_example_ids'] = example_ids
 
