@@ -51,7 +51,7 @@ llms_number = settings["llms"].split(":")[0][-1]
 # Check if the LLM is Codellama to change the API key and base URL
 if llms_number == "3":
     # Update the client with Codellama's API base URL and DEEPINFRA_API_KEY
-    client = openai.OpenAI(api_key=deepinfra_api_key, api_base="https://api.deepinfra.com/v1/openai")
+    client = openai.OpenAI(api_key=deepinfra_api_key, base_url="https://api.deepinfra.com/v1/openai")
     llms_model = "codellama/CodeLlama-34b-Instruct-hf"
 else:
     # Use the standard OPENAI_API_KEY for other models
