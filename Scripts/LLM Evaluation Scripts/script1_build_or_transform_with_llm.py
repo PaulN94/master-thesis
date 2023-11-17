@@ -145,6 +145,10 @@ for i, variation in enumerate(data['variations']):
             print(f"OpenAI API returned an API Error: {e}, retrying in 1 min...")
             retries += 1
             time.sleep(60)
+        except Exception as e:  # Catching any other unexpected exceptions
+            print(f"Unexpected error: {e}, retrying in 1 min...")
+            retries += 1
+            time.sleep(60)    
 
     if not success:
         print(f"Failed to process entry {entry_id} after {MAX_RETRIES} attempts.")
