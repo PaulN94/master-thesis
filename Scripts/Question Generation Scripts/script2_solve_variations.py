@@ -12,9 +12,8 @@ def run_code_and_get_output(code):
         # Extract solver output from the global environment
         solver_output = exec_globals.get('selected_items', 'No result')
         objective_value = exec_globals.get('objective_value', 'No objective value') # Capture objective value
-        fingerprint = exec_globals.get('fingerprint', 'No fingerprint') # Capture fingerprint if available
 
-        return str(solver_output), str(objective_value), str(fingerprint)
+        return str(solver_output), str(objective_value)
 
     except Exception as e:
         return f'Error: {e}', 'Error', 'Error'
@@ -44,10 +43,9 @@ with open(input_file_name, 'r') as f:
 # Run Python code for each variation
 for variation in data['variations']:
     answer_code = variation['answer_variation']
-    solver_output, objective_value, fingerprint = run_code_and_get_output(answer_code)
+    solver_output, objective_value = run_code_and_get_output(answer_code)
     variation['solver_output'] = solver_output
     variation['objective_value'] = objective_value
-    variation['gurobi_true_model_fingerprint'] = fingerprint 
 
 # Write new JSON file with solver outputs
 with open(output_file_name, 'w') as f:

@@ -25,14 +25,13 @@ def get_model_task_numbers(settings_path):
     return llms_number, model_number, task_number
 
 def run_code_and_get_output(code):
-    # Executes the given code and captures the output, objective value, and fingerprint
+    # Executes the given code and captures the output, and objective value
     try:
         exec_globals = {}
         exec(code, exec_globals)
         selected_items = exec_globals.get('selected_items', 'No result')
         objective_value = str(exec_globals.get('objective_value', 'No result'))
-        fingerprint = str(exec_globals.get('fingerprint', 'No fingerprint'))
-        return str(selected_items), objective_value, fingerprint
+        return str(selected_items), objective_value
     except Exception as e:
         return f'Error: {e}', 'None', 'Error'
 
@@ -51,10 +50,9 @@ for variation in data['variations']:
     llm_code = variation['llm_model']
     preprocessed_code = preprocess_code(llm_code)
     variation['llm_model_preprocessed'] = preprocessed_code
-    solver_output, llm_objective_value, fingerprint = run_code_and_get_output(preprocessed_code)
+    solver_output, llm_objective_value = run_code_and_get_output(preprocessed_code)
     variation['llm_optimum'] = solver_output
     variation['llm_objective_value'] = llm_objective_value
-    variation['gurobi_llm_model_fingerprint'] = fingerprint
 
 # Save the processed data
 with open(output_filename, 'w') as f:

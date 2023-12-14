@@ -22,7 +22,6 @@ def reformulate_question(question, reformulated_hashes, task_num):
     unique_reformulation = False
     reformulated_question = ""
     reformulation_hash = ""
-    system_fingerprint = ""
     max_retries = 5
     retries = 0
     
@@ -45,7 +44,6 @@ def reformulate_question(question, reformulated_hashes, task_num):
                 temperature= 0.7,
                 )
                 reformulated_question = response.choices[0].message.content
-                system_fingerprint = response.system_fingerprint  # Capture the system fingerprint
                 success = True  # if no exception, mark as success
             except openai.OpenAIError as e:
                 print(f"Error {e} occurred, retrying in 1 min...")
@@ -58,7 +56,7 @@ def reformulate_question(question, reformulated_hashes, task_num):
 
         if not success:
             print(f"Warning: Couldn't call OpenAI API for '{question}' after {MAX_API_RETRIES} attempts.")
-            return reformulated_question, reformulation_hash, system_fingerprint  # early exit in case of persistent API failure
+            return reformulated_question, reformulation_hash  # early exit in case of persistent API failure
 
         reformulation_hash = compute_sha256(reformulated_question)
         if reformulation_hash not in reformulated_hashes:
@@ -71,7 +69,7 @@ def reformulate_question(question, reformulated_hashes, task_num):
     if not unique_reformulation:
         print(f"Warning: Couldn't get a unique reformulation for '{question}' after {max_retries} attempts.")
 
-    return reformulated_question, reformulation_hash, system_fingerprint
+    return reformulated_question, reformulation_hash
 
 # Get the directory of the currently executing script
 script_directory = os.path.dirname(os.path.abspath(__file__))
@@ -109,10 +107,9 @@ for variation in data["variations"]:
         new_variation = variation.copy()
         new_id = f"{variation['id']}.{i}"
         new_variation["id"] = new_id
-        new_question, new_hash, system_fingerprint = reformulate_question(variation['question_variation'], reformulated_hashes, int(task_number))
+        new_question, new_hash = reformulate_question(variation['question_variation'], reformulated_hashes, int(task_number))
         new_variation["question_reformulation"] = new_question
         new_variation["reformulation_hash"] = new_hash
-        new_variation["openai_system_fingerprint_reformulation"] = system_fingerprint
         output_data["variations"].append(new_variation)
 
 # Save to a new JSON file

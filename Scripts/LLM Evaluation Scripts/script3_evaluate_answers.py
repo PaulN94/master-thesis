@@ -26,14 +26,14 @@ output_filepath = os.path.join(script_directory, f'JSON6_evaluated_{model_number
 with open(input_filepath, 'r') as f:
     data = json.load(f)
 
-# Loop through each entry and compare 'true_model_fingerprint' and 'llm_model_fingerprint'
+# Loop through each entry and compare the objective values and solver outputs
 for entry in data['variations']:
     llm_objective_value = entry.get('llm_objective_value')
     objective_value = entry.get('objective_value')
     solver_output = entry.get('solver_output')
     llm_optimum = entry.get('llm_optimum')
 
-    # Add the 'correct' field based on the comparison of fingerprints and the new conditions
+    # Add the 'correct' field based on the comparison
     entry['correct'] = (llm_objective_value == objective_value) and (solver_output == llm_optimum)
 
 # Save the updated data to the output JSON6 file

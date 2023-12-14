@@ -30,21 +30,19 @@ def knapsack_gurobi(values, weights, W):
         # Extract the solution
         selected_items = [i for i in range(n) if x[i].X > 0.5]
         objective_value = m.ObjVal
-        model_fingerprint = hex(m.Fingerprint & 0xFFFFFFFF)
     else:
         print("No feasible solution found")
         selected_items = []
         objective_value = None
-        model_fingerprint = None
 
-    return selected_items, objective_value, model_fingerprint
+    return selected_items, objective_value
 
 
 # Data
 values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
 weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
 W = {W}
-selected_items, objective_value, fingerprint = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
             "answer_template_section": "W = {W}",
@@ -86,14 +84,12 @@ def knapsack_gurobi(values, weights, W):
         # Extract the solution
         selected_items = [i for i in range(n) if x[i].X > 0.5]
         objective_value = m.ObjVal
-        model_fingerprint = hex(m.Fingerprint & 0xFFFFFFFF)
     else:
         print("No feasible solution found")
         selected_items = []
         objective_value = None
-        model_fingerprint = None
 
-    return selected_items, objective_value, model_fingerprint
+    return selected_items, objective_value
 
 
 # Data
@@ -101,7 +97,7 @@ values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
 weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
 weights[{n}] = {weight}
 W = 20
-selected_items, objective_value, fingerprint = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
             "answer_template_section": "weights[{n}] = {weight}",
@@ -148,14 +144,12 @@ def knapsack_gurobi(values, weights, W):
         # Extract the solution
         selected_items = [i for i in range(n) if x[i].X > 0.5]
         objective_value = m.ObjVal
-        model_fingerprint = hex(m.Fingerprint & 0xFFFFFFFF)
     else:
         print("No feasible solution found")
         selected_items = []
         objective_value = None
-        model_fingerprint = None
 
-    return selected_items, objective_value, model_fingerprint
+    return selected_items, objective_value
 
 
 # Data
@@ -163,7 +157,7 @@ values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
 values[{n}] = {value}
 weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
 W = 20
-selected_items, objective_value, fingerprint = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
             "answer_template_section": "values[{n}] = {value}",
@@ -210,21 +204,19 @@ def knapsack_gurobi(values, weights, W):
         # Extract the solution
         selected_items = [i for i in range(n) if x[i].X > 0.5]
         objective_value = m.ObjVal
-        model_fingerprint = hex(m.Fingerprint & 0xFFFFFFFF)
     else:
         print("No feasible solution found")
         selected_items = []
         objective_value = None
-        model_fingerprint = None
 
-    return selected_items, objective_value, model_fingerprint
+    return selected_items, objective_value
 
 
 # Data
 values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
 weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
 W = 20
-selected_items, objective_value, fingerprint = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
             "answer_template_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - {lambda_value} * sum(x[i] for i in range(n)), GRB.MAXIMIZE)",
@@ -266,21 +258,19 @@ def knapsack_gurobi(values, weights, W):
         # Extract the solution
         selected_items = [i for i in range(n) if x[i].X > 0.5]
         objective_value = m.ObjVal
-        model_fingerprint = hex(m.Fingerprint & 0xFFFFFFFF)
     else:
         print("No feasible solution found")
         selected_items = []
         objective_value = None
-        model_fingerprint = None
 
-    return selected_items, objective_value, model_fingerprint
+    return selected_items, objective_value
 
 
 # Data
 values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
 weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
 W = 20
-selected_items, objective_value, fingerprint = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
             "answer_template_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) + {add_value} * x[{item_1}] * x[{item_2}], GRB.MAXIMIZE)",
@@ -334,21 +324,19 @@ def knapsack_gurobi(values, weights, W):
         # Extract the solution
         selected_items = [i for i in range(n) if x[i].X > 0.5]
         objective_value = m.ObjVal
-        model_fingerprint = hex(m.Fingerprint & 0xFFFFFFFF)
     else:
         print("No feasible solution found")
         selected_items = []
         objective_value = None
-        model_fingerprint = None
 
-    return selected_items, objective_value, model_fingerprint
+    return selected_items, objective_value
 
 
 # Data
 values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
 weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
 W = 20
-selected_items, objective_value, fingerprint = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
             "answer_template_section": "m.setObjective(sum(values[i] * x[i] for i in range(n)) - {penalty} * sum(x[i] for i in range(2, n)), GRB.MAXIMIZE)",
@@ -393,21 +381,19 @@ def knapsack_gurobi(values, weights, W):
         # Extract the solution
         selected_items = [i for i in range(n) if x[i].X > 0.5]
         objective_value = m.ObjVal
-        model_fingerprint = hex(m.Fingerprint & 0xFFFFFFFF)
     else:
         print("No feasible solution found")
         selected_items = []
         objective_value = None
-        model_fingerprint = None
 
-    return selected_items, objective_value, model_fingerprint
+    return selected_items, objective_value
 
 
 # Data
 values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
 weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
 W = 20
-selected_items, objective_value, fingerprint = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
             "answer_template_section": "m.addConstr(sum(x[i] for i in range(n)) >= {min_items})",
@@ -452,21 +438,19 @@ def knapsack_gurobi(values, weights, W):
         # Extract the solution
         selected_items = [i for i in range(n) if x[i].X > 0.5]
         objective_value = m.ObjVal
-        model_fingerprint = hex(m.Fingerprint & 0xFFFFFFFF)
     else:
         print("No feasible solution found")
         selected_items = []
         objective_value = None
-        model_fingerprint = None
 
-    return selected_items, objective_value, model_fingerprint
+    return selected_items, objective_value
 
 
 # Data
 values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
 weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
 W = 20
-selected_items, objective_value, fingerprint = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
             "answer_template_section": "m.addConstr(x[{item_1}] == 1",
@@ -511,21 +495,19 @@ def knapsack_gurobi(values, weights, W):
         # Extract the solution
         selected_items = [i for i in range(n) if x[i].X > 0.5]
         objective_value = m.ObjVal
-        model_fingerprint = hex(m.Fingerprint & 0xFFFFFFFF)
     else:
         print("No feasible solution found")
         selected_items = []
         objective_value = None
-        model_fingerprint = None
 
-    return selected_items, objective_value, model_fingerprint
+    return selected_items, objective_value
 
 
 # Data
 values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
 weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
 W = 20
-selected_items, objective_value, fingerprint = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
             "answer_template_section": "m.addConstr(sum(x[i] for i in range(n)) <= {max_items})",
@@ -570,21 +552,19 @@ def knapsack_gurobi(values, weights, W):
         # Extract the solution
         selected_items = [i for i in range(n) if x[i].X > 0.5]
         objective_value = m.ObjVal
-        model_fingerprint = hex(m.Fingerprint & 0xFFFFFFFF)
     else:
         print("No feasible solution found")
         selected_items = []
         objective_value = None
-        model_fingerprint = None
 
-    return selected_items, objective_value, model_fingerprint
+    return selected_items, objective_value
 
 
 # Data
 values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
 weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
 W = 20
-selected_items, objective_value, fingerprint = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack_gurobi(values, weights, W)
 print(selected_items)
             """,
             "answer_template_section": "m.addConstr(x[{item_1}] + x[{item_2}] == 1)",
