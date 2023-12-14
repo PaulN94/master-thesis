@@ -1,5 +1,6 @@
 .env
 
+/.vscode/
 /LLM Evaluations/
 /Question Generation/
 /.Preliminary Testing/

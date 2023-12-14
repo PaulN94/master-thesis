@@ -28,11 +28,13 @@ with open(input_filepath, 'r') as f:
 
 # Loop through each entry and compare 'true_model_fingerprint' and 'llm_model_fingerprint'
 for entry in data['variations']:
-    true_model_fingerprint = entry.get('true_model_fingerprint')
-    llm_model_fingerprint = entry.get('llm_model_fingerprint')
+    llm_objective_value = entry.get('llm_objective_value')
+    objective_value = entry.get('objective_value')
+    solver_output = entry.get('solver_output')
+    llm_optimum = entry.get('llm_optimum')
 
-    # Add the 'correct' field based on the comparison of fingerprints
-    entry['correct'] = (true_model_fingerprint == llm_model_fingerprint)
+    # Add the 'correct' field based on the comparison of fingerprints and the new conditions
+    entry['correct'] = (llm_objective_value == objective_value) and (solver_output == llm_optimum)
 
 # Save the updated data to the output JSON6 file
 with open(output_filepath, 'w') as f:
