@@ -33,7 +33,7 @@ def run_code_and_get_output(code):
         objective_value = str(exec_globals.get('objective_value', 'No result'))
         return str(selected_items), objective_value
     except Exception as e:
-        return f'Error: {e}', 'None', 'Error'
+        return f'Error: {e}', 'Error'
 
 # Directory and file paths setup
 script_directory = os.path.dirname(os.path.abspath(__file__))

@@ -1,12 +1,12 @@
 from gurobipy import Model, GRB
 
 
-def knapsack_gurobi(values, weights, W):
+def knapsack(values, weights, W):
     # Number of items
     n = len(values)
 
     # Create a new Gurobi model
-    m = Model("knapsack_transform")
+    m = Model("knapsack")
 
     # Decision variables
     x = m.addVars(n, vtype=GRB.BINARY, name="x")
@@ -39,5 +39,5 @@ values = [33, 22, 30, 10, 40, 15, 25, 50, 45, 35]
 weights = [5, 6, 8, 2, 7, 3, 4, 9, 8, 6]
 W = 20
 
-selected_items, objective_value = knapsack_gurobi(
+selected_items, objective_value = knapsack(
     values, weights, W)

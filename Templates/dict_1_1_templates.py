@@ -6,12 +6,12 @@ dict_1_1 = {
             "answer_template": """from gurobipy import Model, GRB
 
 
-def knapsack_gurobi(values, weights, W):
+def knapsack(values, weights, W):
     # Number of items
     n = len(values)
 
     # Create a new Gurobi model
-    m = Model("knapsack_transform")
+    m = Model("knapsack")
 
     # Decision variables
     x = m.addVars(n, vtype=GRB.BINARY, name="x")
@@ -42,7 +42,7 @@ def knapsack_gurobi(values, weights, W):
 values = {values}
 weights = {weights}
 W = {capacity}
-selected_items, objective_value = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack(values, weights, W)
 print(selected_items)""",
             "variables": [
                 {
@@ -98,12 +98,12 @@ print(selected_items)""",
             "answer_template": """from gurobipy import Model, GRB
 
 
-def knapsack_gurobi(values, weights, W):
+def knapsack(values, weights, W):
     # Number of items
     n = len(values)
 
     # Create a new Gurobi model
-    m = Model("knapsack_transform")
+    m = Model("knapsack")
 
     # Decision variables
     x = m.addVars(n, vtype=GRB.BINARY, name="x")
@@ -136,7 +136,7 @@ def knapsack_gurobi(values, weights, W):
 values = {values}
 weights = {weights}
 W = {capacity}
-selected_items, objective_value = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack(values, weights, W)
 print(selected_items)""",
             "variables": [
                 {
@@ -188,9 +188,9 @@ print(selected_items)""",
             "answer_template": """from gurobipy import Model, GRB
 
 
-def knapsack_gurobi(values, weights, W):
+def knapsack(values, weights, W):
     n = len(values)
-    m = Model("knapsack_transform")
+    m = Model("knapsack")
     x = m.addVars(n, vtype=GRB.BINARY, name="x")
 
     # Adjusting weights for item_1 selection
@@ -225,7 +225,7 @@ def knapsack_gurobi(values, weights, W):
 values = {values}
 weights = {weights}
 W = {capacity}
-selected_items, objective_value = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack(values, weights, W)
 print(selected_items)""",
             "variables": [
                 {
@@ -275,12 +275,12 @@ print(selected_items)""",
             "answer_template": """from gurobipy import Model, GRB
 
 
-def knapsack_gurobi(values, weights, W):
+def knapsack(values, weights, W):
     # Number of items
     n = len(values)
 
     # Create a new Gurobi model
-    m = Model("knapsack_transform")
+    m = Model("knapsack")
 
     # Decision variables
     x = m.addVars(n, vtype=GRB.BINARY, name="x")
@@ -316,7 +316,7 @@ def knapsack_gurobi(values, weights, W):
 values = {values}
 weights = {weights}
 W = {capacity}
-selected_items, objective_value = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack(values, weights, W)
 print(selected_items)""",
             "variables": [
                 {
@@ -366,12 +366,12 @@ print(selected_items)""",
             "answer_template": """from gurobipy import Model, GRB
 
 
-def knapsack_gurobi(values, weights, W):
+def knapsack(values, weights, W):
     # Number of items
     n = len(values)
 
     # Create a new Gurobi model
-    m = Model("knapsack_transform")
+    m = Model("knapsack")
 
     # Decision variables
     x = m.addVars(n, vtype=GRB.BINARY, name="x")
@@ -405,7 +405,7 @@ def knapsack_gurobi(values, weights, W):
 values = {values}
 weights = {weights}
 W = {capacity}
-selected_items, objective_value = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack(values, weights, W)
 print(selected_items)""",
             "variables": [
                 {
@@ -462,12 +462,12 @@ print(selected_items)""",
             "answer_template": """from gurobipy import Model, GRB
 
 
-def knapsack_gurobi(values, weights, W):
+def knapsack(values, weights, W):
     # Number of items
     n = len(values)
 
     # Create a new Gurobi model
-    m = Model("knapsack_transform")
+    m = Model("knapsack")
 
     # Decision variables
     x = m.addVars(n, vtype=GRB.BINARY, name="x")
@@ -501,7 +501,7 @@ def knapsack_gurobi(values, weights, W):
 values = {values}
 weights = {weights}
 W = {capacity}
-selected_items, objective_value = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack(values, weights, W)
 print(selected_items)""",
             "variables": [
                 {
@@ -546,12 +546,12 @@ print(selected_items)""",
             "answer_template": """from gurobipy import Model, GRB
 
 
-def knapsack_gurobi(values, weights, W):
+def knapsack(values, weights, W):
     # Number of items
     n = len(values)
 
     # Create a new Gurobi model
-    m = Model("knapsack_transform")
+    m = Model("knapsack")
 
     # Decision variables
     x = m.addVars(n, vtype=GRB.BINARY, name="x")
@@ -585,7 +585,7 @@ def knapsack_gurobi(values, weights, W):
 values = {values}
 weights = {weights}
 W = {capacity}
-selected_items, objective_value = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack(values, weights, W)
 print(selected_items)""",
             "variables": [
                 {
@@ -630,12 +630,12 @@ print(selected_items)""",
             "answer_template": """from gurobipy import Model, GRB
 
 
-def knapsack_gurobi(values, weights, W, volumes, volume_limit):
+def knapsack(values, weights, W, volumes, volume_limit):
     # Number of items
     n = len(values)
 
     # Create a new Gurobi model
-    m = Model("knapsack_transform")
+    m = Model("knapsack")
 
     # Decision variables
     x = m.addVars(n, vtype=GRB.BINARY, name="x")
@@ -671,7 +671,7 @@ weights = {weights}
 volumes = {volumes}  
 volume_limit = {volume_limit}
 W = {capacity}
-selected_items, objective_value = knapsack_gurobi(values, weights, W, volumes, volume_limit)
+selected_items, objective_value = knapsack(values, weights, W, volumes, volume_limit)
 print(selected_items)""",
             "variables": [
                 {
@@ -725,12 +725,12 @@ print(selected_items)""",
             "answer_template": """from gurobipy import Model, GRB
 
 
-def knapsack_gurobi(values, weights, W, time_costs, time_limit):
+def knapsack(values, weights, W, time_costs, time_limit):
     # Number of items
     n = len(values)
 
     # Create a new Gurobi model
-    m = Model("knapsack_transform")
+    m = Model("knapsack")
 
     # Decision variables
     x = m.addVars(n, vtype=GRB.BINARY, name="x")
@@ -766,7 +766,7 @@ weights = {weights}
 time_costs = {time_costs}
 time_limit = {time_limit}
 W = {capacity}
-selected_items, objective_value = knapsack_gurobi(values, weights, W, time_costs, time_limit)
+selected_items, objective_value = knapsack(values, weights, W, time_costs, time_limit)
 print(selected_items)""",
             "variables": [
                 {
@@ -820,12 +820,12 @@ print(selected_items)""",
             "answer_template": """from gurobipy import Model, GRB
 
 
-def knapsack_gurobi(values, weights, W):
+def knapsack(values, weights, W):
     # Number of items
     n = len(values)
 
     # Create a new Gurobi model
-    m = Model("knapsack_transform")
+    m = Model("knapsack")
 
     # Decision variables
     x = m.addVars(n, vtype=GRB.BINARY, name="x")
@@ -860,7 +860,7 @@ def knapsack_gurobi(values, weights, W):
 values = {values}
 weights = {weights}
 W = {capacity}
-selected_items, objective_value = knapsack_gurobi(values, weights, W)
+selected_items, objective_value = knapsack(values, weights, W)
 print(selected_items)""",
             "variables": [
                 {
