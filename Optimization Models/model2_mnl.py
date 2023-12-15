@@ -8,6 +8,9 @@ def mnl(utilities, revenues, k):
     # Create a new Gurobi model
     m = Model("mnl")
 
+    # Seed for reproducibility
+    m.setParam('Seed', 1234)
+
     # Decision variables
     x = m.addVars(N, vtype=GRB.BINARY, name="x")
     t = m.addVar(vtype=GRB.CONTINUOUS, name="t")
@@ -18,7 +21,7 @@ def mnl(utilities, revenues, k):
     # Assortment size constraint
     m.addConstr(quicksum(x[i] for i in range(N)) <= k, "AssortmentSize")
 
-    # Definition of t as the inverse of the sum in the denominator
+    # Definition of t as the inverse of the sum in the denominator (Charnes-Cooper transformation)
     m.addConstr(t * (1 + quicksum(np.exp(utilities[j]) * x[j] for j in range(N))) == 1, "t_definition")
 
     # NonConvex parameter setting

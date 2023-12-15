@@ -8,6 +8,9 @@ def knapsack(values, weights, W):
     # Create a new Gurobi model
     m = Model("knapsack")
 
+    # Seed for reproducibility
+    m.setParam('Seed', 1234)
+
     # Decision variables
     x = m.addVars(n, vtype=GRB.BINARY, name="x")
 

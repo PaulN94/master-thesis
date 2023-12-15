@@ -8,6 +8,9 @@ def apv(prices, attraction_values, visibility_parameters, T):
     # Create a new Gurobi model
     m = Model("apv")
 
+    # Seed for reproducibility
+    m.setParam('Seed', 1234)
+
     # Decision variables: whether product i is in the assortment S_t for customer t
     x = m.addVars(T, n_products, vtype=GRB.BINARY, name="x")
 
@@ -20,7 +23,7 @@ def apv(prices, attraction_values, visibility_parameters, T):
                        for t in range(T) for i in range(n_products))
     m.setObjective(revenue, GRB.MAXIMIZE)
 
-    # Constraints defining y[t] as the inverse of the sum in the denominator
+    # Constraints defining y[t] as the inverse of the sum in the denominator (to make it solvable by Gurobi)
     for t in range(T):
         m.addConstr(y[t] * (1 + quicksum(attraction_values[j] * x[t, j] for j in range(n_products))) == 1,
                     name=f"denom_inv_{t}")
@@ -55,14 +58,7 @@ visibility_parameters = [2, 3, 1, 2, 2] # Minimum number of customers to show ea
 T = 10  # Number of customers
 
 # Running the model
-selected_items, objective_value = apv(
-    prices, attraction_values, visibility_parameters, T)
-
-# Display results
-if objective_value is not None:
-    print(f"Objective Value (Total Expected Revenue): {objective_value}")
-    for t, assortment in enumerate(selected_items):
-        print(f"Customer {t+1}: {assortment}")
+selected_items, objective_value = apv(prices, attraction_values, visibility_parameters, T)
 
 print(selected_items)
 print(objective_value)
