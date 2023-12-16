@@ -144,7 +144,7 @@ data = {
     "optimization models": {
         "1": "Model1: Knapsack",
         "2": "Model2: MNL",
-        "3": "Model3: CAP"
+        "3": "Model3: APV"
     },
     "tasks": {
         "1": "Task1: Build",

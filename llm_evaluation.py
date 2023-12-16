@@ -168,7 +168,8 @@ data = {
     "llms": {
         "1": "LLM1: gpt-3.5-turbo-1106",
         "2": "LLM2: gpt-4-1106-preview",
-        "3": "LLM3: CodeLlama-34b-Instruct-hf"
+        "3": "LLM3: CodeLlama-34b-Instruct-hf",
+        "4": "LLM4: Gemini-Pro"
     },
     "optimization models": {
         "1": "Model1: Knapsack",
