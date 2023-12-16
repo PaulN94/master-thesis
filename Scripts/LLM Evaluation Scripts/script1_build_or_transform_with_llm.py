@@ -4,6 +4,7 @@ import json
 from dotenv import load_dotenv
 import random
 import time
+import google.generativeai as genai
 
 # Load environment variables from .env file
 load_dotenv()
@@ -11,6 +12,8 @@ load_dotenv()
 # Retrieve API keys from environment variables
 openai_api_key = os.getenv("OPENAI_API_KEY")
 deepinfra_api_key = os.getenv("DEEPINFRA_API_KEY")
+gemini_api_key = os.getenv("GEMINI_API_KEY")
+genai.configure(api_key=gemini_api_key)
 
 # Define the maximum number of retries for API calls (for one entry)
 MAX_RETRIES = 5
@@ -56,6 +59,23 @@ if llms_number == "3":
 else:
     # Use the standard OPENAI_API_KEY for other models
     client = openai.OpenAI(api_key=openai_api_key)
+
+# Gemni Pro function to be used instead of an API call to OpenAI
+def gemini_pro(prompt):
+    # Assuming the prompt is a list of dictionaries with 'role' and 'content' keys
+    formatted_contents = [{'text': message['content']} for message in prompt]
+
+    # Create a model
+    model = genai.GenerativeModel('gemini-pro')
+
+    # Generate content
+    response = model.generate_content(
+        formatted_contents,
+        generation_config=genai.types.GenerationConfig(
+            temperature=0)
+    )
+
+    return response.text
 
 # Construct folder names and input JSON filename based on the extracted details
 model_folder_name = model_desc.strip().split(
@@ -131,32 +151,37 @@ for i, variation in enumerate(data['variations']):
     print("Entry ID:", entry_id)
     print("------------------------\n")
 
-    # Call the OpenAI API with error handling and retry
-    retries = 0
-    success = False
-    while not success and retries < MAX_RETRIES:
-        try:
-            response = client.chat.completions.create(model=llms_model,
-                                                      messages=user_messages,
-                                                      temperature=0,
-                                                      seed=1234)
-            success = True  # if no exception, mark as success
-        except openai.APIError as e:
-            print(f"OpenAI API returned an API Error: {e}, retrying in 1 min...")
-            retries += 1
-            time.sleep(60)
-        except Exception as e:  # Catching any other unexpected exceptions
-            print(f"Unexpected error: {e}, retrying in 1 min...")
-            retries += 1
-            time.sleep(60)    
+    # Modify the API call section
+    if llms_number == "4":
+        # Use the gemini_pro function instead of making an API call with the OpenAI API
+        response_text = gemini_pro(user_messages)
+        llm_model_response = response_text 
+    else:
+        # Existing API call logic
+        retries = 0
+        success = False
+        while not success and retries < MAX_RETRIES:
+            try:
+                response = client.chat.completions.create(model=llms_model,
+                                                        messages=user_messages,
+                                                        temperature=0,
+                                                        seed=1234)
+                llm_model_response = response.choices[0].message.content  # Extracting content from OpenAI API response
+                success = True  # if no exception, mark as success
+            except openai.APIError as e:
+                print(f"OpenAI API returned an API Error: {e}, retrying in 1 min...")
+                retries += 1
+                time.sleep(60)
+            except Exception as e:  # Catching any other unexpected exceptions
+                print(f"Unexpected error: {e}, retrying in 1 min...")
+                retries += 1
+                time.sleep(60)    
 
-    if not success:
-        print(f"Failed to process entry {entry_id} after {MAX_RETRIES} attempts.")
-        continue  # skip the rest of the loop iteration
+        if not success:
+            print(f"Failed to process entry {entry_id} after {MAX_RETRIES} attempts.")
+            continue  # skip the rest of the loop iteration
 
     # Process the API response and update the data
-    llm_model_response = response.choices[0].message.content
-
     data['variations'][i]['llm_model'] = llm_model_response
 
     if example_ids:
