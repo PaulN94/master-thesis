@@ -28,7 +28,7 @@ def knapsack(values, weights, W):
     if m.status == GRB.OPTIMAL:
         # Extract the solution
         selected_items = [i for i in range(n) if x[i].X > 0.5]
-        objective_value = m.ObjVal
+        objective_value = round(m.ObjVal)
     else:
         print("No feasible solution found")
         selected_items = []
