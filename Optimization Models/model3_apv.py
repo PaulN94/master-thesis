@@ -14,24 +14,23 @@ def apv(prices, attraction_values, visibility_parameters, T):
     # Decision variables: whether product i is in the assortment S_t for customer t
     x = m.addVars(T, n_products, vtype=GRB.BINARY, name="x")
 
-    # New variables for the inverse of the denominator
+    # New variable for the inverse of the denominator in the objective function
     y = m.addVars(T, name="y")
 
     # Objective function: Maximize total expected revenue
     # Non-linear term replaced by y[t]
     revenue = quicksum(prices[i] * attraction_values[i] * x[t, i] * y[t]
-                       for t in range(T) for i in range(n_products))
+                       for t in range(T) for i in range(n_products))    
     m.setObjective(revenue, GRB.MAXIMIZE)
 
     # Constraints defining y[t] as the inverse of the sum in the denominator (to make it solvable by Gurobi)
     for t in range(T):
-        m.addConstr(y[t] * (1 + quicksum(attraction_values[j] * x[t, j] for j in range(n_products))) == 1,
-                    name=f"denom_inv_{t}")
+        m.addConstr(y[t] * (1 + quicksum(attraction_values[j] * x[t, j] for j in range(n_products))) == 1, "inverse_denominator")
 
     # Visibility constraints: each product i must be shown to at least visibility_parameters[i] customers
     for i in range(n_products):
         m.addConstr(quicksum(x[t, i] for t in range(T))
-                    >= visibility_parameters[i], name=f"vis_{i}")
+                    >= visibility_parameters[i], "visibility_constraint")
 
     # Solve the model
     m.setParam('NonConvex', 2)
@@ -59,6 +58,3 @@ T = 10  # Number of customers
 
 # Running the model
 selected_items, objective_value = apv(prices, attraction_values, visibility_parameters, T)
-
-print(selected_items)
-print(objective_value)
