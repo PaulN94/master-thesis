@@ -43,8 +43,9 @@ def mnl(utilities, prices, k):
     return selected_items, objective_value
 
 # Data
-utilities = [0.8, 1.2, 0.5, 1.0, 1.4]  # Utility for each product
-prices = [12, 18, 11, 15, 22] # Prices of each product
+utilities = [0.8, 1.2, 0.5, 1.0, 1.4, 1.1, 0.8, 0.9, 1.3, 1.5]  # Utility for each product
+prices = [12, 18, 11, 15, 22, 19, 16, 17, 21, 23] # Prices of each product
 k = 3  # Maximum number of items in the assortment
 
 selected_items, objective_value = mnl(utilities, prices, k)
+

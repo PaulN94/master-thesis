@@ -75,7 +75,7 @@ for template in dict_template['templates']:
         new_answer_section = answer_template_section
 
         # Define max_tries
-        max_tries = 100
+        max_tries = 1000
         current_try = 0        
 
         while True:  # infinite loop, will break out once conditions are met

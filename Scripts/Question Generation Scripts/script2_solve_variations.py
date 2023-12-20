@@ -16,7 +16,7 @@ def run_code_and_get_output(code):
         return str(solver_output), str(objective_value)
 
     except Exception as e:
-        return f'Error: {e}', 'Error', 'Error'
+        return f'Error: {e}', 'Error'
 
 # Get the directory of the currently executing script
 script_directory = os.path.dirname(os.path.abspath(__file__))

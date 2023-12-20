@@ -48,8 +48,8 @@ def mnl(utilities, prices, k):
     return selected_items, objective_value
 
 # Data
-utilities = [0.8, 1.2, 0.5, 1.0, 1.4]  # Utility for each product
-prices = [12, 18, 11, 15, 22] # Prices of each product
+utilities = [0.8, 1.2, 0.5, 1.0, 1.4, 1.1, 0.8, 0.9, 1.3, 1.5]  # Utility for each product
+prices = [12, 18, 11, 15, 22, 19, 16, 17, 21, 23] # Prices of each product
 k = {k}  # Maximum number of items in the assortment
 
 selected_items, objective_value = mnl(utilities, prices, k)""",
@@ -57,7 +57,7 @@ selected_items, objective_value = mnl(utilities, prices, k)""",
                 {
                     "name": "k",
                     "type": "int",
-                    "range": [1, 5]
+                    "range": [1, 10]
                 }
             ]
         },
@@ -109,9 +109,9 @@ def mnl(utilities, prices, k):
     return selected_items, objective_value
 
 # Data
-utilities = [0.8, 1.2, 0.5, 1.0, 1.4]  # Utility for each product
+utilities = [0.8, 1.2, 0.5, 1.0, 1.4, 1.1, 0.8, 0.9, 1.3, 1.5]  # Utility for each product
 utilities[{n}] = {utility} 
-prices = [12, 18, 11, 15, 22] # Prices of each product
+prices = [12, 18, 11, 15, 22, 19, 16, 17, 21, 23] # Prices of each product
 k = 3  # Maximum number of items in the assortment
 
 selected_items, objective_value = mnl(utilities, prices, k)""",
@@ -119,7 +119,7 @@ selected_items, objective_value = mnl(utilities, prices, k)""",
                 {
                     "name": "n",
                     "type": "int",
-                    "range": [0, 4]
+                    "range": [0, 9]
                 },
                 {
                     "name": "utility",
@@ -176,17 +176,22 @@ def mnl(utilities, prices, k):
     return selected_items, objective_value
 
 # Data
-utilities = [0.8, 1.2, 0.5, 1.0, 1.4]  # Utility for each product
-prices = [12, 18, 11, 15, 22] # Prices of each product
-prices[{n}] = {prices}
+utilities = [0.8, 1.2, 0.5, 1.0, 1.4, 1.1, 0.8, 0.9, 1.3, 1.5]  # Utility for each product
+prices = [12, 18, 11, 15, 22, 19, 16, 17, 21, 23] # Prices of each product
+prices[{n}] = {price}
 k = 3  # Maximum number of items in the assortment
 
 selected_items, objective_value = mnl(utilities, prices, k)""",
             "variables": [
                 {
-                    "name": "W",
+                    "name": "n",
                     "type": "int",
-                    "range": [2, 30]
+                    "range": [0, 9]
+                },
+                {
+                    "name": "price",
+                    "type": "int",
+                    "range": [10, 22]
                 }
             ]
         },
@@ -241,16 +246,16 @@ def mnl(utilities, prices, k):
     return selected_items, objective_value
 
 # Data
-utilities = [0.8, 1.2, 0.5, 1.0, 1.4]  # Utility for each product
-prices = [12, 18, 11, 15, 22] # Prices of each product
-k = 3  # Maximum number of items in the assortment
+utilities = [0.8, 1.2, 0.5, 1.0, 1.4, 1.1, 0.8, 0.9, 1.3, 1.5]  # Utility for each product
+prices = [12, 18, 11, 15, 22, 19, 16, 17, 21, 23] # Prices of each product
+k = 5  # Maximum number of items in the assortment
 
 selected_items, objective_value = mnl(utilities, prices, k)""",
             "variables": [
                 {
-                    "name": "W",
+                    "name": "min_products",
                     "type": "int",
-                    "range": [2, 30]
+                    "range": [0, 5]
                 }
             ]
         },
@@ -305,16 +310,16 @@ def mnl(utilities, prices, k):
     return selected_items, objective_value
 
 # Data
-utilities = [0.8, 1.2, 0.5, 1.0, 1.4]  # Utility for each product
-prices = [12, 18, 11, 15, 22] # Prices of each product
+utilities = [0.8, 1.2, 0.5, 1.0, 1.4, 1.1, 0.8, 0.9, 1.3, 1.5]  # Utility for each product
+prices = [12, 18, 11, 15, 22, 19, 16, 17, 21, 23] # Prices of each product
 k = 3  # Maximum number of items in the assortment
 
 selected_items, objective_value = mnl(utilities, prices, k)""",
             "variables": [
                 {
-                    "name": "W",
+                    "name": "product_1",
                     "type": "int",
-                    "range": [2, 30]
+                    "range": [0, 9]
                 }
             ]
         },
@@ -370,17 +375,17 @@ def mnl(utilities, prices, k):
     return selected_items, objective_value
 
 # Data
-utilities = [0.8, 1.2, 0.5, 1.0, 1.4]  # Utility for each product
-prices = [12, 18, 11, 15, 22] # Prices of each product
+utilities = [0.8, 1.2, 0.5, 1.0, 1.4, 1.1, 0.8, 0.9, 1.3, 1.5]  # Utility for each product
+prices = [12, 18, 11, 15, 22, 19, 16, 17, 21, 23] # Prices of each product
 k = 3  # Maximum number of items in the assortment
 
 selected_items, objective_value = mnl(utilities, prices, k)
 """,
             "variables": [
                 {
-                    "name": "W",
-                    "type": "int",
-                    "range": [2, 30]
+                    "name": "min_utility",
+                    "type": "float",
+                    "range": [0.5, 1.5]
                 }
             ]
         },
@@ -435,16 +440,23 @@ def mnl(utilities, prices, k):
     return selected_items, objective_value
 
 # Data
-utilities = [0.8, 1.2, 0.5, 1.0, 1.4]  # Utility for each product
-prices = [12, 18, 11, 15, 22] # Prices of each product
+utilities = [0.8, 1.2, 0.5, 1.0, 1.4, 1.1, 0.8, 0.9, 1.3, 1.5]  # Utility for each product
+prices = [12, 18, 11, 15, 22, 19, 16, 17, 21, 23] # Prices of each product
 k = 3  # Maximum number of items in the assortment
 
 selected_items, objective_value = mnl(utilities, prices, k)""",
             "variables": [
                 {
-                    "name": "W",
+                    "name": "product_1",
                     "type": "int",
-                    "range": [2, 30]
+                    "range": [0, 9],
+                    "uniqueID": "1"
+                },
+                {
+                    "name": "product_2",
+                    "type": "int",
+                    "range": [0, 9],
+                    "uniqueID": "1"
                 }
             ]
         },
@@ -496,16 +508,16 @@ def mnl(utilities, prices, k):
     return selected_items, objective_value
 
 # Data
-utilities = [0.8, 1.2, 0.5, 1.0, 1.4]  # Utility for each product
-prices = [12, 18, 11, 15, 22] # Prices of each product
+utilities = [0.8, 1.2, 0.5, 1.0, 1.4, 1.1, 0.8, 0.9, 1.3, 1.5]  # Utility for each product
+prices = [12, 18, 11, 15, 22, 19, 16, 17, 21, 23] # Prices of each product
 k = 3  # Maximum number of items in the assortment
 
 selected_items, objective_value = mnl(utilities, prices, k)""",
             "variables": [
                 {
-                    "name": "W",
+                    "name": "penalty",
                     "type": "int",
-                    "range": [2, 30]
+                    "range": [1, 5]
                 }
             ]
         },
@@ -557,16 +569,28 @@ def mnl(utilities, prices, k):
     return selected_items, objective_value
 
 # Data
-utilities = [0.8, 1.2, 0.5, 1.0, 1.4]  # Utility for each product
-prices = [12, 18, 11, 15, 22] # Prices of each product
+utilities = [0.8, 1.2, 0.5, 1.0, 1.4, 1.1, 0.8, 0.9, 1.3, 1.5]  # Utility for each product
+prices = [12, 18, 11, 15, 22, 19, 16, 17, 21, 23] # Prices of each product
 k = 3  # Maximum number of items in the assortment
 
 selected_items, objective_value = mnl(utilities, prices, k)""",
             "variables": [
                 {
-                    "name": "W",
+                    "name": "product_1",
                     "type": "int",
-                    "range": [2, 30]
+                    "range": [0, 9],
+                    "uniqueID": "1"
+                },
+                {
+                    "name": "product_2",
+                    "type": "int",
+                    "range": [0, 9],
+                    "uniqueID": "1"
+                },
+                {
+                    "name": "add_revenue",
+                    "type": "int",
+                    "range": [1, 20]
                 }
             ]
         },
@@ -618,16 +642,16 @@ def mnl(utilities, prices, k):
     return selected_items, objective_value
 
 # Data
-utilities = [0.8, 1.2, 0.5, 1.0, 1.4]  # Utility for each product
-prices = [12, 18, 11, 15, 22] # Prices of each product
+utilities = [0.8, 1.2, 0.5, 1.0, 1.4, 1.1, 0.8, 0.9, 1.3, 1.5]  # Utility for each product
+prices = [12, 18, 11, 15, 22, 19, 16, 17, 21, 23] # Prices of each product
 k = 3  # Maximum number of items in the assortment
 
 selected_items, objective_value = mnl(utilities, prices, k)""",
             "variables": [
                 {
-                    "name": "W",
+                    "name": "product_1",
                     "type": "int",
-                    "range": [2, 30]
+                    "range": [0, 9]
                 }
             ]
         }

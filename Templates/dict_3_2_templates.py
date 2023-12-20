@@ -56,9 +56,9 @@ def apv(prices, attraction_values, visibility_parameters, T):
 
 
 # Data
-prices = [20, 15, 40, 25, 50]  # Prices of products
-attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5]  # Attraction values for products
-visibility_parameters = [2, 3, 1, 2, 2] # Minimum number of customers to show each product
+prices = [20, 15, 40, 25, 50, 73, 52, 73, 60, 71] # Prices of products
+attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5, 0.6, 0.9, 0.6, 0.8, 0.7] # Attraction values for products
+visibility_parameters = [2, 3, 1, 2, 2, 3, 1, 2, 3, 1] # Minimum number of customers to show each product
 visibility_parameters[{n}] = {visibility}
 T = 10  # Number of customers
 
@@ -128,10 +128,10 @@ def apv(prices, attraction_values, visibility_parameters, T):
 
 
 # Data
-prices = [20, 15, 40, 25, 50]  # Prices of products
+prices = [20, 15, 40, 25, 50, 73, 52, 73, 60, 71] # Prices of products
 prices[{n}] = {price}
-attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5]  # Attraction values for products
-visibility_parameters = [2, 3, 1, 2, 2] # Minimum number of customers to show each product
+attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5, 0.6, 0.9, 0.6, 0.8, 0.7] # Attraction values for products
+visibility_parameters = [2, 3, 1, 2, 2, 3, 1, 2, 3, 1] # Minimum number of customers to show each product
 T = 10  # Number of customers
 
 # Running the model
@@ -200,10 +200,11 @@ def apv(prices, attraction_values, visibility_parameters, T):
 
 
 # Data
-prices = [20, 15, 40, 25, 50]  # Prices of products
-attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5]  # Attraction values for products
+
+prices = [20, 15, 40, 25, 50, 73, 52, 73, 60, 71] # Prices of products
+attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5, 0.6, 0.9, 0.6, 0.8, 0.7] # Attraction values for products
 attraction_values[{n}] = {attraction}
-visibility_parameters = [2, 3, 1, 2, 2] # Minimum number of customers to show each product
+visibility_parameters = [2, 3, 1, 2, 2, 3, 1, 2, 3, 1] # Minimum number of customers to show each product
 T = 10  # Number of customers
 
 # Running the model
@@ -276,9 +277,9 @@ def apv(prices, attraction_values, visibility_parameters, T):
 
 
 # Data
-prices = [20, 15, 40, 25, 50]  # Prices of products
-attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5]  # Attraction values for products
-visibility_parameters = [2, 3, 1, 2, 2] # Minimum number of customers to show each product
+prices = [20, 15, 40, 25, 50, 73, 52, 73, 60, 71] # Prices of products
+attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5, 0.6, 0.9, 0.6, 0.8, 0.7] # Attraction values for products
+visibility_parameters = [2, 3, 1, 2, 2, 3, 1, 2, 3, 1] # Minimum number of customers to show each product
 T = 10  # Number of customers
 
 # Running the model
@@ -350,9 +351,9 @@ def apv(prices, attraction_values, visibility_parameters, T, cost, budget_limit)
 
 
 # Data
-prices = [20, 15, 40, 25, 50]  # Prices of products
-attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5]  # Attraction values for products
-visibility_parameters = [2, 3, 1, 2, 2] # Minimum number of customers to show each product
+prices = [20, 15, 40, 25, 50, 73, 52, 73, 60, 71] # Prices of products
+attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5, 0.6, 0.9, 0.6, 0.8, 0.7] # Attraction values for products
+visibility_parameters = [2, 3, 1, 2, 2, 3, 1, 2, 3, 1] # Minimum number of customers to show each product
 T = 10  # Number of customers
 
 cost = {cost}  # Cost per displayed item
@@ -429,9 +430,9 @@ def apv(prices, attraction_values, visibility_parameters, T):
 
 
 # Data
-prices = [20, 15, 40, 25, 50]  # Prices of products
-attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5]  # Attraction values for products
-visibility_parameters = [2, 3, 1, 2, 2] # Minimum number of customers to show each product
+prices = [20, 15, 40, 25, 50, 73, 52, 73, 60, 71] # Prices of products
+attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5, 0.6, 0.9, 0.6, 0.8, 0.7] # Attraction values for products
+visibility_parameters = [2, 3, 1, 2, 2, 3, 1, 2, 3, 1] # Minimum number of customers to show each product
 T = 10  # Number of customers
 
 # Running the model
@@ -504,9 +505,9 @@ def apv(prices, attraction_values, visibility_parameters, T):
 
 
 # Data
-prices = [20, 15, 40, 25, 50]  # Prices of products
-attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5]  # Attraction values for products
-visibility_parameters = [2, 3, 1, 2, 2] # Minimum number of customers to show each product
+prices = [20, 15, 40, 25, 50, 73, 52, 73, 60, 71] # Prices of products
+attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5, 0.6, 0.9, 0.6, 0.8, 0.7] # Attraction values for products
+visibility_parameters = [2, 3, 1, 2, 2, 3, 1, 2, 3, 1] # Minimum number of customers to show each product
 T = 10  # Number of customers
 
 # Running the model
@@ -578,9 +579,9 @@ def apv(prices, attraction_values, visibility_parameters, T):
 
 
 # Data
-prices = [20, 15, 40, 25, 50]  # Prices of products
-attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5]  # Attraction values for products
-visibility_parameters = [2, 3, 1, 2, 2] # Minimum number of customers to show each product
+prices = [20, 15, 40, 25, 50, 73, 52, 73, 60, 71] # Prices of products
+attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5, 0.6, 0.9, 0.6, 0.8, 0.7] # Attraction values for products
+visibility_parameters = [2, 3, 1, 2, 2, 3, 1, 2, 3, 1] # Minimum number of customers to show each product
 T = 10  # Number of customers
 
 # Running the model
@@ -650,9 +651,9 @@ def apv(prices, attraction_values, visibility_parameters, T):
 
 
 # Data
-prices = [20, 15, 40, 25, 50]  # Prices of products
-attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5]  # Attraction values for products
-visibility_parameters = [2, 3, 1, 2, 2] # Minimum number of customers to show each product
+prices = [20, 15, 40, 25, 50, 73, 52, 73, 60, 71] # Prices of products
+attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5, 0.6, 0.9, 0.6, 0.8, 0.7] # Attraction values for products
+visibility_parameters = [2, 3, 1, 2, 2, 3, 1, 2, 3, 1] # Minimum number of customers to show each product
 T = 10  # Number of customers
 
 # Running the model
@@ -722,9 +723,9 @@ def apv(prices, attraction_values, visibility_parameters, T):
 
 
 # Data
-prices = [20, 15, 40, 25, 50]  # Prices of products
-attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5]  # Attraction values for products
-visibility_parameters = [2, 3, 1, 2, 2] # Minimum number of customers to show each product
+prices = [20, 15, 40, 25, 50, 73, 52, 73, 60, 71] # Prices of products
+attraction_values = [0.7, 0.8, 0.6, 0.9, 0.5, 0.6, 0.9, 0.6, 0.8, 0.7] # Attraction values for products
+visibility_parameters = [2, 3, 1, 2, 2, 3, 1, 2, 3, 1] # Minimum number of customers to show each product
 T = 10  # Number of customers
 
 # Running the model

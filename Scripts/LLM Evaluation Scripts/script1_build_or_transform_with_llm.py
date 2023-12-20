@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import random
 import time
 import google.generativeai as genai
+import glob
 
 # Load environment variables from .env file
 load_dotenv()
@@ -96,8 +97,17 @@ if task_number == "1":
     output_filename = os.path.join(
         script_directory, f"JSON4_llm_response_{model_number}_{task_number}.json")
 elif task_number == "2":
-    with open(os.path.join(optimization_models_path, f"model{model_number}_knapsack.py"), "r") as model_file:
-        model_content = model_file.read()
+    # Use glob to find the file that matches the pattern "model{model_number}_*.py"
+    model_files = glob.glob(os.path.join(optimization_models_path, f"model{model_number}_*.py"))
+
+    if model_files:
+        # Open the first file from the list
+        with open(model_files[0], "r") as model_file:
+            model_content = model_file.read()
+    else:
+        print(f"No file found for model{model_number}")
+        model_content = "Error: Model file not found."
+
     system_message = "Please transform the provided Python optimization model based on the user's question. Your response should ONLY contain the complete, transformed, and executable Python model. Do NOT include any explanations, introductions, partial sections, or excerpts. The answer should strictly consist of the full modified model in its entirety, ready for direct execution.\n\n— OPTIMIZATION MODEL TO TRANSFORM —\n\n{model_content}\n\n—"
     if icl_number > 0:
         system_message += "\n— EXAMPLES —\n\n{selected_examples}\n\n—"
